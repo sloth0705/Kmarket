@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/cs/index.do")
-public class IndexController extends HttpServlet {
-	private static final long serialVersionUID = 1283589879373746478L;
+@WebServlet("/cs/board/view.do")
+public class BoardViewController extends HttpServlet {
+	private static final long serialVersionUID = 3283589879373746478L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, 
@@ -24,6 +24,6 @@ public class IndexController extends HttpServlet {
 		request.setAttribute("cate", cate);
 		
 		
-		request.getRequestDispatcher("/cs/index.jsp").forward(request, respones);
+		request.getRequestDispatcher("/cs/board/view.jsp").forward(request, respones);
 	}
 }

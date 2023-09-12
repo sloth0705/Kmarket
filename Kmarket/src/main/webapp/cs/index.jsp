@@ -5,11 +5,11 @@
             <h1 class="title"><strong>케이마켓</strong>이 도와드릴게요!</h1>
             <section class="notice">
                 <h1>공지사항
-                    <a href="${path }/cs/board/list.do">전체보기</a>
+                    <a href="${path }/cs/board/list.do?group=notice&cate=All">전체보기</a>
                 </h1>
                 <ul>
                     <li>
-                        <a href="${path }/cs/board/list.do" class="title">
+                        <a href="${path }/cs/board/list.do?group=notice&cate=" class="title">
                         	[안내] 해외결제 사칭 문자 주의
                         </a>
                         <span class="date">22.10.31</span>
@@ -19,7 +19,7 @@
 
             <section class="faq">
                 <h1>자주 묻는 질문
-                    <a href="./faq/list.do">전체보기</a>
+                    <a href="${path }/cs/board/list.do?group=faq">전체보기</a>
                 </h1>
                 <ol>
                     <li>
@@ -63,12 +63,12 @@
             <section class="qna">
                 <h1>
                     문의하기
-                    <a href="${path }/cs/board/list.do">전체보기</a>
+                    <a href="${path }/cs/board/list.do?group=qna">전체보기</a>
                 </h1>
                 <!-- jstl 반복문 -->
                 <ul>
                     <li>
-                        <a href="./qna/list.do" class="title">
+                        <a href="${path }/cs/board/list.do?group=qna" class="title">
                         	[회원] 개인회원과 법인회원에 차이가 있나요?
                        	</a>
                         <p>
@@ -78,7 +78,8 @@
                     </li>
                 </ul>
                 
-                <a href="${path }/cs/board/write.do" class="ask">문의글 작성 &gt;
+                <a href="${path }/cs/board/write.do?group=qna" class="ask">
+                	문의글 작성 &gt;
                	</a>
             </section>
 
@@ -108,7 +109,9 @@
                             <strong>1566-5700</strong><span>(평일 09:00 ~ 18:00)</span>
                         </p>
                         <p>
-                            <a href="#">판매자 가입 및 서류 접수 안내 &gt;</a>
+                            <a href="${path }/cs/board/list.do?group=notice&cate=user">
+                            	판매자 가입 및 서류 접수 안내 &gt;
+                            </a>
                         </p>
                     </div>
                 </article>
