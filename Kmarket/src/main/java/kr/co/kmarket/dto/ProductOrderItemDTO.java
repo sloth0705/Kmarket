@@ -1,8 +1,7 @@
 package kr.co.kmarket.dto;
 
-public class ProductCart {
-	private int cartNo;
-	private String uid;
+public class ProductOrderItemDTO {
+	private int ordNo;
 	private int prodNo;
 	private int count;
 	private int price;
@@ -10,29 +9,19 @@ public class ProductCart {
 	private int point;
 	private int delivery;
 	private int total;
-	private String rdate;
 
 	@Override
 	public String toString() {
-		return "Km_product_cart [cartNo=" + cartNo + ", uid=" + uid + ", prodNo=" + prodNo + ", count=" + count
-				+ ", price=" + price + ", discount=" + discount + ", point=" + point + ", delivery=" + delivery
-				+ ", total=" + total + ", rdate=" + rdate + "]";
+		return "Km_product_order_item [ordNo=" + ordNo + ", prodNo=" + prodNo + ", count=" + count + ", price=" + price
+				+ ", discount=" + discount + ", point=" + point + ", delivery=" + delivery + ", total=" + total + "]";
 	}
 
-	public int getCartNo() {
-		return cartNo;
+	public int getOrdNo() {
+		return ordNo;
 	}
 
-	public void setCartNo(int cartNo) {
-		this.cartNo = cartNo;
-	}
-
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setOrdNo(int ordNo) {
+		this.ordNo = ordNo;
 	}
 
 	public int getProdNo() {
@@ -89,13 +78,5 @@ public class ProductCart {
 
 	public void setTotal(int total) {
 		this.total = total;
-	}
-
-	public String getRdate() {
-		return rdate;
-	}
-
-	public void setRdate(String rdate) {
-		this.rdate = rdate;
 	}
 }

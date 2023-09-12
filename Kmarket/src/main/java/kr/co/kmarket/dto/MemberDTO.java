@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class Member {
+public class MemberDTO {
 	private String uid;
 	private String pass;
 	private String name;

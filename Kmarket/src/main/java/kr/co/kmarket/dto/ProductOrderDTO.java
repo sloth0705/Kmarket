@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class ProductOrder {
+public class ProductOrderDTO {
 	private int ordNo;
 	private String ordUid;
 	private int ordCount;

@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class ProductReview {
+public class ProductReviewDTO {
 	private int revNo;
 	private int prodNo;
 	private String content;
