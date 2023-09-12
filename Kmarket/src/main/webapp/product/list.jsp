@@ -23,7 +23,7 @@
           <td><a href="#" class="thumb"><img src="${path }/upload/${product.thumb1}" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">${product.prodName }</h3>
-            <a href="#" class="desc">${product.descript }</a>
+            <a href="${path }/product/view.do?prodNo=${product.prodNo}&cate1=${cate1}&cate2=${cate2}" class="desc">${product.descript }</a>
           </td>
           <td>
             <ul>

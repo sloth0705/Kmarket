@@ -10,4 +10,5 @@ public class SQL {
 	public static String SELECT_PRODUCT_COUNT_TOTAL = "SELECT COUNT(*) FROM `km_product` "
 													+ "WHERE `prodCate1` = ? AND "
 													+ "`prodCate2` = ?";
+	public static String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 }
