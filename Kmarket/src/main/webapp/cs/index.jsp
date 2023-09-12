@@ -1,4 +1,5 @@
-<%@ include file="/inc/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./inc/header.jsp" %>
     <section id="cs">
         <div class="main">
             <h1 class="title"><strong>케이마켓</strong>이 도와드릴게요!</h1>
@@ -137,4 +138,4 @@
             </section>
         </div>
     </section>
-    <%@ include file="/inc/footer.jsp" %>
+<%@ include file="./inc/footer.jsp" %>
