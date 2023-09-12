@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class Km_product_cart {
+public class ProductCart {
 	private int cartNo;
 	private String uid;
 	private int prodNo;

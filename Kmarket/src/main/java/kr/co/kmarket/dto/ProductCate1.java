@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class Km_product_cate1 {
+public class ProductCate1 {
 	private int cate1;
 	private String c1Name;
 

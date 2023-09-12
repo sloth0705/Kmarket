@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class Km_member_point {
+public class MemberPoint {
 	private int pointNo;
 	private String uid;
 	private int ordNo;

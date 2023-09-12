@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class Km_product {
+public class Product {
 	private int prodNo;
 	private int prodCate1;
 	private int prodCate2;

@@ -1,6 +1,6 @@
 package kr.co.kmarket.dto;
 
-public class Km_member_terms {
+public class MemberTerms {
 	private String terms;
 	private String privacy;
 	private String finance;
