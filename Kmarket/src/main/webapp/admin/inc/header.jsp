@@ -17,7 +17,7 @@
     <div id="admin-wrapper">
         <header>
             <div>
-                <a href="./index.html" class="logo"><img src="${path }/admin/img/admin_logo.png" alt="admin_logo"/></a>
+                <a href="./index.do" class="logo"><img src="${path }/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
                     <span>홍길동님 반갑습니다.</span>
                     <a href="#">HOME |</a>
