@@ -28,8 +28,50 @@ public class ProductDAO extends DBHelper {
 
 	}
 
-	public ProductDTO selectProduct(int prodNo) {
+	public ProductDTO selectProduct(String prodNo) {
 		ProductDTO dto = null;
+		try {
+			psmt = getConnection().prepareStatement(SQL.SELECT_PRODUCT);
+			psmt.setString(1, prodNo);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				dto = new ProductDTO();
+				dto.setProdNo(rs.getInt("prodNo"));
+				dto.setProdCate1(rs.getInt("prodCate1"));
+				dto.setProdCate2(rs.getInt("prodCate2"));
+				dto.setProdName(rs.getString("prodName"));
+				dto.setDescript(rs.getString("descript"));
+				dto.setCompany(rs.getString("company"));
+				dto.setSeller(rs.getString("seller"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setDiscount(rs.getInt("discount"));
+				dto.setPoint(rs.getInt("point"));
+				dto.setStock(rs.getInt("stock"));
+				dto.setSold(rs.getInt("sold"));
+				dto.setDelivery(rs.getInt("delivery"));
+				dto.setHit(rs.getInt("hit"));
+				dto.setScore(rs.getInt("score"));
+				dto.setReview(rs.getInt("review"));
+				dto.setThumb1(rs.getString("thumb1"));
+				dto.setThumb2(rs.getString("thumb2"));
+				dto.setThumb3(rs.getString("thumb3"));
+				dto.setDetail(rs.getString("detail"));
+				dto.setStatus(rs.getString("status"));
+				dto.setDuty(rs.getString("duty"));
+				dto.setReceipt(rs.getString("receipt"));
+				dto.setBizType(rs.getString("bizType"));
+				dto.setOrigin(rs.getString("origin"));
+				dto.setIp(rs.getString("ip"));
+				dto.setRdate(rs.getString("rdate"));
+				dto.setEtc1(rs.getInt("etc1"));
+				dto.setEtc2(rs.getInt("etc2"));
+				dto.setEtc3(rs.getString("etc3"));
+				dto.setEtc4(rs.getString("etc4"));
+				dto.setEtc5(rs.getString("etc5"));
+			}
+		} catch (Exception e) {
+			logger.error("selectProduct error : " + e.getMessage());
+		}
 		return dto;
 	}
 

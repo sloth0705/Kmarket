@@ -108,13 +108,17 @@ public class ProductDTO {
 		return price;
 	}
 
+	public double getDisPrice() {
+		return Math.floor(((double) price / 1000) * (100 - discount)) * 10;
+	}
+
 	public String getPriceWithComma() {
 		DecimalFormat df = new DecimalFormat("###,###");
 		return df.format(price);
 	}
 
 	public String getDisPriceWithComma() {
-		double disPrice = Math.floor(((double)price / 1000) * (100 - discount)) * 10;
+		double disPrice = Math.floor(((double) price / 1000) * (100 - discount)) * 10;
 		DecimalFormat df = new DecimalFormat("###,###");
 		return df.format(disPrice);
 	}
