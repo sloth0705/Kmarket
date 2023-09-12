@@ -1,5 +1,6 @@
-<%@ include file="/inc/header.jsp" %>
-<%@ include file="/inc/aside/cs_aside.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../inc/header.jsp" %>
+<%@ include file="../inc/aside/cs_aside.jsp" %>
                 <article>
                     <nav>
                         <h1>전체</h1>
@@ -63,4 +64,4 @@
             </section>
         </div>
     </section>
-<%@ include file="/inc/footer.jsp" %>
+<%@ include file="../inc/footer.jsp" %>

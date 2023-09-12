@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <section id="cs">
     <div class="notice">
         <nav>
@@ -8,7 +10,7 @@
                 </p>
             </div>
         </nav>
-        <!-- class list or view 선택-->
+        <!-- class list or view 선택에 따라서 css 적용이 달라짐-->
         <section class="view">
             <aside>
                 <h2>공지사항</h2>

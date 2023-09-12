@@ -1,5 +1,6 @@
-<%@ include file="/inc/header.jsp" %>
-<%@ include file="/inc/aside/cs_aside.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../inc/header.jsp" %>
+<%@ include file="../inc/aside/cs_aside.jsp" %>
                 <article>
                     <nav>
                         <h2 class="title">[안내] 해외결제 사칭 문자 주의</h2>
@@ -30,4 +31,4 @@
             </section>
         </div>
     </section>
-<%@ include file="/inc/footer.jsp" %>
+<%@ include file="../inc/footer.jsp" %>
