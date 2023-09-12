@@ -5,8 +5,8 @@
         <nav>
             <div>
                 <p>
-                    <a href="#">홈</a><span>&gt;</span>
-                    <a href="#">공지사항</a>
+                    <a href="${path }/index.do">홈</a><span>&gt;</span>
+                    <a href="${path }/cs/board/list.do">공지사항</a>
                 </p>
             </div>
         </nav>
