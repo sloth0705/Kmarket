@@ -1,5 +1,7 @@
 package kr.co.kmarket.dto;
 
+import java.text.DecimalFormat;
+
 public class ProductDTO {
 	private int prodNo;
 	private int prodCate1;
@@ -106,6 +108,17 @@ public class ProductDTO {
 		return price;
 	}
 
+	public String getPriceWithComma() {
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(price);
+	}
+
+	public String getDisPriceWithComma() {
+		double disPrice = Math.floor(((double)price / 1000) * (100 - discount)) * 10;
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(disPrice);
+	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
@@ -144,6 +157,11 @@ public class ProductDTO {
 
 	public int getDelivery() {
 		return delivery;
+	}
+
+	public String getDeliveryWithComma() {
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(delivery);
 	}
 
 	public void setDelivery(int delivery) {

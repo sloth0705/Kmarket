@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.kmarket.dao.ProductDAO;
 import kr.co.kmarket.dto.ProductDTO;
+import kr.co.kmarket.dto.ProductSearchForm;
 
 public enum ProductService {
 	INSTANCE;
@@ -18,8 +19,8 @@ public enum ProductService {
 		return dao.selectProduct(prodNo);
 	}
 
-	public List<ProductDTO> selectProducts() {
-		return dao.selectProducts();
+	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start) {
+		return dao.selectProducts(searchForm, start);
 	}
 
 	public void updateProduct(ProductDTO dto) {
@@ -28,5 +29,9 @@ public enum ProductService {
 
 	public void deleteProduct(int prodNo) {
 		dao.deleteProduct(prodNo);
+	}
+
+	public int selectCountTotal(String cate1, String cate2) {
+		return dao.selectCountTotal(cate1, cate2);
 	}
 }
