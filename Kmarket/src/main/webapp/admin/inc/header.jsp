@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>케이마켓::관리자</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js" ></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>    
     <script src="${path }/admin/js/gnb.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
