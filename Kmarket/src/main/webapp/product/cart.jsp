@@ -47,12 +47,45 @@
 	    
 		$('input[name=chk]').change(function() {
 			const chk = $('input[name=chk]');
-			debugger
+			let count = 0;
+			let price = 0;
+			let disPrice = 0;
+			let delivery = 0;
+			let point = 0;
+			let total = 0;
+			for (let i = 0; i < chk.size(); i++) {
+				if (chk[i].checked) {
+					const cartNo = $('input[name=chk]')[i].classList[0];
+					let tmpCount = $('input[name=count' + cartNo + ']').val() * 1;
+					let tmpPrice = $('input[name=price' + cartNo + ']').val() * 1;
+					let tmpDisPrice = $('input[name=disPrice' + cartNo + ']').val() * 1;
+					let tmpDisPrice2 = tmpPrice - tmpDisPrice;
+					let tmpDelivery = $('input[name=delivery' + cartNo + ']').val() * 1;
+					let tmpPoint = $('input[name=point' + cartNo + ']').val() * 1;
+					let tmpTotal = tmpCount * tmpDisPrice + tmpDelivery;
+					
+					count += tmpCount;
+					price += tmpPrice;
+					disPrice += tmpDisPrice2;
+					delivery += tmpDelivery;
+					point += tmpPoint;
+					total += tmpTotal;
+				}
+			}
+			$('#count').text(count.toLocaleString());
+			$('#price').text(price.toLocaleString());
+			$('#disPrice').text(disPrice.toLocaleString());
+			$('#delivery').text(delivery.toLocaleString());
+			$('#point').text(point.toLocaleString());
+			$('#total').text(total.toLocaleString());
 		});
 		
 		// 선택삭제
-	    $('.orderDelete').click(function(e) {
+	    $('.cartDelete').click(function(e) {
 	    	e.preventDefault();
+	    	if (!confirm('해당 장바구니 품목을 삭제 하시겠습니까?')) {
+	    		return false;
+	    	}
 	    	$('#formCheck').submit();
 	    });
 	});
@@ -66,7 +99,7 @@
 			HOME > <span>패션·의류·뷰티</span> > <strong>장바구니</strong>
 		</p>
 	</nav>
-	<form action="#">
+	<form id="formCheck" action="${path }/product/cart.do" method="post">
 		<!-- 장바구니 목록 -->
 		<table>
 			<thead>
@@ -91,7 +124,9 @@
 					<c:otherwise>
 						<c:forEach var="cart" items="${carts }" varStatus="status">
 						<tr class="${cart.cartNo }">
-							<td><input type="checkbox" name="chk" class="${cart.cartNo }"></td>
+							<td>
+								<input type="checkbox" name="chk" class="${cart.cartNo }" value="${cart.cartNo }">
+							</td>
 							<td>
 								<article>
 									<a href="#"><img src="${path }/upload/${cart.product.thumb1}"
@@ -142,7 +177,7 @@
 				</c:choose>
 			</tbody>
 		</table>
-		<input type="button" name="del" value="선택삭제">
+		<input class="cartDelete" type="button" name="del" value="선택삭제">
 		<!-- 장바구니 전체합계 -->
 		<div class="total">
 			<h2>전체합계</h2>

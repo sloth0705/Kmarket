@@ -34,4 +34,7 @@ public class ProductSQL {
 			+ "LEFT OUTER JOIN `km_product` AS b "
 			+ "ON a.`prodNo` = b.`prodNo` "
 			+ "WHERE `uid` = ?";
+	public static String DELETE_CART =
+			"DELETE FROM `km_product_cart` "
+			+ "WHERE `cartNo` = ?";
 }

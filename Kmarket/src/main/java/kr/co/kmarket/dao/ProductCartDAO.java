@@ -71,6 +71,13 @@ public class ProductCartDAO extends DBHelper {
 	}
 
 	public void deleteProductCart(int cartNo) {
-
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.DELETE_CART);
+			psmt.setInt(1, cartNo);
+			psmt.executeUpdate();
+			close();
+		} catch (Exception e) {
+			logger.error("deleteProductCart error : " + e.getMessage());
+		}
 	}
 }
