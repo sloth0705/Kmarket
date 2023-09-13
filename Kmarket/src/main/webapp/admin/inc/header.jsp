@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>케이마켓::관리자</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js" ></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>    
     <script src="${path }/admin/js/gnb.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -20,7 +21,7 @@
                 <a href="${path }/admin/index.do" class="logo"><img src="${path }/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
                     <span>홍길동님 반갑습니다.</span>
-                    <a href="#">HOME |</a>
+                    <a href="${path }/index.do">HOME |</a>
                     <a href="#">로그아웃 |</a>
                     <a href="#">고객센터</a>
                 </p>
