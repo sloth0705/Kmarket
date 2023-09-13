@@ -11,10 +11,10 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class DBHelper {
-	protected Connection conn;
-	protected PreparedStatement psmt;
-	protected Statement stmt;
-	protected ResultSet rs;
+	protected Connection conn = null;
+	protected PreparedStatement psmt = null;
+	protected Statement stmt = null;
+	protected ResultSet rs = null;
 
 	public Connection getConnection() {
 		try {

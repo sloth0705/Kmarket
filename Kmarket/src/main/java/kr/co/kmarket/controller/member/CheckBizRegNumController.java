@@ -14,11 +14,13 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonObject;
 
+import kr.co.kmarket.service.MemberService;
+
 @WebServlet("/member/checkBizRegNum.do")
 public class CheckBizRegNumController extends HttpServlet { // 사업자등록번호
 	private static final long serialVersionUID = -963681375348112050L;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	// private MemberService
+	private MemberService service = MemberService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +28,7 @@ public class CheckBizRegNumController extends HttpServlet { // 사업자등록�
 		String bizRegNum = req.getParameter("bizRegNum");
 		logger.debug("bizRegNum : " + bizRegNum);
 		
-		int result = 0; // service.selectCountBizRegNum(bizRegNum)
+		int result = service.selectCountBizRegNum(bizRegNum);
 		
 		// JSON 생성
 		JsonObject json = new JsonObject();

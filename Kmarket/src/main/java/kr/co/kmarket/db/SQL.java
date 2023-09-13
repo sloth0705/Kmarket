@@ -2,7 +2,6 @@ package kr.co.kmarket.db;
 
 public class SQL {
 
-	// Member
 	public static final String SELECT_TERMS = "SELECT * FROM `km_member_terms`";
 	public static final String INSERT_MEMBER = "INSERT INTO `km_member` SET "
 											+ "`uid`=?, "

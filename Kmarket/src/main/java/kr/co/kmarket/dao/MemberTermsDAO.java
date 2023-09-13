@@ -23,7 +23,7 @@ public class MemberTermsDAO extends DBHelper {
 		try {
 			conn = getConnection();
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_TERMS);
+			rs = stmt.executeQuery("SELECT * FROM `km_member_terms`");
 			
 			if (rs.next())
 			{
