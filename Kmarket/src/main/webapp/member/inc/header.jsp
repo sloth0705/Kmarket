@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="./css/member.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -20,8 +21,8 @@
         <header>
             <div class="top">
                 <div>
-                    <a href="./member/login.html">로그인</a>
-                    <a href="#">회원가입</a>
+                    <a href="${path}/member/login.do">로그인</a>
+                    <a href="${path}/member/join.do">회원가입</a>
                     <a href="#">마이페이지</a>
                     <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
                 </div>

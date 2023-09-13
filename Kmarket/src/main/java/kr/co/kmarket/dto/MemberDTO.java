@@ -4,7 +4,7 @@ public class MemberDTO {
 	private String uid;
 	private String pass;
 	private String name;
-	private int gender;
+	private String gender;
 	private String hp;
 	private String email;
 	private int type;
@@ -64,11 +64,11 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -95,6 +95,9 @@ public class MemberDTO {
 	public void setType(int type) {
 		this.type = type;
 	}
+	public void setType(String type) {
+		this.type = Integer.parseInt(type);
+	}
 
 	public int getPoint() {
 		return point;
@@ -110,6 +113,9 @@ public class MemberDTO {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	public void setLevel(String level) {
+		this.level = Integer.parseInt(level);
 	}
 
 	public String getZip() {

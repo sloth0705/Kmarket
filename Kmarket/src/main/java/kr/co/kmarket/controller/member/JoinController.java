@@ -2,6 +2,7 @@ package kr.co.kmarket.controller.member;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,8 @@ public class JoinController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/join.jsp");
+		dispatcher.forward(req, resp);
 	}
 }
