@@ -1,7 +1,6 @@
 package kr.co.kmarket.controller.board.notice;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,9 +15,9 @@ import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
 
-@WebServlet("/cs/noticeBoard/list.do")
-public class NoticeBoardListController extends HttpServlet {
-	private static final long serialVersionUID = -355669837665243361L;
+@WebServlet("/cs/noticeBoard/view.do")
+public class NoticeBoardViewController extends HttpServlet {
+	private static final long serialVersionUID = 4444489879373746478L;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CS_BoardService service = CS_BoardService.INSTANCE;
@@ -35,13 +34,14 @@ public class NoticeBoardListController extends HttpServlet {
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
-		List<CS_BoardDTO> list 
-			= service.selectCS_Boards();
 		
-		request.setAttribute("cs", list);
-		logger.info("BoardList_get list : " + list);
+		String bno = request.getParameter("bno");
 		
-		request.getRequestDispatcher("/cs/noticeBoard/list.jsp").forward(request, respones);
-		 
+		CS_BoardDTO dto 
+			= service.selectCS_Board(Integer.parseInt(bno));
+		request.setAttribute("cs", dto);
+		
+		
+		request.getRequestDispatcher("/cs/noticeBoard/view.jsp").forward(request, respones);
 	}
 }

@@ -14,11 +14,13 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonObject;
 
+import kr.co.kmarket.service.MemberService;
+
 @WebServlet("/member/checkHp.do")
 public class CheckHpController extends HttpServlet {
 	private static final long serialVersionUID = 3316513221894822721L;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	// private MemberService
+	private MemberService service = MemberService.INSTANCE;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +28,7 @@ public class CheckHpController extends HttpServlet {
 		String hp = req.getParameter("hp");
 		logger.debug("hp : " + hp);
 		
-		int result = 0; // service.selectCountHp(hp)
+		int result = service.selectCountHp(hp);
 		
 		// JSON 생성
 		JsonObject json = new JsonObject();

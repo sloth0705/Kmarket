@@ -35,4 +35,5 @@
                     </li>
                 </ul>
             </aside>
-
+            
+<script src="/Kmarket/cs/js/pageCSS.js"></script>

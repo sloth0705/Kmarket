@@ -5,11 +5,11 @@
             <h1 class="title"><strong>케이마켓</strong>이 도와드릴게요!</h1>
             <section class="notice">
                 <h1>공지사항
-                    <a href="${path }/cs/board/list.do?group=notice&cate=All">전체보기</a>
+                    <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All">전체보기</a>
                 </h1>
                 <ul>
                     <li>
-                        <a href="${path }/cs/board/list.do?group=notice&cate=All" class="title">
+                        <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All" class="title">
                         	[안내] 해외결제 사칭 문자 주의
                         </a>
                         <span class="date">22.10.31</span>
@@ -63,12 +63,12 @@
             <section class="qna">
                 <h1>
                     문의하기
-                    <a href="${path }/cs/board/list.do?group=qna&cate=All">전체보기</a>
+                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=All">전체보기</a>
                 </h1>
                 <!-- jstl 반복문 -->
                 <ul>
                     <li>
-                        <a href="${path }/cs/board/list.do?group=qna&cate=All" class="title">
+                        <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=All" class="title">
                         	[회원] 개인회원과 법인회원에 차이가 있나요?
                        	</a>
                         <p>
@@ -78,7 +78,7 @@
                     </li>
                 </ul>
                 
-                <a href="${path }/cs/board/write.do?group=qna" class="ask">
+                <a href="${path }/cs/qnaBoard/write.do" class="ask">
                 	문의글 작성 &gt;
                	</a>
             </section>

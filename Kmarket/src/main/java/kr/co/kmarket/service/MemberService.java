@@ -17,6 +17,30 @@ public enum MemberService {
 	public MemberDTO selectMember(String uid) {
 		return dao.selectMember(uid);
 	}
+	public int selectCountUid(String uid) {
+		return dao.selectCountUid(uid);
+	}
+	public int selectCountHp(String hp) {
+		return dao.selectCountHp(hp);
+	}
+	public int selectCountEmail(String email) {
+		return dao.selectCountEmail(email);
+	}
+	public int selectCountCompany(String company) {
+		return dao.selectCountCompany(company);
+	}
+	public int selectCountBizRegNum(String bizRegNum) {
+		return dao.selectCountBizRegNum(bizRegNum);
+	}
+	public int selectCountComRegNum(String comRegNum) {
+		return dao.selectCountComRegNum(comRegNum);
+	}
+	public int selectCountTel(String tel) {
+		return dao.selectCountTel(tel);
+	}
+	public int selectCountFax(String fax) {
+		return dao.selectCountFax(fax);
+	}
 
 	public List<MemberDTO> selectMembers() {
 		return dao.selectMembers();

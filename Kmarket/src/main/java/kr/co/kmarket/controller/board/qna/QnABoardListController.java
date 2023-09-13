@@ -1,4 +1,4 @@
-package kr.co.kmarket.controller.board;
+package kr.co.kmarket.controller.board.qna;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,10 +16,10 @@ import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
 
-@WebServlet("/cs/board/list.do")
-public class BoardListController extends HttpServlet {
-	private static final long serialVersionUID = 4283589879373746478L;
-
+@WebServlet("/cs/qnaBoard/list.do")
+public class QnABoardListController extends HttpServlet {
+	private static final long serialVersionUID = -2018502673393107208L;
+	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CS_BoardService service = CS_BoardService.INSTANCE;
 	
@@ -41,6 +41,6 @@ public class BoardListController extends HttpServlet {
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);
 		
-		request.getRequestDispatcher("/cs/board/list.jsp").forward(request, respones);
+		request.getRequestDispatcher("/cs/qnaBoard/list.jsp").forward(request, respones);
 	}
 }

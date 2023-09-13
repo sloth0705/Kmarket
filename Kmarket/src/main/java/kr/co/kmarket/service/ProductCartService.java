@@ -18,8 +18,8 @@ public enum ProductCartService {
 		return dao.selectProductCart(cartNo);
 	}
 
-	public List<ProductCartDTO> selectProductCarts() {
-		return dao.selectProductCarts();
+	public List<ProductCartDTO> selectProductCarts(String uid) {
+		return dao.selectProductCarts(uid);
 	}
 
 	public void updateProductCart(ProductCartDTO dto) {
@@ -28,5 +28,9 @@ public enum ProductCartService {
 
 	public void deleteProductCart(int cartNo) {
 		dao.deleteProductCart(cartNo);
+	}
+
+	public List<ProductCartDTO> selectCheckedProductCarts(String in) {
+		return dao.selectCheckedProductCarts(in);
 	}
 }

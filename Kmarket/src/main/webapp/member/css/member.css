@@ -370,7 +370,7 @@ header {
     margin-right: 5px;
   }
   
-  #member > .register .btnCheckUid {
+  #member > .register > #formMember #btnCheckUid {
 	background: #ef3f43;
     color: #fff;
     font-size: 12px;
@@ -489,7 +489,7 @@ header {
     margin-right: 5px;
   }
   
-  #member > .registerSeller .btnCheckUid {
+  #member > .registerSeller > #formMember #btnCheckUid {
 	background: #ef3f43;
     color: #fff;
     font-size: 12px;
