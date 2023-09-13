@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <%-- <c:import url="../inc/aside/${group }.jsp" /> --%>
-		
+			<article>
+				<nav>
+					<h1>${cateName }</h1>
+					<h2>[${cateName }] 문의 내용입니다.</h2>
+				</nav>
+				
                 <div>
                     <h3>가입</h3>
                     <ul>

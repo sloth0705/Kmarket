@@ -35,5 +35,5 @@
             </div>
         </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-latest.min.js" ></script>
+    <script src="/Kmarket/cs/js/pageCSS.js"></script>
 </body>
