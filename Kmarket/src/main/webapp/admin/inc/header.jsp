@@ -21,7 +21,7 @@
                 <a href="${path }/admin/index.do" class="logo"><img src="${path }/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
                     <span>홍길동님 반갑습니다.</span>
-                    <a href="#">HOME |</a>
+                    <a href="${path }/index.do">HOME |</a>
                     <a href="#">로그아웃 |</a>
                     <a href="#">고객센터</a>
                 </p>
