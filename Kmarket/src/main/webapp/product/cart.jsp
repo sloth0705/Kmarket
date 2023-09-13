@@ -2,6 +2,61 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp"%>
 <%@ include file="./inc/aside.jsp"%>
+<script>
+	$(function() {
+		// 전체 체크박스
+		$('input[name=all]').change(function(){
+			const isChecked = $(this).is(':checked');
+			if (isChecked) {
+				$('input[name=chk]').prop('checked', true);
+				let count = 0;
+				let price = 0;
+				let disPrice = 0;
+				let delivery = 0;
+				let point = 0;
+				let total = 0;
+				const chk = $('input[name=chk]');
+				for (let i = 0; i < chk.size(); i++) {
+					const cartNo = $('input[name=chk]')[i].classList[0];
+					let tmpCount = $('input[name=count' + cartNo + ']').val() * 1;
+					let tmpPrice = $('input[name=price' + cartNo + ']').val() * 1;
+					let tmpDisPrice = $('input[name=disPrice' + cartNo + ']').val() * 1;
+					let tmpDisPrice2 = tmpPrice - tmpDisPrice;
+					let tmpDelivery = $('input[name=delivery' + cartNo + ']').val() * 1;
+					let tmpPoint = $('input[name=point' + cartNo + ']').val() * 1;
+					let tmpTotal = tmpCount * tmpDisPrice + tmpDelivery;
+					
+					count += tmpCount;
+					price += tmpPrice;
+					disPrice += tmpDisPrice2;
+					delivery += tmpDelivery;
+					point += tmpPoint;
+					total += tmpTotal;
+				}
+				$('#count').text(count.toLocaleString());
+				$('#price').text(price.toLocaleString());
+				$('#disPrice').text(disPrice.toLocaleString());
+				$('#delivery').text(delivery.toLocaleString());
+				$('#point').text(point.toLocaleString());
+				$('#total').text(total.toLocaleString());
+			} else {
+				$('input[name=chk]').prop('checked', false);
+				$('.totalForm').text(0);
+			}
+		});
+	    
+		$('input[name=chk]').change(function() {
+			const chk = $('input[name=chk]');
+			debugger
+		});
+		
+		// 선택삭제
+	    $('.orderDelete').click(function(e) {
+	    	e.preventDefault();
+	    	$('#formCheck').submit();
+	    });
+	});
+</script>
 <!-- 장바구니 페이지 시작 -->
 <section class="cart">
 	<!-- 제목, 페이지 네비게이션 -->
@@ -35,8 +90,8 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="cart" items="${carts }" varStatus="status">
-						<tr>
-							<td><input type="checkbox" name=""></td>
+						<tr class="${cart.cartNo }">
+							<td><input type="checkbox" name="chk" class="${cart.cartNo }"></td>
 							<td>
 								<article>
 									<a href="#"><img src="${path }/upload/${cart.product.thumb1}"
@@ -49,11 +104,25 @@
 									</div>
 								</article>
 							</td>
-							<td>${cart.count }</td>
-							<td>${cart.product.getPriceWithComma() }</td>
-							<td>${cart.product.discount }%</td>
-							<td>${cart.product.point }</td>
-							<td>
+							<td class="count">
+								<input type="hidden" name="count${cart.cartNo }" value="${cart.count }"/>
+								${cart.count }
+							</td>
+							<td class="price">
+								<input type="hidden" name="price${cart.cartNo }" value="${cart.product.price }"/>
+								${cart.product.getPriceWithComma() }
+							</td>
+							<td class="discount">
+								<input type="hidden" name="discount${cart.cartNo }" value="${cart.product.discount }"/>
+								<input type="hidden" name="disPrice${cart.cartNo }" value="${cart.product.getDisPrice() }"/>
+								${cart.product.discount }%
+							</td>
+							<td class="point">
+								<input type="hidden" name="point${cart.cartNo }" value="${cart.product.point }"/>
+								${cart.product.point }
+							</td>
+							<td class="delivery">
+								<input type="hidden" name="delivery${cart.cartNo }" value="${cart.product.delivery }"/>
 								<c:choose>
 									<c:when test="${cart.product.delivery gt 0 }">
 										${cart.product.getDeliveryWithComma() }
@@ -63,7 +132,10 @@
 									</c:otherwise>
 								</c:choose>
 							</td>
-							<td>${cart.getTotalWithComma() }</td>
+							<td class="total">
+								<input type="hidden" name="total${cart.cartNo }" value="${cart.getTotal() }"/>
+								${cart.getTotalWithComma() }
+							</td>
 						</tr>
 						</c:forEach>
 					</c:otherwise>
@@ -77,27 +149,27 @@
 			<table>
 				<tr>
 					<td>상품수</td>
-					<td>0</td>
+					<td><span id="count" class="totalForm">0</span></td>
 				</tr>
 				<tr>
 					<td>상품금액</td>
-					<td>0</td>
+					<td><span id="price" class="totalForm">0</span></td>
 				</tr>
 				<tr>
 					<td>할인금액</td>
-					<td>0</td>
+					<td><span id="disPrice" class="totalForm">0</span></td>
 				</tr>
 				<tr>
 					<td>배송비</td>
-					<td>0</td>
+					<td><span id="delivery" class="totalForm">0</span></td>
 				</tr>
 				<tr>
 					<td>포인트</td>
-					<td>0</td>
+					<td><span id="point" class="totalForm">0</span></td>
 				</tr>
 				<tr>
 					<td>전체주문금액</td>
-					<td>0</td>
+					<td><span id="total" class="totalForm">0</span></td>
 				</tr>
 			</table>
 			<input type="submit" name="" value="주문하기">
