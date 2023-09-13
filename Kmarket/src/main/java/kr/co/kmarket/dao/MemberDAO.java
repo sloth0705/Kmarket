@@ -11,8 +11,9 @@ import kr.co.kmarket.db.SQL;
 import kr.co.kmarket.dto.MemberDTO;
 
 public class MemberDAO extends DBHelper {
-	
+
 	private static MemberDAO instance = new MemberDAO();
+
 	public static MemberDAO getInstance() {
 		return instance;
 	}

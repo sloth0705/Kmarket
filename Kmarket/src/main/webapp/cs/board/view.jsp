@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
-<%@ include file="../inc/aside/cs_aside.jsp" %>
+<jsp:include page="../inc/aside/${group }.jsp">
                 <article>
                     <nav>
                         <h2 class="title">[안내] 해외결제 사칭 문자 주의</h2>
@@ -26,7 +26,7 @@
                             감사합니다.<br>
                         </p>
                     </div>
-                    <a href="./list.html" class="btnList">목록보기</a>
+                    <a href="./list.do" class="btnList">목록보기</a>
                 </article>
             </section>
         </div>

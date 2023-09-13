@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">    
     <title>케이마켓::대한민국 1등 온라인 쇼핑몰</title>
-    <script src="https://code.jquery.com/jquery-latest.min.js%22%3E"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>

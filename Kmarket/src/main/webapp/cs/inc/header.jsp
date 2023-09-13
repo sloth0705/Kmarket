@@ -20,7 +20,7 @@
             <div class="top">
                 <div>
                     <p>
-                        <a href="${path}/cs/member/login.html">로그인</a>
+                        <a href="${path}/cs/member/login.do">로그인</a>
                         <a href="#">회원가입</a>
                         <a href="#">마이페이지</a>
                         <a href="#">
@@ -32,7 +32,7 @@
             </div>
             <div class="logo">
                 <div>
-                    <a href="#">
+                    <a href="${path }/cs/board/notice.do">
                         <img src="${path}/cs/img/logo.png" alt="로고">고객센터
                     </a>
                 </div>
