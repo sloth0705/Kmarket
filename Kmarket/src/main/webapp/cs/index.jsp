@@ -19,7 +19,7 @@
 
             <section class="faq">
                 <h1>자주 묻는 질문
-                    <a href="${path }/cs/board/list.do?group=faq">전체보기</a>
+                    <a href="${path }/cs/faqBoard/list.do?group=faq&cate=member">전체보기</a>
                 </h1>
                 <ol>
                     <li>
@@ -63,12 +63,12 @@
             <section class="qna">
                 <h1>
                     문의하기
-                    <a href="${path }/cs/board/list.do?group=qna">전체보기</a>
+                    <a href="${path }/cs/board/list.do?group=qna&cate=All">전체보기</a>
                 </h1>
                 <!-- jstl 반복문 -->
                 <ul>
                     <li>
-                        <a href="${path }/cs/board/list.do?group=qna" class="title">
+                        <a href="${path }/cs/board/list.do?group=qna&cate=All" class="title">
                         	[회원] 개인회원과 법인회원에 차이가 있나요?
                        	</a>
                         <p>

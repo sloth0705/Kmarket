@@ -97,10 +97,10 @@
               <li><a href="#">할인상품</a></li>
             </ul>
             <ul>
-              <li><a href="#">공지사항</a></li>
-              <li><a href="#">자주묻는질문</a></li>
-              <li><a href="#">문의하기</a></li>
-              <li><a href="#">고객센터</a></li>
+              <li><a href="${path }/cs/board/list.do?group=notice&cate=All">공지사항</a></li>
+              <li><a href="${path }/cs/board/list.do?group=faq&cate=member">자주묻는질문</a></li>
+              <li><a href="${path }/cs/board/list.do?group=qna&cate=member">문의하기</a></li>
+              <li><a href="${path }/cs/board/index.do">고객센터</a></li>
             </ul>
           </div>
         </div>

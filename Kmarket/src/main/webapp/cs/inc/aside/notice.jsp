@@ -38,25 +38,6 @@
             
             <article>
                     <nav>
-                    	<c:choose>
-							<c:when test="${cate eq 'All' }">
-                        		<h1>전체</h1>
-                        	</c:when>
-							<c:when test="${cate eq 'cs' }">
-                        		<h1>고객서비스</h1>
-                        	</c:when>
-							<c:when test="${cate eq 'safe' }">
-                        		<h1>안전거래</h1>
-                        	</c:when>
-							<c:when test="${cate eq 'dangerProd' }">
-                        		<h1>위해상품</h1>
-                        	</c:when>
-							<c:when test="${cate eq 'event' }">
-                        		<h1>이벤트당첨</h1>
-                        	</c:when>
-                        	<c:otherwise>
-							<em>...</em>
-						</c:otherwise>
-                        </c:choose>
-                        <h2>공지사항 전체 내용입니다.</h2>
+                  		<h1>${cateName }</h1>
+                        <h2>공지사항 ${cateName } 내용입니다.</h2>
                     </nav>

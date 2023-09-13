@@ -1,77 +1,23 @@
-    <div>
-        <h3>가입</h3>
-        <ul>
-            <li>
-                <a href="#">
-                    <span>Q.</span>개인회원과 법인회원에 차이가 있나요?
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span>Q.</span>개인회원과 법인회원에 차이가 있나요?
-                </a>
-            </li>
-            <li class="more">
-                <a href="#">더보기</a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h3>탈퇴</h3>
-        <ul>
-            <li>
-                <a href="#">
-                    <span>Q.</span>회원 탈퇴 어케 하나요?
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span>Q.</span>회원 탈퇴 어케 하나요?
-                </a>
-            </li>
-            <li class="more">
-                <a href="#">더보기</a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h3>회원정보</h3>
-        <ul>
-            <li>
-                <a href="#">
-                    <span>Q.</span>회원 정보 수정 어케 하나요?
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span>Q.</span>회원 정보 수정 어케 하나요?
-                </a>
-            </li>
-            <li class="more">
-                <a href="#">더보기</a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <h3>로그인</h3>
-        <ul>
-            <li>
-                <a href="#">
-                    <span>Q.</span>로그인이 안되요
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span>Q.</span>로그인이 안되요
-                </a>
-            </li>
-            <li class="more">
-                <a href="#">더보기</a>
-            </li>
-        </ul>
-    </div>
-
-            </article>
-        </section>
-    </div>
-</section>
+<ul>
+    <li class="${cate eq 'member' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=memeber">회원</a>
+    </li>
+    <li class="${cate eq 'coupon' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=coupon">쿠폰/이벤트</a>
+    </li>
+    <li class="${cate eq 'order' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=order">주문/결제</a>
+    </li>
+    <li class="${cate eq 'delivery' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=delivery">배송</a>
+    </li>
+    <li class="${cate eq 'cancle' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=cancle">취소/반품/교환</a>
+    </li>
+    <li class="${cate eq 'travel' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=travel">여행/숙박/항공</a>
+    </li>
+    <li class="${cate eq 'safe' ? 'on' : '' }">
+        <a href="${path }/cs/board/list.do?group=qna&cate=safe">안전거래</a>
+    </li>
+</ul>

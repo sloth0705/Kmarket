@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
+import kr.co.kmarket.util.BoardMap;
 
 @WebServlet("/cs/board/view.do")
 public class BoardViewController extends HttpServlet {
@@ -29,15 +30,12 @@ public class BoardViewController extends HttpServlet {
 		String cate = request.getParameter("cate");
 		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
-		logger.info("BoardView_get group : " + group);
+		
+		String cateName = BoardMap.map.get(cate);
+		request.setAttribute("cateName", cateName);
 		
 		
 		String bno = request.getParameter("bno");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		
-		logger.info("BoardView_get title : " + title);
-		logger.info("BoardView_get content : " + content);
 		
 		CS_BoardDTO dto 
 			= service.selectCS_Board(Integer.parseInt(bno));
