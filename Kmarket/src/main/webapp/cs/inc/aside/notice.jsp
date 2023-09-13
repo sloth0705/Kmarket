@@ -9,14 +9,14 @@
             <div>
                 <p>
                     <a href="${path }/cs/index.do">홈</a><span>&gt;</span>
-                    <a href="${path }/cs/board/list.do?group=notice">공지사항</a>
+                    <a href="${path }/cs/board/list.do?group=notice&cate=All">공지사항</a>
                 </p>
             </div>
         </nav>
         <!-- class list or view 선택에 따라서 css 적용이 달라짐-->
         <section id="csPage" class="list">
             <aside>
-                <h2>${group }</h2>
+                <h2>공지사항</h2>
                 <ul>
                     <li class="${cate eq 'All' ? 'on' : '' }">
                         <a href="${path }/cs/board/list.do?group=notice&cate=All">전체</a>
@@ -38,6 +38,25 @@
             
             <article>
                     <nav>
-                        <h1>전체</h1>
+                    	<c:choose>
+							<c:when test="${cate eq 'All' }">
+                        		<h1>전체</h1>
+                        	</c:when>
+							<c:when test="${cate eq 'cs' }">
+                        		<h1>고객서비스</h1>
+                        	</c:when>
+							<c:when test="${cate eq 'safe' }">
+                        		<h1>안전거래</h1>
+                        	</c:when>
+							<c:when test="${cate eq 'dangerProd' }">
+                        		<h1>위해상품</h1>
+                        	</c:when>
+							<c:when test="${cate eq 'event' }">
+                        		<h1>이벤트당첨</h1>
+                        	</c:when>
+                        	<c:otherwise>
+							<em>...</em>
+						</c:otherwise>
+                        </c:choose>
                         <h2>공지사항 전체 내용입니다.</h2>
                     </nav>

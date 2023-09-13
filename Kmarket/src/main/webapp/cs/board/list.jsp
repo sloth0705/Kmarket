@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <c:import url="../inc/aside/${group }.jsp" />
+				<form id="formData" action="${path }/cs/board/view.do" method="get">
+					<input type="hidden" name="group" value=${group } />
+					<input type="hidden" name="cate" value=${cate } />
+					<input type="hidden" name="bno" value=${cs.bno } />
+					<input type="hidden" name="content" value=${cs.content } />
                     <table>
                         <tbody>
                         	<c:choose >
@@ -8,8 +13,8 @@
 		                        	<c:forEach var="cs" items="${cs }">
 		                            <tr>
 		                                <td>
-		                                	<a href="${path }/cs/board/view.do?group=${group}&cate=${cate}&bno=${cs.bno}">
-		                                		[type2] ${cs.title }
+		                                	<a id="listAtag" href="#">
+		                                		[이거 뭘로 받아야 되지?] ${cs.title }
 		                               		</a>
 		                               	</td>
 		                                <td>${cs.rdate }</td>
@@ -24,7 +29,7 @@
                             </c:choose>
                         </tbody>
                     </table>
-
+				</form>
                     <div class="page">
                         <a href="#" 
                         	class="prev">&laquo;</a>
@@ -45,3 +50,13 @@
         </div>
     </section>
 <%@ include file="../inc/footer.jsp" %>
+<script>
+$(function(){
+		$('#listAtag').click(function(e){
+			e.preventDefault();
+			console.log("a태그 클릭");
+			
+			$('#formData').subimt();
+		});
+	});
+</script>
