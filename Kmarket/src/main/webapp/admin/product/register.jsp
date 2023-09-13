@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
+<main>
 <%@ include file="../inc/aside.jsp" %>
     <section id="admin-product-register">
         <nav>
