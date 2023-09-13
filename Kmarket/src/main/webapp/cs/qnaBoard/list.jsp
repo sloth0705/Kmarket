@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <c:import url="../inc/aside/${group }.jsp" />
-		
+			<article>
+				<nav>
+					<h1>${cateName }</h1>
+					<h2>가장 자주 묻는 [${cateName }]질문입니다.</h2>
+				</nav>
+				
                 <table>
 				    <tbody>
 				    	<c:choose>
@@ -9,7 +14,9 @@
             					<c:forEach var="cs" items="${cs }">
 							        <tr>
 							            <td>
-							                <a href="./view.do">[이걸 뭘로 하지?] ${cs.title }</a>
+							                <a href="./view.do?group=${group }&cate=${cate}&bno=${cs.bno}">
+							                	[이걸 뭘로 하지?] ${cs.title }
+						                	</a>
 							            </td>
 							            <td>${cs.uid }</td>
 							            <td>${cs.rdate }</td>
@@ -42,9 +49,6 @@
 
 				<!-- 일반 유저가 문의 하기 -->
 				<a href="./write.do" class="btnWrite">문의하기</a>
-				<!-- 관리자가 글쓰기 -->
-				<a href="./write.do" class="btnWrite">글쓰기</a>
-
 			</article>
 		</section>
 	</div>

@@ -37,9 +37,3 @@
 					</li>
 				</ul>
 			</aside>
-
-			<article>
-				<nav>
-					<h1>${cateName }</h1>
-					<h2>가장 자주 묻는 [${cateName }]질문입니다.</h2>
-				</nav>

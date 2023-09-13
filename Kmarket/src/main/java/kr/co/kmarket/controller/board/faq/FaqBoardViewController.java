@@ -1,4 +1,4 @@
-package kr.co.kmarket.controller.board;
+package kr.co.kmarket.controller.board.faq;
 
 import java.io.IOException;
 
@@ -15,9 +15,9 @@ import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
 
-@WebServlet("/cs/board/view.do")
-public class BoardViewController extends HttpServlet {
-	private static final long serialVersionUID = 3283589879373746478L;
+@WebServlet("/cs/faqBoard/view.do")
+public class FaqBoardViewController extends HttpServlet {
+	private static final long serialVersionUID = 3333589879373746478L;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CS_BoardService service = CS_BoardService.INSTANCE;
@@ -42,6 +42,6 @@ public class BoardViewController extends HttpServlet {
 		request.setAttribute("cs", dto);
 		
 		
-		request.getRequestDispatcher("/cs/board/view.jsp").forward(request, respones);
+		request.getRequestDispatcher("/cs/faqBoard/view.jsp").forward(request, respones);
 	}
 }

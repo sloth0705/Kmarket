@@ -8,6 +8,7 @@
 						<p>홈<span>&gt;</span>자주묻는 질문</p>
 					</div>
 				</nav>
+				
 				<section class="view">
 					<aside>
 						<h2>자주묻는 질문</h2>
