@@ -80,4 +80,37 @@ public class ProductCartDAO extends DBHelper {
 			logger.error("deleteProductCart error : " + e.getMessage());
 		}
 	}
+
+	public List<ProductCartDTO> selectCheckedProductCarts(String in) {
+		List<ProductCartDTO> productCarts = new ArrayList<>();
+		try {
+			// psmt.setString(1, in)으로 값을 넘길시 IN '(1, 4)' 이런식으로 넘어가서 SQL 에러가 나온다.
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_CHECKED_PRODUCT_CARTS + in);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				ProductCartDTO dto = new ProductCartDTO();
+				dto.setCartNo(rs.getInt("cartNo"));
+				dto.setUid(rs.getString("uid"));
+				dto.setProdNo(rs.getInt("prodNo"));
+				dto.setCount(rs.getInt("count"));
+				dto.setRdate(rs.getString("rdate"));
+
+				ProductDTO product = new ProductDTO();
+				product.setProdName(rs.getString("prodName"));
+				product.setDescript(rs.getString("descript"));
+				product.setPrice(rs.getInt("price"));
+				product.setDiscount(rs.getInt("discount"));
+				product.setPoint(rs.getInt("point"));
+				product.setDelivery(rs.getInt("delivery"));
+				product.setThumb1(rs.getString("thumb1"));
+				dto.setProduct(product);
+
+				productCarts.add(dto);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("selectProductCarts error : " + e.getMessage());
+		}
+		return productCarts;
+	}
 }
