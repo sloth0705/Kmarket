@@ -4,7 +4,10 @@
         <div class="qna">
             <nav>
                 <div>
-                    <p>홈<span>&gt;</span>문의하기</p>
+                    <p>
+	                    <a href="${path }/cs/index.do">홈</a><span>&gt;</span>
+	                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=All">문의하기</a>
+	                </p>
                 </div>
             </nav>
             <section class="write">
