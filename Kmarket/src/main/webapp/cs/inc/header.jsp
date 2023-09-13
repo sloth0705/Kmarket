@@ -32,7 +32,7 @@
             </div>
             <div class="logo">
                 <div>
-                    <a href="${path }/index.do">
+                    <a href="${path }/cs/index.do">
                         <img src="${path}/cs/img/logo.png" alt="로고">고객센터
                     </a>
                 </div>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
-<c:import url="../inc/aside/${group }.jsp" />
+<c:import url="../inc/aside/notice.jsp" />
                 <article>
                     <nav>
                         <h2 class="title">[이거 뭘로 하지?] ${cs.title }</h2>

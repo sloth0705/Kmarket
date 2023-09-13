@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.db.DBHelper;
-import kr.co.kmarket.db.SQL;
+import kr.co.kmarket.db.ProductSQL;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.dto.ProductSearchForm;
 
@@ -31,7 +31,7 @@ public class ProductDAO extends DBHelper {
 	public ProductDTO selectProduct(String prodNo) {
 		ProductDTO dto = null;
 		try {
-			psmt = getConnection().prepareStatement(SQL.SELECT_PRODUCT);
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCT);
 			psmt.setString(1, prodNo);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
@@ -78,7 +78,7 @@ public class ProductDAO extends DBHelper {
 	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start) {
 		List<ProductDTO> products = new ArrayList<>();
 		try {
-			psmt = getConnection().prepareStatement(SQL.SELECT_PRODUCTS);
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCTS);
 			psmt.setString(1, searchForm.getCate1());
 			psmt.setString(2, searchForm.getCate2());
 			psmt.setString(3, orderReason(searchForm.getOrd()));
@@ -155,7 +155,7 @@ public class ProductDAO extends DBHelper {
 	public int selectCountTotal(String cate1, String cate2) {
 		int count = 0;
 		try {
-			psmt = getConnection().prepareStatement(SQL.SELECT_PRODUCT_COUNT_TOTAL);
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCT_COUNT_TOTAL);
 			psmt.setString(1, cate1);
 			psmt.setString(2, cate2);
 			rs = psmt.executeQuery();

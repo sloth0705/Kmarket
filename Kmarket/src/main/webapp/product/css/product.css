@@ -1278,3 +1278,14 @@
     color: #fe434c;
     font-weight: bold;
   }
+  .w450 {
+	  width:450px;
+  }
+  .overHidden {
+	overflow: hidden;  
+  }
+  .eclipse {
+  	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }

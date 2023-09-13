@@ -1,22 +1,19 @@
 package kr.co.kmarket.dto;
 
+import java.text.DecimalFormat;
+
 public class ProductCartDTO {
 	private int cartNo;
 	private String uid;
 	private int prodNo;
 	private int count;
-	private int price;
-	private int discount;
-	private int point;
-	private int delivery;
-	private int total;
 	private String rdate;
+	private ProductDTO product;
 
 	@Override
 	public String toString() {
-		return "Km_product_cart [cartNo=" + cartNo + ", uid=" + uid + ", prodNo=" + prodNo + ", count=" + count
-				+ ", price=" + price + ", discount=" + discount + ", point=" + point + ", delivery=" + delivery
-				+ ", total=" + total + ", rdate=" + rdate + "]";
+		return "ProductCartDTO [cartNo=" + cartNo + ", uid=" + uid + ", prodNo=" + prodNo + ", count=" + count
+				+ ", rdate=" + rdate + "]";
 	}
 
 	public int getCartNo() {
@@ -51,51 +48,29 @@ public class ProductCartDTO {
 		this.count = count;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-	public int getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(int discount) {
-		this.discount = discount;
-	}
-
-	public int getPoint() {
-		return point;
-	}
-
-	public void setPoint(int point) {
-		this.point = point;
-	}
-
-	public int getDelivery() {
-		return delivery;
-	}
-
-	public void setDelivery(int delivery) {
-		this.delivery = delivery;
-	}
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
-
 	public String getRdate() {
 		return rdate;
 	}
 
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
+	}
+
+	public ProductDTO getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductDTO product) {
+		this.product = product;
+	}
+
+	public int getTotal() {
+		return (int)(((double) count) * product.getDisPrice());
+	}
+
+	public String getTotalWithComma() {
+		int total = (int)(((double) count) * product.getDisPrice());
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(total);
 	}
 }
