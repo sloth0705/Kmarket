@@ -30,4 +30,13 @@ public class CartController extends HttpServlet {
 		logger.info("장바구니 개수 : " + carts.size());
 		req.getRequestDispatcher("/product/cart.jsp").forward(req, resp);
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String[] cartNos = req.getParameterValues("chk");
+		for (String cartNo : cartNos) {
+			cService.deleteProductCart(Integer.parseInt(cartNo));
+		}
+		resp.sendRedirect("/Kmarket/product/cart.do");
+	}
 }
