@@ -1,33 +1,45 @@
 package kr.co.kmarket.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.kmarket.db.DBHelper;
+import kr.co.kmarket.db.SQL;
 import kr.co.kmarket.dto.MemberTermsDTO;
 
 public class MemberTermsDAO extends DBHelper {
-	private static MemberTermsDAO instance;
-
+	
+	private static MemberTermsDAO instance = new MemberTermsDAO();
 	public static MemberTermsDAO getInstance() {
 		return instance;
 	}
-
-	private MemberTermsDAO() {
-
-	}
+	private MemberTermsDAO() {}
 	
-	public void insertMemberTerms(MemberTermsDTO dto) {
-
-	}
-
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	public MemberTermsDTO selectMemberTerms() {
-		MemberTermsDTO dto = null;
+		
+		MemberTermsDTO dto = new MemberTermsDTO();
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(SQL.SELECT_TERMS);
+			
+			if (rs.next())
+			{
+				dto.setTerms(rs.getString(1));
+				dto.setPrivacy(rs.getString(2));
+				dto.setFinance(rs.getString(3));
+				dto.setLocation(rs.getString(4));
+				dto.setTax(rs.getString(5));
+			}
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error("selectMemberTerms() error : " + e.getMessage());
+		}
+		
 		return dto;
-	}
-
-	public void updateMemberTerms(MemberTermsDTO dto) {
-
-	}
-
-	public void deleteMemberTerms() {
-
 	}
 }

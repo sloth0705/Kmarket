@@ -1,6 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp" %>
 <%@ include file="./inc/aside.jsp" %>
+<script>
+	$(function() {
+		const price = ${product.getDisPrice()};
+		const delivery = ${product.delivery};
+		const num = $('input[name=num]');	
+		const total = $('#total');
+		total.text((price + delivery).toLocaleString());
+		
+		// 수량 +
+		$('.increase').click(function() {
+			let cnt = num.val();
+			cnt = cnt * 1 + 1;
+			num.val(cnt);
+			total.text((price * cnt + delivery).toLocaleString());
+		});
+		
+		// 수량 -
+		$('.decrease').click(function() {
+			let cnt = num.val();
+			// 카운트가 1 미만으로 가지 못하도록 조정
+			if (cnt < 2) {
+				return false;
+			}
+			cnt = cnt * 1 - 1;
+			num.val(cnt);
+			total.text((price * cnt + delivery).toLocaleString());
+		});
+		
+		// 현재 날짜를 가져옵니다.
+		const today = new Date();
+
+		// 내일 날짜를 계산합니다.
+		const tomorrow = new Date();
+		tomorrow.setDate(today.getDate() + 1);
+
+		// 내일 요일을 계산합니다.
+		const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+		const tomorrowDayOfWeek = daysOfWeek[tomorrow.getDay()];
+		// 내일 날짜와 요일을 출력합니다.
+		console.log("내일 날짜: " + tomorrow.toLocaleDateString());
+		console.log("내일 요일: " + tomorrowDayOfWeek);
+		const de = '내일(' + tomorrowDayOfWeek + ') ' + (tomorrow.getMonth() + 1) + '/' + tomorrow.getDate() + ' 도착예정';
+		$('.arrival').text(de);
+	});
+</script>
             <!-- 상품 상세페이지 시작 -->
             <section class="view">
                 <!-- 제목, 페이지 네비게이션 -->
@@ -10,33 +55,32 @@
                         HOME > <span>패션·의류·뷰티</span> > <strong>남성의류</strong>
                     </p>
                 </nav>
-
                 <!-- 상품 전체 정보 내용 -->                
                 <article class="info">
                     <div class="image">
-                        <img src="https://via.placeholder.com/460x460" alt="상품이미지"/>
+                        <img src="${path }/upload/${product.thumb2}" alt="상품이미지"/>
                     </div>
                     <div class="summary">
                         <nav>
-                            <h1>(주)판매자명</h1>
-                            <h2>상품번호&nbsp;:&nbsp;<span>10010118412</span></h2>
+                            <h1>${product.seller }</h1>
+                            <h2>상품번호&nbsp;:&nbsp;<span>${product.prodNo }</span></h2>
                         </nav>                        
                         <nav>
-                            <h3>상품명</h3>
-                            <p>상품설명 출력</p>
+                            <h3>${product.prodName }</h3>
+                            <p>${product.descript }</p>
                             <h5 class="rating star4"><a href="#">상품평보기</a></h5>
                         </nav>
                         <nav>
                             <div class="org_price">
-                                <del>30,000</del>
-                                <span>10%</span>
+                                <del>${product.getPriceWithComma() }</del>
+                                <span>${product.discount }%</span>
                             </div>
                             <div class="dis_price">
-                                <ins>27,000</ins>
+                                <ins>${product.getDisPriceWithComma() }</ins>
                             </div>
                         </nav>
                         <nav>
-                            <span class="delivery">무료배송</span>
+                            <span class="delivery">${product.delivery gt 0 ? product.getDeliveryWithComma() += '원' : '무료배송' }</span>
                             <span class="arrival">모레(금) 7/8 도착예정</span>
                             <span class="desc">본 상품은 국내배송만 가능합니다.</span>
                         </nav>
@@ -45,77 +89,70 @@
                             <span class="card cardadd"><i>아이콘</i>카드추가혜택</span>
                         </nav>
                         <nav>
-                            <span class="origin">원산지-상세설명 참조</span>
+                            <span class="origin">원산지-${product.origin }</span>
                         </nav>
                         <img src="./img/vip_plcc_banner.png" alt="100원만 결제해도 1만원 적립!" class="banner" />
-                        
                         <div class="count">
                             <button class="decrease">-</button>
-                            <input type="text" name="num" value="1" readonly/>
+                            <input type="text" name="num" value="1" min="1" readonly/>
                             <button class="increase">+</button>
                         </div>
-                        
                         <div class="total">
-                            <span>35,000</span>
+                            <span id="total"></span>
                             <em>총 상품금액</em>
                         </div>
-
                         <div class="button">
                             <input type="button" class="cart"  value="장바구니"/>
                             <input type="button" class="order" value="구매하기"/>
                         </div>
                     </div>
                 </article>
-
                 <!-- 상품 정보 내용 -->
                 <article class="detail">
                     <nav>
                         <h1>상품정보</h1>
                     </nav>
                     <!-- 상품상세페이지 이미지 -->
-                    <img src="https://via.placeholder.com/860x460" alt="상세페이지1">
-                    <img src="https://via.placeholder.com/860x460" alt="상세페이지2">
-                    <img src="https://via.placeholder.com/860x460" alt="상세페이지3">
+                    <img src="${path }/upload/${product.detail}" alt="상세페이지1">
                 </article>
-
                 <!-- 상품 정보 제공 고시 내용 -->
                 <article class="notice">
                     <nav>
                         <h1>상품 정보 제공 고시</h1>
                         <p>[전자상거래에 관한 상품정보 제공에 관한 고시] 항목에 의거 등록된 정보입니다.</p>
                     </nav>
-                    <table border="0">
+                    <table>
                         <tr>
                             <td>상품번호</td>
-                            <td>10110125435</td>
+                            <td>${product.prodNo }</td>
                         </tr>
                         <tr>
                             <td>상품상태</td>
-                            <td>새상품</td>
+                            <td>${product.status }</td>
                         </tr>
                         <tr>
                             <td>부가세 면세여부</td>
-                            <td>과세상품</td>
+                            <td>${product.duty }</td>
                         </tr>
                         <tr>
                             <td>영수증발행</td>
-                            <td>발행가능 - 신용카드 전표, 온라인 현금영수증</td>
+                            <td>${product.receipt }</td>
                         </tr>
                         <tr>
                             <td>사업자구분</td>
-                            <td>사업자 판매자</td>
+                            <td>${product.bizType }</td>
                         </tr>
                         <tr>
                             <td>브랜드</td>
-                            <td>블루포스</td>
+                            <td>${product.company }</td>
                         </tr>
                         <tr>
                             <td>원산지</td>
-                            <td>국내생산</td>
+                            <td>${product.origin }</td>
                         </tr>
                     </table>
-                    <table border="0">
-                        <tr>
+                    <table>
+                        <!-- <tr>
                             <td>제품소재</td>
                             <td>상세정보 직접입력</td>
                         </tr>
@@ -155,7 +192,7 @@
                             <td>주문후 예상 배송기간</td>
                             <td>상세정보 직접입력</td>
                         </tr>
-                        <tr>
+                        <tr> -->
                         <td colspan="2">구매, 교환, 반품, 배송, 설치 등과 관련하여 추가비용, 제한조건 등의 특이사항이 있는 경우</td>
                         </tr>
                     </table>

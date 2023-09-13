@@ -291,7 +291,7 @@ header {
   }
   
   #member > .register > nav {
-    border-bottom: 2px solid #0e6ad3;
+    border-bottom: 2px solid #ef3f43;
   }
   
   #member > .register > nav > h1 {
@@ -354,7 +354,10 @@ header {
     font-size: 17px;
   }
   
-  #member > .register table .addr input {
+  #member > .register table .addr #addr1 {
+    margin-top: 6px;
+  }
+  #member > .register table .addr #addr2 {
     margin-top: 6px;
   }
   #member > .register table .addr th {
@@ -365,6 +368,28 @@ header {
     color: #ef3f43;
     vertical-align: middle;
     margin-right: 5px;
+  }
+  
+  #member > .register .btnCheckUid {
+	background: #ef3f43;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 7px;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  #member > .register .btnZip {
+	background: #ef3f43;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 7px;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
   }
   
   #member > .register form input[type="submit"] {
@@ -388,7 +413,7 @@ header {
   }
   
   #member > .registerSeller > nav {
-    border-bottom: 2px solid #0e6ad3;
+    border-bottom: 2px solid #ef3f43;
   }
   
   #member > .registerSeller > nav > h1 {
@@ -462,6 +487,28 @@ header {
     color: #ef3f43;
     vertical-align: middle;
     margin-right: 5px;
+  }
+  
+  #member > .registerSeller .btnCheckUid {
+	background: #ef3f43;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 7px;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  #member > .registerSeller .btnZip {
+	background: #ef3f43;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 7px;
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    cursor: pointer;
   }
   
   #member > .registerSeller form input[type="submit"] {
