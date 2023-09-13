@@ -37,4 +37,17 @@ public class ProductSQL {
 	public static String DELETE_CART =
 			"DELETE FROM `km_product_cart` "
 			+ "WHERE `cartNo` = ?";
+	public static String SELECT_CHECKED_PRODUCT_CARTS =
+			"SELECT a.*, "
+			+ "b.`prodName`, "
+			+ "b.`descript`, "
+			+ "b.`price`, "
+			+ "b.`discount`, "
+			+ "b.`point`, "
+			+ "b.`delivery`, "
+			+ "b.`thumb1`"
+			+ "FROM `km_product_cart` AS a "
+			+ "LEFT OUTER JOIN `km_product` AS b "
+			+ "ON a.`prodNo` = b.`prodNo` "
+			+ "WHERE a.`cartNo` IN ";
 }

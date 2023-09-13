@@ -86,7 +86,16 @@
 	    	if (!confirm('해당 장바구니 품목을 삭제 하시겠습니까?')) {
 	    		return false;
 	    	}
+	    	$('#formCheck').attr("action", "${path }/product/cart.do");
+	    	$('#formCheck').attr("method", "post");
 	    	$('#formCheck').submit();
+	    });
+		
+	    $('#formCheck').submit(function() {
+	    	if ($('#total').text() == 0) {
+	    		alert('주문하실 상품을 선택해주세요.');
+	    		return false;
+	    	}
 	    });
 	});
 </script>
@@ -99,7 +108,7 @@
 			HOME > <span>패션·의류·뷰티</span> > <strong>장바구니</strong>
 		</p>
 	</nav>
-	<form id="formCheck" action="${path }/product/cart.do" method="post">
+	<form id="formCheck" action="${path }/product/order.do" method="get">
 		<!-- 장바구니 목록 -->
 		<table>
 			<thead>
