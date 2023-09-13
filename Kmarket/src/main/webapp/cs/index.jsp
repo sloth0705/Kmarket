@@ -9,7 +9,7 @@
                 </h1>
                 <ul>
                     <li>
-                        <a href="${path }/cs/board/list.do?group=notice&cate=" class="title">
+                        <a href="${path }/cs/board/list.do?group=notice&cate=All" class="title">
                         	[안내] 해외결제 사칭 문자 주의
                         </a>
                         <span class="date">22.10.31</span>

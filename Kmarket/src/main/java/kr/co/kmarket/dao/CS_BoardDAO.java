@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.db.DBHelper;
-import kr.co.kmarket.db.SQL;
 import kr.co.kmarket.dto.CS_BoardDTO;
 
 public class CS_BoardDAO extends DBHelper {
@@ -21,11 +20,22 @@ public class CS_BoardDAO extends DBHelper {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	
+	int result = 0;
+	String sql = "";
+	
 	// cs 게시판 등록
 	public void insertCS_Board(CS_BoardDTO dto) {
 		conn = getConnection();
 		try {
-			psmt = conn.prepareStatement(SQL.INSERT_CS_BOARD);
+			sql = "INSERT INTO km_cs_board SET "
+					+ " uid = ?, "
+					+ " type1 = ?, "
+					+ " type2 = ?, "
+					+ " title = ?, "
+					+ " content = ?, "
+					+ " rdate = NOW()";
+			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getUid());
 			psmt.setInt(2, dto.getType1());
 			psmt.setInt(3, dto.getType2());
@@ -40,18 +50,37 @@ public class CS_BoardDAO extends DBHelper {
 		}
 	}
 
+	// 게시판 글 보기
 	public CS_BoardDTO selectCS_Board(int bno) {
 		CS_BoardDTO dto = null;
+		conn = getConnection();
+		try {
+			sql = "SELECT * FROM km_cs_board "
+					+ " WHERE bno = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, bno);
+			rs = psmt.executeQuery();
 		
+			if(rs.next()) {
+				dto = new CS_BoardDTO();
+				dto = getCS(rs);
+			}
+			logger.info("selectCS_Board dto : " + dto);
+			close();
+		} catch (SQLException e) {
+			logger.error("selectCS_Board : " + e.getMessage());
+		}
 		return dto;
 	}
 
+	// 게시판 전체 조회
 	public List<CS_BoardDTO> selectCS_Boards() {
 		List<CS_BoardDTO> list = new ArrayList<>();
 		conn = getConnection();
 		try {
+			sql = "SELECT * FROM km_cs_board ";
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery(SQL.SELECT_CS_BOARDS);
+			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
 				CS_BoardDTO dto = new CS_BoardDTO();
