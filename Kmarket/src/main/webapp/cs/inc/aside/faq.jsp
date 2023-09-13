@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <section id="cs">
@@ -9,7 +9,7 @@
 			<div>
 				<p>
 					<a href="${path }/cs/index.do">홈</a><span>&gt;</span>
-					<a href="${path }/cs/board/list.do?group=faq&cate=All">자주묻는 질문</a>
+					<a href="${path }/cs/board/list.do?group=faq&cate=member">자주묻는 질문</a>
 				</p>
 			</div>
 		</nav>
@@ -35,14 +35,11 @@
 					<li class="${cate eq 'travel' ? 'on' : '' }">
 					    <a href="${path }/cs/board/list.do?group=faq&cate=travel">여행/숙박/항공</a>
 					</li>
-					<li class="${cate eq 'safe' ? 'on' : '' }">
-					    <a href="${path }/cs/board/list.do?group=faq&cate=safe">안전거래</a>
-					</li>
 				</ul>
 			</aside>
 
 			<article>
 				<nav>
-					<h1>회원</h1>
-					<h2>가장 자주 묻는 질문입니다.</h2>
+					<h1>${cateName }</h1>
+					<h2>가장 자주 묻는 [${cateName }]질문입니다.</h2>
 				</nav>

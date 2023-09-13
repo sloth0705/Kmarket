@@ -1,4 +1,4 @@
-package kr.co.kmarket.controller.board;
+package kr.co.kmarket.controller.board.faq;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,9 +16,9 @@ import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
 
-@WebServlet("/cs/board/list.do")
-public class BoardListController extends HttpServlet {
-	private static final long serialVersionUID = 4283589879373746478L;
+@WebServlet("/cs/faqBoard/list.do")
+public class FaqBoardListController extends HttpServlet {
+	private static final long serialVersionUID = 2283589879373746478L;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CS_BoardService service = CS_BoardService.INSTANCE;
@@ -27,9 +27,7 @@ public class BoardListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse respones) throws ServletException, IOException {
 		
-		String group = request.getParameter("group");
 		String cate = request.getParameter("cate");
-		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
 		
 		String cateName = BoardMap.map.get(cate);
@@ -41,6 +39,6 @@ public class BoardListController extends HttpServlet {
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);
 		
-		request.getRequestDispatcher("/cs/board/list.jsp").forward(request, respones);
+		request.getRequestDispatcher("/cs/faqBoard/list.jsp").forward(request, respones);
 	}
 }
