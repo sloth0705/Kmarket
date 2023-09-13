@@ -3,11 +3,16 @@ package kr.co.kmarket.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.kmarket.db.DBHelper;
+import kr.co.kmarket.db.ProductSQL;
 import kr.co.kmarket.dto.ProductCartDTO;
+import kr.co.kmarket.dto.ProductDTO;
 
 public class ProductCartDAO extends DBHelper {
-	private static ProductCartDAO instance;
+	private static ProductCartDAO instance = new ProductCartDAO();
 
 	public static ProductCartDAO getInstance() {
 		return instance;
@@ -16,6 +21,8 @@ public class ProductCartDAO extends DBHelper {
 	private ProductCartDAO() {
 
 	}
+
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public void insertProductCart(ProductCartDTO dto) {
 
@@ -26,8 +33,36 @@ public class ProductCartDAO extends DBHelper {
 		return dto;
 	}
 
-	public List<ProductCartDTO> selectProductCarts() {
+	public List<ProductCartDTO> selectProductCarts(String uid) {
 		List<ProductCartDTO> productCarts = new ArrayList<>();
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCT_CARTS);
+			psmt.setString(1, uid);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				ProductCartDTO dto = new ProductCartDTO();
+				dto.setCartNo(rs.getInt("cartNo"));
+				dto.setUid(rs.getString("uid"));
+				dto.setProdNo(rs.getInt("prodNo"));
+				dto.setCount(rs.getInt("count"));
+				dto.setRdate(rs.getString("rdate"));
+
+				ProductDTO product = new ProductDTO();
+				product.setProdName(rs.getString("prodName"));
+				product.setDescript(rs.getString("descript"));
+				product.setPrice(rs.getInt("price"));
+				product.setDiscount(rs.getInt("discount"));
+				product.setPoint(rs.getInt("point"));
+				product.setDelivery(rs.getInt("delivery"));
+				product.setThumb1(rs.getString("thumb1"));
+				dto.setProduct(product);
+
+				productCarts.add(dto);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("selectProductCarts error : " + e.getMessage());
+		}
 		return productCarts;
 	}
 

@@ -36,6 +36,8 @@ public class SQL {
 	public static final String SELECT_COUNT_COMREGNUM = "SELECT COUNT(*) FROM `km_member` WHERE `comRegNum`=?";
 	public static final String SELECT_COUNT_TEL = "SELECT COUNT(*) FROM `km_member` WHERE `tel`=?";
 	public static final String SELECT_COUNT_FAX = "SELECT COUNT(*) FROM `km_member` WHERE `fax`=?";
+<<<<<<< HEAD
+=======
 
 	public static String SELECT_PRODUCTS = "SELECT a.*, b.`c1Name`, c.`c2Name` FROM `km_product` AS a "
 											+ "LEFT OUTER JOIN `km_product_cate1` AS b ON a.`prodCate1` = b.`cate1` "
@@ -49,4 +51,5 @@ public class SQL {
 	public static String SELECT_PRODUCT = "SELECT * FROM `km_product` WHERE `prodNo` = ?";
 
 
+>>>>>>> f581faaa26f7eb7dc6ff9691b82003fd4de915f0
 }
