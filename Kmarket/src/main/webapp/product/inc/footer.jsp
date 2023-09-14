@@ -27,4 +27,5 @@
         <button type="button" id="top">상단이동</button>
     </div>    
 </body>
+<script src='${path }/product/js/zipcode.js'></script>
 </html>
