@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- 
 날짜: 2023/09/14
 작업자: 조유빈
@@ -7,6 +8,11 @@
 <%@page import="kr.co.kmarket.dao.ProductDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.kmarket.dto.ProductDTO"%>
+=======
+<%@page import="kr.co.kmarket.dto.ProductDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.kmarket.dao.ProductDAO"%>
+>>>>>>> e639ff40ab7c4bf84ceeefb9d7adf3655c7d0d87
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <%
@@ -66,10 +72,10 @@
         <section>
             <div>
                 <select name="search">
-                    <option value="search1">상품명</option>
-                    <option value="search1">상품코드</option>
-                    <option value="search1">제조사</option>
-                    <option value="search1">판매자</option>                                    
+                    <option value="prodName">상품명</option>
+                    <option value="prodNo">상품코드</option>
+                    <option value="company">제조사</option>
+                    <option value="seller">판매자</option>                                    
                 </select>
                 <input type="text" name="search">
                 <input type="button" value="검색" />               
@@ -88,6 +94,7 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
+<<<<<<< HEAD
  				<% for(ProductDTO product : products){ %>
                 <tr>
                     <td><input type="checkbox" name="상품코드"/></td>
@@ -101,14 +108,29 @@
                     <td><%= product.getSeller() %></td>
                     <td><%= product.getHit() %></td>
                  <% } %>
+=======
+                
+			 	<% for(ProductDTO product : products){ %>
+                <tr>
+                    <td><input type="checkbox" name="상품코드"/></td>
+                    <td><img src="../img/sample_thumb.jpg" class="thumb" alt="상품 이미지"></td>
+                    <td><%= product.getProdNo() %></td> <!-- 201603292 -->
+                    <td><%= product.getProdName() %></td> <!-- FreeMovement -->
+                    <td><%= product.getPrice() %></td> <!-- 36,000 -->
+                    <td><%= product.getDiscount() %></td> <!-- 10 -->
+                    <td><%= product.getPoint() %></td> <!-- 360 -->
+                    <td><%= product.getStock() %></td> <!-- 400 -->
+                    <td><%= product.getSeller() %></td> <!-- 홍길동 -->
+                    <td><%= product.getHit() %></td> <!-- 126 -->
+>>>>>>> e639ff40ab7c4bf84ceeefb9d7adf3655c7d0d87
                     <td>
+                 <% } %>
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
                     </td>
                 </tr>
                 
             </table>
-
             
             <input type="button" value="선택삭제" />                          
 
