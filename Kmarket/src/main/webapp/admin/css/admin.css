@@ -430,9 +430,9 @@ button[type=submit] {
 #admin-product-list > section > table img.thumb {width: 60px;}
 
 #admin-product-list > section input[type=button] {
-    float: left;
+   /* float: left; */
     width: 100px;
-    margin-top: 10px;
+   /* margin-top: 10px; */
 }
 
 #admin-product-list .paging {
