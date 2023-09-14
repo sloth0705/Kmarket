@@ -7,7 +7,6 @@ import kr.co.kmarket.dto.ProductCate2DTO;
 
 public enum ProductCate2Service {
 	INSTANCE;
-
 	private ProductCate2DAO dao = ProductCate2DAO.getInstance();
 
 	public void insertProductCate2(ProductCate2DTO dto) {
@@ -18,8 +17,8 @@ public enum ProductCate2Service {
 		return dao.selectProductCate2(cate1);
 	}
 
-	public List<ProductCate2DTO> selectProductCate2s() {
-		return dao.selectProductCate2s();
+	public List<ProductCate2DTO> selectProductCate2s(String cate1) {
+		return dao.selectProductCate2s(cate1);
 	}
 
 	public void updateProductCate2(ProductCate2DTO dto) {
