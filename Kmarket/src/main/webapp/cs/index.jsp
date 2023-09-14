@@ -10,7 +10,7 @@
                 <ul>
                     <li>
                         <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All" class="title">
-                        	[안내] 해외결제 사칭 문자 주의
+                        	[typeName] 해외결제 사칭 문자 주의
                         </a>
                         <span class="date">22.10.31</span>
                     </li>
@@ -23,37 +23,37 @@
                 </h1>
                 <ol>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=member">
                         	<span>회원</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=coupon">
                         	<span>쿠폰/이벤트</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=order">
                         	<span>주문/결제</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=delivery">
                         	<span>배송</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=cancle">
                         	<span>취소/반품/교환</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=travel">
                         	<span>여행/숙박/항공</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="${path }/cs/faqBoard/list.do?group=faq&cate=safe">
                         	<span>안전거래</span>
                         </a>
                     </li>
@@ -63,13 +63,13 @@
             <section class="qna">
                 <h1>
                     문의하기
-                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=All">전체보기</a>
+                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member">더보기</a>
                 </h1>
                 <!-- jstl 반복문 -->
                 <ul>
                     <li>
-                        <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=All" class="title">
-                        	[회원] 개인회원과 법인회원에 차이가 있나요?
+                        <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member" class="title">
+                        	[typeName] 개인회원과 법인회원에 차이가 있나요?
                        	</a>
                         <p>
                             <span class="uid">아이디***</span>
@@ -109,7 +109,7 @@
                             <strong>1566-5700</strong><span>(평일 09:00 ~ 18:00)</span>
                         </p>
                         <p>
-                            <a href="${path }/cs/board/list.do?group=notice&cate=user">
+                            <a href="${path }/cs/faqBoard/list.do?group=faq&cate=member">
                             	판매자 가입 및 서류 접수 안내 &gt;
                             </a>
                         </p>

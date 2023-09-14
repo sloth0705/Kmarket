@@ -15,7 +15,7 @@
 							        <tr>
 							            <td>
 							                <a href="./view.do?group=${group }&cate=${cate}&bno=${cs.bno}">
-							                	[이걸 뭘로 하지?] ${cs.title }
+							                	[typeName] ${cs.title }
 						                	</a>
 							            </td>
 							            <td>${cs.uid }</td>
@@ -47,8 +47,9 @@
                     	class="next">&raquo;</a>
                 </div>
 
-				<!-- 일반 유저가 문의 하기 -->
-				<a href="./write.do" class="btnWrite">문의하기</a>
+				<!-- 로그인 한 "일반 유저"가 문의 하기 -->
+				<a href="./write.do?group=${group }&cate=${cate}" 
+					class="btnWrite">문의하기</a>
 			</article>
 		</section>
 	</div>

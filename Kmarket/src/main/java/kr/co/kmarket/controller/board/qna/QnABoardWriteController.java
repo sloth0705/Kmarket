@@ -15,16 +15,16 @@ import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
 
-@WebServlet("/cs/qnaBoard/view.do")
-public class QnABoardViewController extends HttpServlet {
-	private static final long serialVersionUID = -3018502673393107208L;
+@WebServlet("/cs/qnaBoard/write.do")
+public class QnABoardWriteController extends HttpServlet {
+	private static final long serialVersionUID = 4233589879373746478L;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CS_BoardService service = CS_BoardService.INSTANCE;
 	
 	@Override
 	public void init() throws ServletException {
-		logger.info("qan view page init==========================");
+		logger.info("qan write page init==========================");
 	}
 	
 	@Override
@@ -39,14 +39,31 @@ public class QnABoardViewController extends HttpServlet {
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
+		request.getRequestDispatcher("/cs/qnaBoard/write.jsp").forward(request, respones);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, 
+			HttpServletResponse respones) throws ServletException, IOException {
 		
-		String bno = request.getParameter("bno");
+		String group = request.getParameter("group");
+		String cate = request.getParameter("cate");
 		
-		CS_BoardDTO dto 
-			= service.selectCS_Board(Integer.parseInt(bno));
-		request.setAttribute("cs", dto);
+		String type = request.getParameter("type");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
+		CS_BoardDTO dto = new CS_BoardDTO();
+		dto.setGroup(group);
+		dto.setCate(cate);
+		dto.setType(Integer.parseInt(type));
+		dto.setTitle(title);
+		dto.setContent(content);
 		
-		request.getRequestDispatcher("/cs/qnaBoard/view.jsp").forward(request, respones);
+		service.insertCS_Board(dto);
+		logger.info("writePost dto : " + dto);
+		
+		respones.sendRedirect("/Kmarket/cs/qnaBoard/list.do?group="+group+"&cate="+cate);
+		
 	}
 }

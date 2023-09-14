@@ -27,14 +27,17 @@ public class FaqBoardListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse respones) throws ServletException, IOException {
 		
+		String group = request.getParameter("group");
 		String cate = request.getParameter("cate");
+		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
+		String typeName = request.getParameter("typeName");
 		
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
 		List<CS_BoardDTO> list 
-			= service.selectCS_Boards();
+			= service.selectCS_Boards(group, typeName, cate);
 		
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);
