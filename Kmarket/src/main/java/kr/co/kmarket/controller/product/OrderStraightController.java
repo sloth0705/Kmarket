@@ -79,6 +79,6 @@ public class OrderStraightController extends HttpServlet {
 		piService.insertProductOrderItem(piDto);
 		mService.usePoint(ordUid, usedPoint);
 		
-		resp.sendRedirect("/Kmarket/");
+		resp.sendRedirect("/Kmarket/product/complete.do?ordNo=" + ordNo);
 	}
 }

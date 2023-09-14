@@ -56,8 +56,37 @@ public class ProductOrderDAO extends DBHelper {
 		return ordNo;
 	}
 
-	public ProductOrderDTO selectProductOrder(int ordNo) {
+	public ProductOrderDTO selectProductOrder(String ordNo) {
 		ProductOrderDTO dto = null;
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCT_ORDER);
+			psmt.setString(1, ordNo);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				dto = new ProductOrderDTO();
+				dto.setOrdNo(rs.getInt("ordNo"));
+				dto.setOrdUid(rs.getString("ordUid"));
+				dto.setOrdCount(rs.getInt("ordCount"));
+				dto.setOrdPrice(rs.getInt("ordPrice"));
+				dto.setOrdDiscount(rs.getInt("ordDiscount"));
+				dto.setOrdDelivery(rs.getInt("ordDelivery"));
+				dto.setSavePoint(rs.getInt("savePoint"));
+				dto.setUsedPoint(rs.getInt("usedPoint"));
+				dto.setOrdTotPrice(rs.getInt("ordTotPrice"));
+				dto.setRecipName(rs.getString("recipName"));
+				dto.setRecipHp(rs.getString("recipHp"));
+				dto.setRecipZip(rs.getString("recipZip"));
+				dto.setRecipAddr1(rs.getString("recipAddr1"));
+				dto.setRecipAddr2(rs.getString("recipAddr2"));
+				dto.setOrdPayment(rs.getInt("ordPayment"));
+				dto.setOrdComplete(rs.getInt("ordComplete"));
+				dto.setOrdDate(rs.getString("ordDate"));
+				dto.setOrdUser(rs.getString("name"));
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("selectProductOrder error : " + e.getMessage());
+		}
 		return dto;
 	}
 
