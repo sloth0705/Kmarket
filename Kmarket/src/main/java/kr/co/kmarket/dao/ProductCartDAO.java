@@ -24,8 +24,19 @@ public class ProductCartDAO extends DBHelper {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	public void insertProductCart(ProductCartDTO dto) {
-
+	public int insertProductCart(ProductCartDTO dto) {
+		int result = 0;
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.INSERT_PRODUCT_CART);
+			psmt.setString(1, dto.getUid());
+			psmt.setInt(2, dto.getProdNo());
+			psmt.setInt(3, dto.getCount());
+			result = psmt.executeUpdate();
+			close();
+		} catch (Exception e) {
+			logger.error("insertCart error : " + e.getMessage());
+		}
+		return result;
 	}
 
 	public ProductCartDTO selectProductCart(int cartNo) {

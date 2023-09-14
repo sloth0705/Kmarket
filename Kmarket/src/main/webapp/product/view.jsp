@@ -44,6 +44,33 @@
 		console.log("내일 요일: " + tomorrowDayOfWeek);
 		const de = '내일(' + tomorrowDayOfWeek + ') ' + (tomorrow.getMonth() + 1) + '/' + tomorrow.getDate() + ' 도착예정';
 		$('.arrival').text(de);
+		
+		
+		// 장바구니 등록
+		$('.cart').click(function(e) {
+			e.preventDefault();
+			const prodNo = ${product.prodNo };
+			const uid = "${sessMember.uid}";
+			const count = $('input[name=num]').val();
+			const jsonData = {
+					prodNo : prodNo,
+					uid : uid,
+					count : count
+			}
+			$.ajax({
+				url: '/Kmarket/product/addCart.do',
+				type: 'GET',
+				data: jsonData,
+				dataType: 'json',
+				success: function(data) {
+					if (data.result > 0) {
+						alert('장바구니에 상품이 등록되었습니다.');
+					} else {
+						alert('오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+					}
+				}
+			});
+		});
 	});
 </script>
             <!-- 상품 상세페이지 시작 -->

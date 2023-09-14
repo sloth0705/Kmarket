@@ -50,4 +50,10 @@ public class ProductSQL {
 			+ "LEFT OUTER JOIN `km_product` AS b "
 			+ "ON a.`prodNo` = b.`prodNo` "
 			+ "WHERE a.`cartNo` IN ";
+	public static String INSERT_PRODUCT_CART = 
+			"INSERT INTO `km_product_cart` "
+			+ "SET `uid` = ?, "
+			+ "`prodNo` = ?, "
+			+ "`count` = ? ,"
+			+ "`rdate` = NOW()";
 }

@@ -10,8 +10,8 @@ public enum ProductCartService {
 
 	private ProductCartDAO dao = ProductCartDAO.getInstance();
 
-	public void insertProductCart(ProductCartDTO dto) {
-		dao.insertProductCart(dto);
+	public int insertProductCart(ProductCartDTO dto) {
+		return dao.insertProductCart(dto);
 	}
 
 	public ProductCartDTO selectProductCart(int cartNo) {
