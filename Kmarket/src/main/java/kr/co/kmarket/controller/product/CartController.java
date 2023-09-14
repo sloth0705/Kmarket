@@ -1,4 +1,4 @@
-package kr.co.kmarket.controller.admin.product;
+package kr.co.kmarket.controller.product;
 
 import java.io.IOException;
 import java.util.List;
