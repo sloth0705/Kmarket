@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="./css/member.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script>
+    	const success = ${success};
+    	
+    	if (success == 100) // 아이디 비밀번호 불일치
+    		alert('아이디와 비밀번호를 다시 확인해주세요.');
+    </script>
 </head>
 <body>
     <div id="wrapper">
@@ -23,13 +29,11 @@
                 <div>
                     <a href="${path}/member/login.do">로그인</a>
                     <a href="${path}/member/join.do">회원가입</a>
-                    <a href="#">마이페이지</a>
-                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
                 </div>
             </div>
             <div class="logo">
                 <div>
-                    <a href="../index.html"><img src="../img/header_logo.png" alt="로고" /></a>
+                    <a href="${path}"><img src="../img/header_logo.png" alt="로고" /></a>
                 </div>
             </div>
         </header>

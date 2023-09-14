@@ -14,8 +14,8 @@ public enum MemberService {
 		dao.insertMember(dto);
 	}
 
-	public MemberDTO selectMember(String uid) {
-		return dao.selectMember(uid);
+	public MemberDTO selectMember(String uid, String pass) {
+		return dao.selectMember(uid, pass);
 	}
 	public int selectCountUid(String uid) {
 		return dao.selectCountUid(uid);

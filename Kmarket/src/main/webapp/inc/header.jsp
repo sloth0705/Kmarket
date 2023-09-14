@@ -56,6 +56,10 @@
                 $(this).closest('#bannerTop').removeClass('on');
             });
         });
+        
+		const success = ${success};
+    	if (success == 200) // 로그아웃
+    		alert('로그아웃되었습니다.');
     </script>
 </head>
 
@@ -72,20 +76,23 @@
         <header>
             <div class="top">
                 <div>
-                    <a href="./member/login.html">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">마이페이지</a>
-                    <a href="#">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        &nbsp;장바구니
-                    </a>
+                	<c:if test="${empty sessMember}">
+	                    <a href="${path}/member/login.do">로그인</a>
+	                    <a href="${path}/member/join.do">회원가입</a>
+                    </c:if>
+                    <c:if test="${not empty sessMember}">
+                    	<c:if test="${sessMember.type eq 2}">
+                			<a href="${Path}/admin">관리자</a>
+	                	</c:if>
+	                    <a href="#">마이페이지</a>
+	                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
+	                    <a href="${path}/member/logout.do">로그아웃</a>
+                    </c:if>
                 </div>
             </div>
             <div class="logo">
                 <div>
-                    <a href="#">
-                        <img src="./img/header_logo.png" alt="로고" />
-                    </a>
+                    <a href="${path}"><img src="./img/header_logo.png" alt="로고" /></a>
                     <form action="#">
                         <input type="text" name="search" />
                         <button>
