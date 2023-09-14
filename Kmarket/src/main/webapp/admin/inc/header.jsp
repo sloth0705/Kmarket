@@ -21,11 +21,7 @@
             <div>
                 <a href="${path }/admin/index.do" class="logo"><img src="${path }/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
-<<<<<<< HEAD
-                    <span>홍길동님 반갑습니다.</span>
-=======
                     <span>홍길동</span>님 반갑습니다.
->>>>>>> e639ff40ab7c4bf84ceeefb9d7adf3655c7d0d87
                     <a href="${path}/index.do">HOME |</a>
                     <a href="${path}/member/logout.do">로그아웃 |</a>
                     <a href="${path}/cs/index.do">고객센터</a>
