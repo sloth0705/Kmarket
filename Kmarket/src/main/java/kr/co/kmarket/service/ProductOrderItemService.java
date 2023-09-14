@@ -18,8 +18,8 @@ public enum ProductOrderItemService {
 		return dao.selectProductOrderItem(ordNo);
 	}
 
-	public List<ProductOrderItemDTO> selectProductOrderItems() {
-		return dao.selectProductOrderItems();
+	public List<ProductOrderItemDTO> selectProductOrderItems(String ordNo) {
+		return dao.selectProductOrderItems(ordNo);
 	}
 
 	public void updateProductOrderItem(ProductOrderItemDTO dto) {

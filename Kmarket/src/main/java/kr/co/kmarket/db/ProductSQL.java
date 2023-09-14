@@ -85,4 +85,13 @@ public class ProductSQL {
 			"UPDATE `km_member` "
 			+ "SET `point` = `point` - ? "
 			+ "WHERE `uid` = ?";
+	public static String SELECT_PRODUCT_ORDER =
+			"SELECT a.*, b.`name` FROM `km_product_order` AS a "
+			+ "LEFT OUTER JOIN `km_member` AS b ON a.`ordUid` = b.`uid` "
+			+ "WHERE a.`ordNo` = ?";
+	public static String SELECT_PRODUCT_ORDER_ITEMS =
+			"SELECT b.*, a.`ordNo`, a.`count` "
+			+ "FROM `km_product_order_item` AS a "
+			+ "LEFT OUTER JOIN `km_product` AS b ON a.`prodNo` = b.`prodNo` "
+			+ "WHERE a.`ordNo` = ?";
 }

@@ -14,7 +14,7 @@ public enum ProductOrderService {
 		return dao.insertProductOrder(dto);
 	}
 
-	public ProductOrderDTO selectProductOrder(int ordNo) {
+	public ProductOrderDTO selectProductOrder(String ordNo) {
 		return dao.selectProductOrder(ordNo);
 	}
 
