@@ -21,7 +21,6 @@
                         	<input type="text" name="uid" placeholder="아이디를 입력" required/>
                         	<button type="button" id="btnCheckUid">중복확인</button>
                         	<span class="msgId">영문, 숫자로 4~12자까지 설정해 주세요.</span>
-                        	
                         </td>
                     </tr>
                     <tr>
