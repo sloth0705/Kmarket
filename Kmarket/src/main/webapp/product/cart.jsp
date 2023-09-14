@@ -19,12 +19,12 @@
 				for (let i = 0; i < chk.size(); i++) {
 					const cartNo = $('input[name=chk]')[i].classList[0];
 					let tmpCount = $('input[name=count' + cartNo + ']').val() * 1;
-					let tmpPrice = $('input[name=price' + cartNo + ']').val() * 1;
-					let tmpDisPrice = $('input[name=disPrice' + cartNo + ']').val() * 1;
+					let tmpPrice = $('input[name=price' + cartNo + ']').val() * 1 * tmpCount;
+					let tmpDisPrice = $('input[name=disPrice' + cartNo + ']').val() * 1 * tmpCount;
 					let tmpDisPrice2 = tmpPrice - tmpDisPrice;
 					let tmpDelivery = $('input[name=delivery' + cartNo + ']').val() * 1;
 					let tmpPoint = $('input[name=point' + cartNo + ']').val() * 1;
-					let tmpTotal = tmpCount * tmpDisPrice + tmpDelivery;
+					let tmpTotal = tmpDisPrice + tmpDelivery;
 					
 					count += tmpCount;
 					price += tmpPrice;
@@ -57,12 +57,12 @@
 				if (chk[i].checked) {
 					const cartNo = $('input[name=chk]')[i].classList[0];
 					let tmpCount = $('input[name=count' + cartNo + ']').val() * 1;
-					let tmpPrice = $('input[name=price' + cartNo + ']').val() * 1;
-					let tmpDisPrice = $('input[name=disPrice' + cartNo + ']').val() * 1;
+					let tmpPrice = $('input[name=price' + cartNo + ']').val() * 1 * tmpCount;
+					let tmpDisPrice = $('input[name=disPrice' + cartNo + ']').val() * 1 * tmpCount;
 					let tmpDisPrice2 = tmpPrice - tmpDisPrice;
 					let tmpDelivery = $('input[name=delivery' + cartNo + ']').val() * 1;
 					let tmpPoint = $('input[name=point' + cartNo + ']').val() * 1;
-					let tmpTotal = tmpCount * tmpDisPrice + tmpDelivery;
+					let tmpTotal = tmpDisPrice + tmpDelivery;
 					
 					count += tmpCount;
 					price += tmpPrice;
