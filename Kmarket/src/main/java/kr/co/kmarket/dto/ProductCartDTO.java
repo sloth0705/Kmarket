@@ -39,6 +39,10 @@ public class ProductCartDTO {
 	public void setProdNo(int prodNo) {
 		this.prodNo = prodNo;
 	}
+	
+	public void setProdNo(String prodNo) {
+		this.prodNo = Integer.parseInt(prodNo);
+	}
 
 	public int getCount() {
 		return count;
@@ -46,6 +50,10 @@ public class ProductCartDTO {
 
 	public void setCount(int count) {
 		this.count = count;
+	}
+	
+	public void setCount(String count) {
+		this.count = Integer.parseInt(count);
 	}
 
 	public String getRdate() {
