@@ -51,6 +51,10 @@
 			e.preventDefault();
 			const prodNo = ${product.prodNo };
 			const uid = "${sessMember.uid}";
+			if (uid == "") {
+				alert('로그인 후 사용가능한 기능입니다.');
+				return false;
+			}
 			const count = $('input[name=num]').val();
 			const jsonData = {
 					prodNo : prodNo,
@@ -70,6 +74,19 @@
 					}
 				}
 			});
+		});
+		
+		// 구매하기
+		$('.order').click(function(e) {
+			e.preventDefault();
+			const prodNo = ${product.prodNo };
+			const uid = "${sessMember.uid}";
+			if (uid == "") {
+				alert('로그인 후 사용가능한 기능입니다.');
+				return false;
+			}
+			const count = $('input[name=num]').val();
+			location.href = '${path}/product/orderStraight.do?prodNo=' + prodNo + '&count=' + count;
 		});
 	});
 </script>

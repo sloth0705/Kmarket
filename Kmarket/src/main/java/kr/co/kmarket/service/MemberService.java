@@ -53,4 +53,8 @@ public enum MemberService {
 	public void deleteMember(String uid) {
 		dao.deleteMember(uid);
 	}
+
+	public void usePoint(String ordUid, String usedPoint) {
+		dao.usePoint(ordUid, usedPoint);
+	}
 }
