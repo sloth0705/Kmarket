@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- 
 날짜: 2023/09/14
 작업자: 조유빈
@@ -8,11 +7,6 @@
 <%@page import="kr.co.kmarket.dao.ProductDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.kmarket.dto.ProductDTO"%>
-=======
-<%@page import="kr.co.kmarket.dto.ProductDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="kr.co.kmarket.dao.ProductDAO"%>
->>>>>>> e639ff40ab7c4bf84ceeefb9d7adf3655c7d0d87
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <%
@@ -94,21 +88,7 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
-<<<<<<< HEAD
- 				<% for(ProductDTO product : products){ %>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="/#/<%= product.getThumb1() %>" class="thumb" alt="상품 이미지"></td>
-                    <td><%= product.getProdNo() %></td>
-                    <td><%= product.getProdName() %></td>
-                    <td><%= product.getPrice() %></td>
-                    <td><%= product.getDiscount() %></td>
-                    <td><%= product.getPoint() %></td>
-                    <td><%= product.getStock() %></td>
-                    <td><%= product.getSeller() %></td>
-                    <td><%= product.getHit() %></td>
-                 <% } %>
-=======
+
                 
 			 	<% for(ProductDTO product : products){ %>
                 <tr>
@@ -122,7 +102,7 @@
                     <td><%= product.getStock() %></td> <!-- 400 -->
                     <td><%= product.getSeller() %></td> <!-- 홍길동 -->
                     <td><%= product.getHit() %></td> <!-- 126 -->
->>>>>>> e639ff40ab7c4bf84ceeefb9d7adf3655c7d0d87
+
                     <td>
                  <% } %>
                         <a href="#">[삭제]</a>
