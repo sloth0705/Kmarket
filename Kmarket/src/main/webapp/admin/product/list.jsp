@@ -1,5 +1,53 @@
+<%@page import="kr.co.kmarket.dto.ProductDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.kmarket.dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String pg   = request.getParameter("pg");
+	
+	ProductDAO dao = ProductDAO.getInstance();
+	
+	// 페이지 관련 변수 선언
+	int start = 0;
+	int currentPage = 1;
+	int total = 0;
+	int lastPageNum = 0;
+	int pageGroupCurrent = 1;
+	int pageGroupStart = 1;
+	int pageGroupEnd = 0;
+	int pageStartNum = 0;
+	
+	// 현재 페이지 계산
+	if(pg != null){
+		currentPage = Integer.parseInt(pg);
+	}
+	
+	// Limit 시작값 계산
+	start = (currentPage - 1) * 10;
+	
+	// 전체 상품 갯수
+	total = dao.selectCountProductsTotal();
+	
+	// 페이지 번호 계산
+	if(total % 10 == 0){
+		lastPageNum = (total / 10);
+	}else{
+		lastPageNum = (total / 10) + 1;
+	}
+	
+	// 페이지 그룹 계산
+	pageGroupCurrent = (int) Math.ceil(currentPage / 10.0);
+	pageGroupStart = (pageGroupCurrent - 1) * 10 + 1;
+	pageGroupEnd = pageGroupCurrent * 10;
+	
+	if(pageGroupEnd > lastPageNum){
+		pageGroupEnd = lastPageNum;
+	}
+	
+	List<ProductDTO> products = dao.selectProducts(start);
+%>
 <main>
 <%@ include file="../inc/aside.jsp" %>
     <section id="admin-product-list">
@@ -12,10 +60,10 @@
         <section>
             <div>
                 <select name="search">
-                    <option value="search1">상품명</option>
-                    <option value="search1">상품코드</option>
-                    <option value="search1">제조사</option>
-                    <option value="search1">판매자</option>                                    
+                    <option value="prodName">상품명</option>
+                    <option value="prodNo">상품코드</option>
+                    <option value="company">제조사</option>
+                    <option value="seller">판매자</option>                                    
                 </select>
                 <input type="text" name="search">
             </div>
@@ -33,58 +81,27 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
-
+                
+			 	<% for(ProductDTO product : products){ %>
                 <tr>
                     <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
+                    <td><img src="../img/sample_thumb.jpg" class="thumb" alt="상품 이미지"></td>
+                    <td><%= product.getProdNo() %></td> <!-- 201603292 -->
+                    <td><%= product.getProdName() %></td> <!-- FreeMovement -->
+                    <td><%= product.getPrice() %></td> <!-- 36,000 -->
+                    <td><%= product.getDiscount() %></td> <!-- 10 -->
+                    <td><%= product.getPoint() %></td> <!-- 360 -->
+                    <td><%= product.getStock() %></td> <!-- 400 -->
+                    <td><%= product.getSeller() %></td> <!-- 홍길동 -->
+                    <td><%= product.getHit() %></td> <!-- 126 -->
                     <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
-                    <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
-                    <td>
+                 <% } %>
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
                     </td>
                 </tr>
                 
             </table>
-
             
             <input type="button" value="선택삭제" />                          
 
