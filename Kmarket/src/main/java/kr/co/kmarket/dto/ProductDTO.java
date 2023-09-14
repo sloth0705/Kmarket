@@ -108,8 +108,8 @@ public class ProductDTO {
 		return price;
 	}
 
-	public double getDisPrice() {
-		return Math.floor(((double) price / 1000) * (100 - discount)) * 10;
+	public int getDisPrice() {
+		return (int)Math.floor(((double) price / 1000) * (100 - discount)) * 10;
 	}
 
 	public String getPriceWithComma() {
