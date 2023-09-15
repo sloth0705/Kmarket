@@ -32,14 +32,14 @@
                 			<a href="${Path}/admin">관리자</a>
 	                	</c:if>
 	                    <a href="#">마이페이지</a>
-	                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
+	                    <a href="${path }/product/cart.do"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
 	                    <a href="${path}/member/logout.do">로그아웃</a>
                     </c:if>
                 </div>
             </div>
             <div class="logo">
                 <div>
-                    <a href="#"><img src="./img/header_logo.png" alt="로고"/></a>
+                    <a href="${path }"><img src="./img/header_logo.png" alt="로고"/></a>
                     <form action="#">
                         <input type="text" name="search"/>
                         <button><i class="fa fa-search"></i></button>
