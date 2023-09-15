@@ -85,7 +85,7 @@
                 			<a href="${Path}/admin">관리자</a>
 	                	</c:if>
 	                    <a href="#">마이페이지</a>
-	                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
+	                    <a href="${path }/product/cart.do"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
 	                    <a href="${path}/member/logout.do">로그아웃</a>
                     </c:if>
                 </div>
