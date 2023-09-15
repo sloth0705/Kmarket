@@ -57,10 +57,10 @@ public class ListController extends HttpServlet {
 		// 전체 개시물 갯수 조회
 		total = pService.selectCountTotal(cate1, cate2);
 
-		if (total % 5 == 0) {
-			lastPageNum = total / 5;
+		if (total % 10 == 0) {
+			lastPageNum = total / 10;
 		} else {
-			lastPageNum = total / 5 + 1;
+			lastPageNum = total / 10 + 1;
 		}
 
 		// 페이지 그룹 계산
