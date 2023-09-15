@@ -2,6 +2,8 @@
 <%@ include file="../inc/header.jsp" %>
 <script>
 	$(document).ready(function(){
+		
+		// 카테고리 분류 AJAX로 불러오기
 		$('#category1').on('change', function(){
 			
 			const cate1 = this.value;
@@ -15,8 +17,8 @@
 			console.log(jsonData);
 			
 			$.ajax({
-				url: '${path}/admin/product/register.do',
-				type: 'post',
+				url: '${path}/admin/product/registerCateSelect.do',
+				type: 'get',
 				data: jsonData,
 				dataType: 'json',
 				success: function(data){
@@ -31,6 +33,14 @@
 				}
 			});
 		});
+		
+		// 알아보는 중
+		// 카테고리 분류 파라미터로 넘기기
+		/*$("#category2").on('change', function(){
+			
+			let form_data = $("#form").serialize();
+			form_data += '?prodCate1='+$("#category1 option:selected").val()+'&prodCate2='+$("#category2 option:selected").val();
+		});*/
 	});
 </script>
 <main>
@@ -43,7 +53,8 @@
         </p>
     </nav>
     <article>
-        <form action="#">
+        <form id="form" action="${path}/admin/product/register.do" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="seller" value="${sessMember.uid}"/>
             <section>
                 <h4>상품분류</h4>
                 <p>
@@ -53,28 +64,26 @@
                     <tr>
                         <td>1차 분류</td>
                         <td>
-                            <select id="category1" name="category1">
-                                <option value="0" selected disabled>1차 분류 선택</option>
+                            <select id="category1" name="prodCate1" required>
+                                <option value="" selected disabled>1차 분류 선택</option>
                                 <option value="10">브랜드패션</option>
                                 <option value="11">패션의류/잡화/뷰티</option>
                                 <option value="12">유아동</option>
                                 <option value="13">식품/생필품</option>
-                                <option value="14">홈데코/취미/반려</option>                                                
-                                <option value="15">컴퓨터/디지털/가전</option>                                                
-                                <option value="16">스포츠/건강/렌탈</option>                                                
-                                <option value="17">자동차/공구</option>                                                
-                                <option value="18">여행/도서/티켓/쿠폰</option>                                                
+                                <option value="14">홈데코/취미/반려</option>
+                                <option value="15">컴퓨터/디지털/가전</option>
+                                <option value="16">스포츠/건강/렌탈</option>
+                                <option value="17">자동차/공구</option>
+                                <option value="18">여행/도서/티켓/쿠폰</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>2차 분류</td>
                         <td>
-                            <select id="category2" name="category2">
-                                <option value="cate0" selected disabled>2차 분류 선택</option>
-                                 <!--<c:forEach var="cate" items="${category2}">
-                                 <option value="${cate.cate2}">${cate.c2Name}</option>
-                                 </c:forEach>-->
+                            <select id="category2" name="prodCate2" required onchange="this.form.submit()">
+                                <option value="" selected disabled>2차 분류 선택</option>
+                                <!-- ajax로 추가 -->
                             </select>
                         </td>
                     </tr>
@@ -89,69 +98,69 @@
                 <table>
                     <tr>
                         <td>상품명</td>
-                        <td><input type="text" name="#"/></td>
+                        <td><input type="text" name="prodName" required/></td>
                     </tr>
                     <tr>
                         <td>기본설명</td>
                         <td>
                             <span>상품명 하단에 상품에 대한 추가적인 설명이 필요한 경우에 입력</span>
-                            <input type="text" name="#"/>
+                            <input type="text" name="descript" required/>
                         </td>
                     </tr>
                     <tr>
                         <td>제조사</td>
-                        <td><input type="text" name="#"/></td>
+                        <td><input type="text" name="company" required/></td>
                     </tr>
                     <tr>
                         <td>판매가격</td>
-                        <td><input type="text" name="#"/>원</td>
+                        <td><input type="text" name="price" required/>원</td>
                     </tr>                                    
                     <tr>
                         <td>할인율</td>
                         <td>
                             <span>0을 입력하면 할인율 없음</span>
-                            <input type="text" name="#"/>원
+                            <input type="text" name="discount" required/>원
                         </td>
                     </tr>
                     <tr>
                         <td>포인트</td>
                         <td>
                             <span>0을 입력하면 포인트 없음</span>
-                            <input type="text" name="#"/>점
+                            <input type="text" name="point" required/>점
                         </td>
                     </tr>
                     <tr>
                         <td>재고수량</td>
-                        <td><input type="text" name="#"/>개</td>
+                        <td><input type="text" name="stock" required/>개</td>
                     </tr>
                     <tr>
                         <td>배송비</td>
                         <td>
                             <span>0을 입력하면 배송비 무료</span>
-                            <input type="text" name="#"/>원
+                            <input type="text" name="delivery" required/>원
                         </td>
                     </tr>
                     <tr>
                         <td>상품 썸네일</td>
                         <td>
                             <span>크기 190 x 190, 상품 목록에 출력될 이미지 입니다. </span>
-                            <input type="file" name="#"/>
+                            <input type="file" name="thumb1" required/>
 
                             <span>크기 230 x 230, 상품 메인에 출력될 이미지 입니다. </span>
-                            <input type="file" name="#"/>
+                            <input type="file" name="thumb2" required/>
 
                             <span>크기 456 x 456, 상품 상세에 출력될 이미지 입니다. </span>
-                            <input type="file" name="#"/>
+                            <input type="file" name="thumb3" required/>
                         </td>
                     </tr>
                     <tr>
                         <td>상세 상품정보</td>
                         <td>
                             <span>크기 가로 940px 높이 제약없음, 크기 최대 1MB, 상세페이지 상품정보에 출력될 이미지 입니다.</span>
-                            <input type="file" name="#"/>
+                            <input type="file" name="detail" required/>
                         </td>
                     </tr>
-                </table>                                
+                </table>
             </section>
             
             <section>
@@ -162,23 +171,23 @@
                 <table>
                     <tr>
                         <td>상품상태</td>
-                        <td><input type="text" name="" value="새상품"/></td>
+                        <td><input type="text" name="status" value="새상품" required/></td>
                     </tr>
                     <tr>
                         <td>부가세 면세여부</td>
-                        <td><input type="text" name="" value="과세상품"/></td>
+                        <td><input type="text" name="duty" value="과세상품" required/></td>
                     </tr>
                     <tr>
                         <td>영수증발행</td>
-                        <td><input type="text" name="" value="발행가능 - 신용카드 전표, 온라인 현금영수증"/></td>
+                        <td><input type="text" name="receipt" value="발행가능 - 신용카드 전표, 온라인 현금영수증" required/></td>
                     </tr>
                     <tr>
                         <td>사업자구분</td>
-                        <td><input type="text" name="" value="사업자 판매자"/></td>
+                        <td><input type="text" name="bizType" value="사업자 판매자" required/></td>
                     </tr>                                
                     <tr>
                         <td>원산지</td>
-                        <td><input type="text" name="" value="국내산"/></td>
+                        <td><input type="text" name="origin" value="국내산" required/></td>
                     </tr>                                
                 </table>                                
             </section>
