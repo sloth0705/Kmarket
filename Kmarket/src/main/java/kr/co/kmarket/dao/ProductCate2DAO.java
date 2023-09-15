@@ -10,7 +10,7 @@ import kr.co.kmarket.db.DBHelper;
 import kr.co.kmarket.dto.ProductCate2DTO;
 
 public class ProductCate2DAO extends DBHelper {
-	private static ProductCate2DAO instance;
+	private static ProductCate2DAO instance = new ProductCate2DAO();
 	public static ProductCate2DAO getInstance() {
 		return instance;
 	}
