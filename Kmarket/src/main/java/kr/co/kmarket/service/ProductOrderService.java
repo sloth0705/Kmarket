@@ -5,16 +5,16 @@ import java.util.List;
 import kr.co.kmarket.dao.ProductOrderDAO;
 import kr.co.kmarket.dto.ProductOrderDTO;
 
-public enum ProductOrder {
+public enum ProductOrderService {
 	INSTANCE;
 
 	private ProductOrderDAO dao = ProductOrderDAO.getInstance();
 
-	public void insertProductOrder(ProductOrderDTO dto) {
-		dao.insertProductOrder(dto);
+	public int insertProductOrder(ProductOrderDTO dto) {
+		return dao.insertProductOrder(dto);
 	}
 
-	public ProductOrderDTO selectProductOrder(int ordNo) {
+	public ProductOrderDTO selectProductOrder(String ordNo) {
 		return dao.selectProductOrder(ordNo);
 	}
 

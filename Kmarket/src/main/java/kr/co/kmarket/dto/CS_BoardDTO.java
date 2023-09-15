@@ -3,11 +3,28 @@ package kr.co.kmarket.dto;
 public class CS_BoardDTO {
 	private int bno;
 	private String uid;
-	private int type1;
-	private int type2;
+	private String group;
+	private String cate;
+	private int type;
 	private String title;
 	private String content;
 	private String rdate;
+	
+	private String cateName;
+	private String typeName;
+	
+	public String getCateName() {
+		return cateName;
+	}
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
+	}
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
 	
 	
 	public int getBno() {
@@ -22,17 +39,23 @@ public class CS_BoardDTO {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	public int getType1() {
-		return type1;
+	public String getGroup() {
+		return group;
 	}
-	public void setType1(int type1) {
-		this.type1 = type1;
+	public void setGroup(String group) {
+		this.group = group;
 	}
-	public int getType2() {
-		return type2;
+	public String getCate() {
+		return cate;
 	}
-	public void setType2(int type2) {
-		this.type2 = type2;
+	public void setCate(String cate) {
+		this.cate = cate;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 	public String getTitle() {
 		return title;
@@ -47,19 +70,20 @@ public class CS_BoardDTO {
 		this.content = content;
 	}
 	public String getRdate() {
-		return rdate.substring(2,11);
+		return rdate.substring(2, 11);
 	}
-	public String getPullRdate() {
+	public String getRdateAll() {
 		return rdate;
 	}
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "CS_BoardDTO [bno=" + bno + ", uid=" + uid + ", type1=" + type1 + ", type2=" + type2 + ", title=" + title
-				+ ", content=" + content + ", rdate=" + rdate + "]";
+		return "CS_BoardDTO [bno=" + bno + ", uid=" + uid + ", group=" + group + ", cate=" + cate + ", type=" + type
+				+ ", title=" + title + ", content=" + content + ", rdate=" + rdate + ", cateName=" + cateName
+				+ ", typeName=" + typeName + "]";
 	}
 	
 }

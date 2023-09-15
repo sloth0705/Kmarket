@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.MemberDTO;
 import kr.co.kmarket.dto.ProductCartDTO;
 import kr.co.kmarket.service.ProductCartService;
 
@@ -24,7 +25,7 @@ public class CartController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO: 추후 로그인 세션 구현시 세션 UID로 검색할 것
-		String uid = "ppp";
+		String uid = ((MemberDTO) req.getSession().getAttribute("sessMember")).getUid();
 		List<ProductCartDTO> carts = cService.selectProductCarts(uid);
 		req.setAttribute("carts", carts);
 		logger.info("장바구니 개수 : " + carts.size());

@@ -1,20 +1,12 @@
 package kr.co.kmarket.dto;
 
+import java.text.DecimalFormat;
+
 public class ProductOrderItemDTO {
 	private int ordNo;
 	private int prodNo;
 	private int count;
-	private int price;
-	private int discount;
-	private int point;
-	private int delivery;
-	private int total;
-
-	@Override
-	public String toString() {
-		return "Km_product_order_item [ordNo=" + ordNo + ", prodNo=" + prodNo + ", count=" + count + ", price=" + price
-				+ ", discount=" + discount + ", point=" + point + ", delivery=" + delivery + ", total=" + total + "]";
-	}
+	private ProductDTO product;
 
 	public int getOrdNo() {
 		return ordNo;
@@ -32,6 +24,10 @@ public class ProductOrderItemDTO {
 		this.prodNo = prodNo;
 	}
 
+	public void setProdNo(String prodNo) {
+		this.prodNo = Integer.parseInt(prodNo);
+	}
+
 	public int getCount() {
 		return count;
 	}
@@ -40,43 +36,25 @@ public class ProductOrderItemDTO {
 		this.count = count;
 	}
 
-	public int getPrice() {
-		return price;
+	public void setCount(String count) {
+		this.count = Integer.parseInt(count);
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public ProductDTO getProduct() {
+		return product;
 	}
 
-	public int getDiscount() {
-		return discount;
+	public void setProduct(ProductDTO product) {
+		this.product = product;
 	}
-
-	public void setDiscount(int discount) {
-		this.discount = discount;
+	
+	public int getDisTotal() {
+		return count * product.getDisPrice();
 	}
-
-	public int getPoint() {
-		return point;
-	}
-
-	public void setPoint(int point) {
-		this.point = point;
-	}
-
-	public int getDelivery() {
-		return delivery;
-	}
-
-	public void setDelivery(int delivery) {
-		this.delivery = delivery;
-	}
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
+	
+	public String getDisTotalWithComma() {
+		int price =  count * product.getDisPrice();
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(price);
 	}
 }

@@ -43,7 +43,6 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
- 				 
                 <tr>
                     <td><img src="#" class="thumb" alt="상품 이미지"></td>
                     <td><input type="checkbox" name="상품코드"/></td>
@@ -55,13 +54,11 @@
                     <td>판매자</td>
                     <td>조회</td>
                     <td>관리</td>
-                
-            		<td>
+            		    <td>
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
                     </td>
                 </tr>
-                
             </table>
             
             <input type="button" value="선택삭제" />                          

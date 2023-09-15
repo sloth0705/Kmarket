@@ -56,4 +56,42 @@ public class ProductSQL {
 			+ "`prodNo` = ?, "
 			+ "`count` = ? ,"
 			+ "`rdate` = NOW()";
+	public static String INSERT_PRODUCT_ORDER =
+			"INSERT INTO `km_product_order` "
+			+ "SET `ordUid` = ?, "
+			+ "`ordCount` = ?, "
+			+ "`ordPrice` = ?, "
+			+ "`ordDiscount` = ?, "
+			+ "`ordDelivery` = ?, "
+			+ "`usedPoint` = ?, "
+			+ "`ordTotPrice` = ?, "
+			+ "`recipName` = ?, "
+			+ "`recipHp` = ?, "
+			+ "`recipZip` = ?, "
+			+ "`recipAddr1` = ?, "
+			+ "`recipAddr2` = ?, "
+			+ "`ordPayment` = ?, "
+			+ "`ordComplete` = 1, "
+			+ "`ordDate` = NOW() ";
+	public static String SELECT_MAX_ORDNO = 
+			"SELECT MAX(`ordNo`) "
+			+ "FROM `km_product_order`";
+	public static String INSERT_PRODUCT_ORDER_ITEM = 
+			"INSERT INTO `km_product_order_item` "
+			+ "SET `ordNo` = ?, "
+			+ "`prodNo` = ?, "
+			+ "`count` = ?";
+	public static String USE_POINT = 
+			"UPDATE `km_member` "
+			+ "SET `point` = `point` - ? "
+			+ "WHERE `uid` = ?";
+	public static String SELECT_PRODUCT_ORDER =
+			"SELECT a.*, b.`name` FROM `km_product_order` AS a "
+			+ "LEFT OUTER JOIN `km_member` AS b ON a.`ordUid` = b.`uid` "
+			+ "WHERE a.`ordNo` = ?";
+	public static String SELECT_PRODUCT_ORDER_ITEMS =
+			"SELECT b.*, a.`ordNo`, a.`count` "
+			+ "FROM `km_product_order_item` AS a "
+			+ "LEFT OUTER JOIN `km_product` AS b ON a.`prodNo` = b.`prodNo` "
+			+ "WHERE a.`ordNo` = ?";
 }
