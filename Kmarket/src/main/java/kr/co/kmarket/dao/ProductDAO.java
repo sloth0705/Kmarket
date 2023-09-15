@@ -81,7 +81,7 @@ public class ProductDAO extends DBHelper {
 			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCTS);
 			psmt.setString(1, searchForm.getCate1());
 			psmt.setString(2, searchForm.getCate2());
-			psmt.setString(3, orderReason(searchForm.getOrd()));
+			psmt.setString(3, orderReason(searchForm.getSort()));
 			psmt.setInt(4, start);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
@@ -134,20 +134,20 @@ public class ProductDAO extends DBHelper {
 
 	}
 
-	public String orderReason(String ord) {
+	public String orderReason(String sort) {
 		String reason = "a.`rdate` DESC";
-		if (ord.equals("1")) { // 판매 많은 순
-
-		} else if (ord.equals("2")) { // 낮은 가격순
-			reason = "a.`price ASC`";
-		} else if (ord.equals("3")) { // 높은 가격순
-			reason = "a.`price DESC`";
-		} else if (ord.equals("4")) { // 평점 높은순
-
-		} else if (ord.equals("5")) { // 후기 많은순
-
-		} else if (ord.equals("6")) { // 최근 등록순
-			reason = "a.`rdate` DESC";
+		if (sort.equals("sold")) { // 판매 많은 순
+			reason = "a.`sold` DESC ";
+		} else if (sort.equals("priceA")) { // 낮은 가격순
+			reason = "a.`price` ASC ";
+		} else if (sort.equals("priceD")) { // 높은 가격순
+			reason = "a.`price` DESC ";
+		} else if (sort.equals("score")) { // 평점 높은순
+			reason = "a.`score` DESC ";
+		} else if (sort.equals("review")) { // 후기 많은순
+			reason = "a.`review` DESC";
+		} else if (sort.equals("rdate")) { // 최근 등록순
+			reason = "a.`rdate` DESC ";
 		}
 		return reason;
 	}
