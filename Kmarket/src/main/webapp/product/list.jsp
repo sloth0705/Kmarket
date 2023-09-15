@@ -12,8 +12,8 @@
           <li><a href="#" class="on">판매많은순</a></li>
           <li><a href="#">낮은가격순</a></li>
           <li><a href="#">높은가격순</a></li>
-          <li><a href="#">평점높은순</a></li>
-          <li><a href="#">후기많은순</a></li>
+          <!-- <li><a href="#">평점높은순</a></li> -->
+          <!-- <li><a href="#">후기많은순</a></li> -->
           <li><a href="#">최근등록순</a></li>
       </ul>
       <!-- 상품목록 -->              
@@ -54,21 +54,21 @@
       </table>            
       <!-- 상품목록 페이지번호 -->
       <div class="paging">
-        <span class="prev">
-          <a href="#"><&nbsp;이전</a>
-        </span>
-        <span class="num">
-          <a href="#" class="on">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">6</a>
-          <a href="#">7</a>
-        </span>
-        <span class="next">
-          <a href="#">다음&nbsp;></a>
-        </span>
+      	<c:if test="${pageGroupStart gt 1 }">
+	        <span class="prev">
+	          <a href="#"><&nbsp;이전</a>
+	        </span>
+        </c:if>
+        <c:forEach var="i" begin="${pageGroupStart }" end="${pageGroupEnd }">
+	        <span class="num">
+	          <a href="${path }/product/list.do?pg=${pg}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
+	        </span>
+        </c:forEach>
+        <c:if test="${pageGroupEnd lt lastPageNum }">
+	        <span class="next">
+	          <a href="#">다음&nbsp;></a>
+	        </span>
+        </c:if>
       </div>
     </section>
 </main>
