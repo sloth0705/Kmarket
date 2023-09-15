@@ -2,6 +2,7 @@
 <%@ include file="../inc/header.jsp" %>
 <main>
 <%@ include file="../inc/aside.jsp" %>
+
     <section id="admin-product-list">
         <nav>
             <h3>상품목록</h3>
@@ -35,6 +36,7 @@
                 </tr>
 
                 <tr>
+                	<c:forEach var="product" items="${products}">
                     <td><input type="checkbox" name="상품코드"/></td>
                     <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
                     <td>201603292</td>
@@ -49,40 +51,8 @@
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
                     </td>
+                    </c:forEach>
                 </tr>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
-                    <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
-                    <td>
-                        <a href="#">[삭제]</a>
-                        <a href="#">[수정]</a>
-                    </td>
-                </tr>
-                
             </table>
 
             
