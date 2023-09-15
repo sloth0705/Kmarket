@@ -34,7 +34,6 @@ public class QnABoardListController extends HttpServlet {
 		
 		String group = request.getParameter("group");
 		String cate = request.getParameter("cate");
-		String typeName = request.getParameter("typeName");
 		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
 		
@@ -42,8 +41,7 @@ public class QnABoardListController extends HttpServlet {
 		request.setAttribute("cateName", cateName);
 		
 		List<CS_BoardDTO> list 
-			= service.selectCS_Boards(group, typeName, cate);
-//			= service.selectCS_Boards(group);
+			= service.selectCS_Boards(group, cate);
 		
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);

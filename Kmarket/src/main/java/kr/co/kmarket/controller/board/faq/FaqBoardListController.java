@@ -31,13 +31,12 @@ public class FaqBoardListController extends HttpServlet {
 		String cate = request.getParameter("cate");
 		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
-		String typeName = request.getParameter("typeName");
 		
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
 		List<CS_BoardDTO> list 
-			= service.selectCS_Boards(group, typeName, cate);
+			= service.selectCS_Boards(group, cate);
 		
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);
