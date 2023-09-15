@@ -307,4 +307,16 @@ public class MemberDAO extends DBHelper {
 			logger.error("usePoint error : " + e.getMessage());
 		}
 	}
+
+	public void savePoint(String ordUid, int savePoint) {
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.SAVE_POINT);
+			psmt.setInt(1, savePoint);
+			psmt.setString(2, ordUid);
+			psmt.executeUpdate();
+			close();
+		} catch (Exception e) {
+			logger.error("savePoint error : " + e.getMessage());
+		}
+	}
 }

@@ -47,7 +47,7 @@
 	<nav>
 		<h1>주문결제</h1>
 		<p>
-			HOME > 장바구니 > <strong>주문결제</strong>
+			HOME > <strong>주문결제</strong>
 		</p>
 	</nav>
 
@@ -82,6 +82,7 @@
 					<td class="count">
 						<input type="hidden" name="prodNo" value="${product.prodNo }"/>
 						<input type="hidden" name="count" value="${count }"/>
+						<input type="hidden" name="savePoint" value="${cart.product.point }">
 						${count }
 					</td>
 					<td class="price">

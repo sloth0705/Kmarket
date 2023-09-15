@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.MemberPointDTO;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.dto.ProductOrderDTO;
 import kr.co.kmarket.dto.ProductOrderItemDTO;
 import kr.co.kmarket.service.ProductOrderService;
+import kr.co.kmarket.service.MemberPointService;
 import kr.co.kmarket.service.MemberService;
 import kr.co.kmarket.service.ProductOrderItemService;
 import kr.co.kmarket.service.ProductService;
@@ -26,6 +28,7 @@ public class OrderStraightController extends HttpServlet {
 	private ProductOrderService poService = ProductOrderService.INSTANCE;
 	private ProductOrderItemService piService = ProductOrderItemService.INSTANCE;
 	private MemberService mService = MemberService.INSTANCE;
+	private MemberPointService mpService = MemberPointService.INSTANCE;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
@@ -42,12 +45,14 @@ public class OrderStraightController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String ordUid = req.getParameter("uid");
-		String ordCount = req.getParameter("count");
+		String count = req.getParameter("count");
+		String ordCount = req.getParameter("ordCount");
 		String ordPrice = req.getParameter("ordPrice");
 		String ordDiscount = req.getParameter("ordDiscount");
 		String ordDelivery = req.getParameter("ordDelivery");
 		String ordTotPrice = req.getParameter("ordTotPrice");
 		String usedPoint = req.getParameter("usedPoint"); 
+		String userPoint = req.getParameter("userPoint");
 		String recipName = req.getParameter("recipName"); 
 		String recipHp = req.getParameter("recipHp"); 
 		String recipZip = req.getParameter("recipZip"); 
@@ -75,8 +80,23 @@ public class OrderStraightController extends HttpServlet {
 		ProductOrderItemDTO piDto = new ProductOrderItemDTO();
 		piDto.setOrdNo(ordNo);
 		piDto.setProdNo(prodNo);
-		piDto.setCount(ordCount);
+		piDto.setCount(count);
 		piService.insertProductOrderItem(piDto);
+		if (Integer.parseInt(usedPoint) > 0) {
+			MemberPointDTO mp = new MemberPointDTO();
+			mp.setOrdNo(ordNo);
+			mp.setUid(ordUid);
+			mp.setPoint(Integer.parseInt(usedPoint) * - 1);
+			mpService.insertMemberPoint(mp);
+		}
+		if (Integer.parseInt(userPoint) > 0) {
+			MemberPointDTO mp = new MemberPointDTO();
+			mp.setOrdNo(ordNo);
+			mp.setUid(ordUid);
+			mp.setPoint(Integer.parseInt(userPoint) * Integer.parseInt(count));
+			mpService.insertMemberPoint(mp);
+			mService.savePoint(ordUid, Integer.parseInt(userPoint) * Integer.parseInt(count));
+		}
 		mService.usePoint(ordUid, usedPoint);
 		
 		resp.sendRedirect("/Kmarket/product/complete.do?ordNo=" + ordNo);
