@@ -11,7 +11,7 @@ public class ProductSQL {
 			+ "WHERE a.`prodCate1` = ? AND "
 			+ "a.`prodCate2` = ? " 
 			+ "ORDER BY ? " 
-			+ "LIMIT ?, 5";
+			+ "LIMIT ?, 10";
 	public static String SELECT_PRODUCT_COUNT_TOTAL = 
 			"SELECT COUNT(*) "
 			+ "FROM `km_product` "
