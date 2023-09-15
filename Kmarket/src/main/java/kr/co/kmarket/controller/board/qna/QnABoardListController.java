@@ -24,11 +24,17 @@ public class QnABoardListController extends HttpServlet {
 	private CS_BoardService service = CS_BoardService.INSTANCE;
 	
 	@Override
+	public void init() throws ServletException {
+		logger.info("qan list page init==========================");
+	}
+	
+	@Override
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse respones) throws ServletException, IOException {
 		
 		String group = request.getParameter("group");
 		String cate = request.getParameter("cate");
+		String typeName = request.getParameter("typeName");
 		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
 		
@@ -36,7 +42,8 @@ public class QnABoardListController extends HttpServlet {
 		request.setAttribute("cateName", cateName);
 		
 		List<CS_BoardDTO> list 
-			= service.selectCS_Boards();
+			= service.selectCS_Boards(group, typeName, cate);
+//			= service.selectCS_Boards(group);
 		
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);

@@ -1,3 +1,12 @@
+<!-- 
+날짜: 2023/09/14
+작업자: 조유빈
+내용: 관리자 상품관리 - 상품목록 페이지 기능 구현
+ -->
+
+<%@page import="kr.co.kmarket.dao.ProductDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.kmarket.dto.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <main>
@@ -13,12 +22,13 @@
         <section>
             <div>
                 <select name="search">
-                    <option value="search1">상품명</option>
-                    <option value="search1">상품코드</option>
-                    <option value="search1">제조사</option>
-                    <option value="search1">판매자</option>                                    
+                    <option value="prodName">상품명</option>
+                    <option value="prodNo">상품코드</option>
+                    <option value="company">제조사</option>
+                    <option value="seller">판매자</option>                                    
                 </select>
                 <input type="text" name="search">
+                <input type="button" value="검색" />               
             </div>
             <table>
                 <tr>
@@ -34,7 +44,6 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
-
                 <tr>
                 	<c:forEach var="product" items="${products}">
                     <td><input type="checkbox" name="상품코드"/></td>
@@ -54,28 +63,21 @@
                     </c:forEach>
                 </tr>
             </table>
-
             
             <input type="button" value="선택삭제" />                          
 
 
             <div class="paging">
                 <span class="prev">
-                    <a href="#"><&nbsp;이전</a>
+	            <a href="#" class="prev"><</a>
                 </span>
                 <span class="num">
-                    <a href="#" class="on">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">7</a>
+	            <a href="#"class="on">[1]</a>
                 </span>
                 <span class="next">
-                    <a href="#">다음&nbsp;></a>
+	            <a href="#" class="next">></a>
                 </span>
-                </div>
+             </div>
 
         </section>                
 

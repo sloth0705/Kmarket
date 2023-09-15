@@ -57,4 +57,8 @@ public enum MemberService {
 	public void usePoint(String ordUid, String usedPoint) {
 		dao.usePoint(ordUid, usedPoint);
 	}
+
+	public void savePoint(String ordUid, int savePoint) {
+		dao.savePoint(ordUid, savePoint);
+	}
 }

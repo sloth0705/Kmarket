@@ -7,8 +7,10 @@
         <div class="qna">
             <nav>
                 <div>
-                    <a href="${path }/cs/index.do">홈</a><span>&gt;</span>
-                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member">문의 하기</a>
+                	<p>
+	                    <a href="${path }/cs/index.do">홈</a><span>&gt;</span>
+	                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member">문의 하기</a>
+                    </p>
                 </div>
             </nav>
             <section id="pageCss" class="list">

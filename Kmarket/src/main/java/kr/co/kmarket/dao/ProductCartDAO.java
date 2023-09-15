@@ -107,6 +107,7 @@ public class ProductCartDAO extends DBHelper {
 				dto.setRdate(rs.getString("rdate"));
 
 				ProductDTO product = new ProductDTO();
+				product.setProdNo(rs.getInt("prodNo"));
 				product.setProdName(rs.getString("prodName"));
 				product.setDescript(rs.getString("descript"));
 				product.setPrice(rs.getInt("price"));

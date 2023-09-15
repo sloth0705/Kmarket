@@ -5,6 +5,26 @@
 <script>
 	$(function() {
 		const length = ${orderItems.size()};
+		let totPrice = 0;
+		let totDisedPrice = 0;
+		let totDelivery = 0;
+		let total = 0;
+		for (let i = 0; i < length; i++) {
+			const price = $('input[name=price'+i+']').val() * 1;
+			const count = $('input[name=count'+i+']').val() * 1;
+			const disPrice = $('input[name=disPrice'+i+']').val() * 1;
+			const disedPrice = $('input[name=disedPrice'+i+']').val() * 1;
+			const delivery = $('input[name=delivery'+i+']').val() * 1;
+			
+			totPrice += price * count;
+			totDisedPrice += disedPrice * count;
+			totDelivery += delivery;
+			total += disPrice * count;
+		}
+		$('#totPrice').text(totPrice.toLocaleString());
+		$('#totDisedPrice').text(totDisedPrice.toLocaleString());
+		$('#totDelivery').text(totDelivery.toLocaleString());
+		$('.ordTotal').text(total.toLocaleString());
 	});
 </script>
 <!-- 결제완료 페이지 시작 -->
@@ -49,12 +69,16 @@
 					</td>
 					<td>
 						<input type="hidden" name="price${cnt.index }" value="${orderItem.product.price }"/>
+						<input type="hidden" name="disedPrice${cnt.index }" value="${orderItem.product.getDisedPrice() }"/>
+						<input type="hidden" name="disPrice${cnt.index }" value="${orderItem.product.getDisPrice() }"/>
 						${orderItem.product.getPriceWithComma() }원
 					</td>
 					<td>
+						<input type="hidden" name="delivery${cnt.index }" value="${orderItem.product.delivery }"/>
 						${orderItem.product.delivery }원
 					</td>
 					<td>
+						<input type="hidden" name="count${cnt.index }" value="${orderItem.count }"/>
 						${orderItem.count }
 					</td>
 					<td>
@@ -68,19 +92,19 @@
 					<table>
 						<tr>
 							<td>총 상품금액</td>
-							<td><span>34,000</span>원</td>
+							<td><span id="totPrice">0</span>원</td>
 						</tr>
 						<tr>
 							<td>총 할인금액</td>
-							<td><span>-2,000</span>원</td>
+							<td><span id="totDisedPrice">0</span>원</td>
 						</tr>
 						<tr>
 							<td>배송비</td>
-							<td><span>3,000</span>원</td>
+							<td><span id="totDelivery">0</span>원</td>
 						</tr>
 						<tr>
 							<td>총 결제금액</td>
-							<td><span>35,000</span>원</td>
+							<td><span class="ordTotal">0</span>원</td>
 						</tr>
 					</table>
 				</td>
@@ -96,7 +120,7 @@
 				<td>주문번호</td>
 				<td>${order.ordNo }</td>
 				<td rowspan="3">총 결제금액</td>
-				<td rowspan="3"><span>35,000</span>원</td>
+				<td rowspan="3"><span class="ordTotal"></span>원</td>
 			</tr>
 			<tr>
 				<td>결제방법</td>
