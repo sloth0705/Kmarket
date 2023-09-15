@@ -3,7 +3,6 @@ package kr.co.kmarket.controller.admin.product;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import net.sf.json.JSONObject;
 
 import kr.co.kmarket.dto.ProductCate2DTO;
 import kr.co.kmarket.service.ProductCate2Service;
@@ -36,13 +37,16 @@ public class RegisterController extends HttpServlet{
 		String cate1 = req.getParameter("cate1");
 		logger.info("cate1 : " + cate1);
 		
-		List<ProductCate2DTO> cate2 = service.selectProductCate2s(cate1);
-		logger.info("cate2 : " + cate2);
+		JSONObject json = new JSONObject();
 		
-		Map<String, Object> data = new HashMap<>();
-		data.put("cate2", cate2);
+		List<ProductCate2DTO> list = service.selectProductCate2s(cate1);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("cate2List", list);
+		
+		json.put("map", map);
 		
 		resp.setContentType("application/x-json; charset=utf-8");
-		resp.getWriter().print(data); // 전송
+		resp.getWriter().print(json); // 전송
 	}
 }

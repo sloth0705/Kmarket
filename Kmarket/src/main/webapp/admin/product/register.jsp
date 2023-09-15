@@ -1,27 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
 <script>
-	function cate1Select(){
-	
-		const cate1 = $("#category1 option:selected").val();
-		console.log(cate1);
-		
-		const jsonData = {
-			"cate1": cate1
-		};
-		
-		$.ajax({
-			url: '${path}/admin/product/register.do',
-			type: 'POST',
-			data: jsonData,
-			dataType: 'json',
-			success: function(data){
-				alert(data);
-				
-				$("#category2").append("<option value=\"${data.cate2}\">${data.c2Name}</option>");
-			}
+	$(document).ready(function(){
+		$('#category1').on('change', function(){
+			
+			const cate1 = this.value;
+			console.log(cate1);
+			
+			$('#category2').children('option:not(:first)').remove();
+			
+			const jsonData = {
+				"cate1": cate1
+			};
+			console.log(jsonData);
+			
+			$.ajax({
+				url: '${path}/admin/product/register.do',
+				type: 'post',
+				data: jsonData,
+				dataType: 'json',
+				success: function(data){
+					
+					let cate2List = data.map.cate2List; // map 넘겨받기
+					
+					for (var i=0 ; i<Object.keys(data.map.cate2List).length ; i++)
+						$("#category2").append("<option id='cate2Value' value="+cate2List[i].cate2+">"+cate2List[i].c2Name+"</option>");
+				},
+				error: function(){
+					alert("error");
+				}
+			});
 		});
-	}
+	});
 </script>
 <main>
 <%@ include file="../inc/aside.jsp" %>
@@ -43,7 +53,7 @@
                     <tr>
                         <td>1차 분류</td>
                         <td>
-                            <select id="category1" name="category1" onchange="cate1Select()">
+                            <select id="category1" name="category1">
                                 <option value="0" selected disabled>1차 분류 선택</option>
                                 <option value="10">브랜드패션</option>
                                 <option value="11">패션의류/잡화/뷰티</option>
@@ -62,9 +72,9 @@
                         <td>
                             <select id="category2" name="category2">
                                 <option value="cate0" selected disabled>2차 분류 선택</option>
-                                 <c:forEach var="cate" items="${category2}">
+                                 <!--<c:forEach var="cate" items="${category2}">
                                  <option value="${cate.cate2}">${cate.c2Name}</option>
-                                 </c:forEach>
+                                 </c:forEach>-->
                             </select>
                         </td>
                     </tr>
