@@ -38,8 +38,8 @@ public enum CS_BoardService {
 	}
 	
 	// qna 게시판 글 쓸 때 cate별로 type 가져오기
-	public List<BoardTypeDTO> selectQnABoardType(int type){
-		return dao.selectQnABoardType(type);
+	public List<BoardTypeDTO> selectQnABoardType(String cate){
+		return dao.selectQnABoardType(cate);
 	}
 	
 	// 게시판 수정

@@ -18,7 +18,7 @@ $(function(){
 		selectType.empty();
 		selectType.append(
 			$('<option>',{
-				value: '0',
+				value: '',
                 text: '2차 분류 선택',
                 disabled: 'disabled',
                 selected: 'selected'
