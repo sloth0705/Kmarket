@@ -9,12 +9,12 @@
       </nav>
       <!-- 정렬 메뉴 -->
       <ul class="sort">
-          <li><a href="#" class="on">판매많은순</a></li>
-          <li><a href="#">낮은가격순</a></li>
-          <li><a href="#">높은가격순</a></li>
-          <!-- <li><a href="#">평점높은순</a></li> -->
-          <!-- <li><a href="#">후기많은순</a></li> -->
-          <li><a href="#">최근등록순</a></li>
+          <li><a href="${path }/product/list.do?sort=sold&pg=1&cate1=${cate1}&cate2=${cate2}" class="${sort eq 'sold' ? 'on' : ''}">판매많은순</a></li>
+          <li><a href="${path }/product/list.do?sort=priceA&pg=1&cate1=${cate1}&cate2=${cate2}" class="${sort eq 'priceA' ? 'on' : ''}">낮은가격순</a></li>
+          <li><a href="${path }/product/list.do?sort=priceD&pg=1&cate1=${cate1}&cate2=${cate2}" class="${sort eq 'priceD' ? 'on' : ''}">높은가격순</a></li>
+          <li><a href="${path }/product/list.do?sort=score&pg=1&cate1=${cate1}&cate2=${cate2}" class="${sort eq 'score' ? 'on' : ''}">평점높은순</a></li>
+          <li><a href="${path }/product/list.do?sort=review&pg=1&cate1=${cate1}&cate2=${cate2}" class="${sort eq 'review' ? 'on' : ''}">후기많은순</a></li>
+          <li><a href="${path }/product/list.do?sort=rdate&pg=1&cate1=${cate1}&cate2=${cate2}" class="${sort eq 'rdate' ? 'on' : ''}">최근등록순</a></li>
       </ul>
       <!-- 상품목록 -->              
       <table>     
@@ -45,9 +45,9 @@
             </ul>
           </td>
           <td>
-            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;판매자</h4>
+            <h4 class="seller"><i class="fas fa-home"></i>&nbsp;${product.seller }</h4>
             <h5 class="badge power">판매자등급</h5>
-            <h6 class="rating star1">상품평</h6>
+            <h6 class="rating star${product.score }">상품평</h6>
           </td>
         </tr>
         </c:forEach>

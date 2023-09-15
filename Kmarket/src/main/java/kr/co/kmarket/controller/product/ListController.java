@@ -25,15 +25,16 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pg = req.getParameter("pg");
-		String ord = req.getParameter("ord");
 		String cate1 = req.getParameter("cate1");
 		String cate2 = req.getParameter("cate2");
-		if (ord == null || ord.equals("")) {
-			ord = "1";
+		String sort = req.getParameter("sort");
+		if (sort == null || sort.equals("")) {
+			sort = "sold";
 		}
+		
 		ProductSearchForm searchForm = new ProductSearchForm();
 		searchForm.setPg(pg);
-		searchForm.setOrd(ord);
+		searchForm.setSort(sort);
 		searchForm.setCate1(cate1);
 		searchForm.setCate2(cate2);
 
@@ -79,9 +80,9 @@ public class ListController extends HttpServlet {
 		List<ProductDTO> products = pService.selectProducts(searchForm, start);
 
 		req.setAttribute("pg", pg);
-		req.setAttribute("ord", ord);
 		req.setAttribute("cate1", cate1);
 		req.setAttribute("cate2", cate2);
+		req.setAttribute("sort", sort);
 		req.setAttribute("pageGroupStart", pageGroupStart);
 		req.setAttribute("pageGroupEnd", pageGroupEnd);
 		req.setAttribute("pageStartNum", pageStartNum);
