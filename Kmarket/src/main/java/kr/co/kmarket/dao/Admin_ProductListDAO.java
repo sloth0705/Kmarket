@@ -6,12 +6,16 @@
 
 package kr.co.kmarket.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.db.DBHelper;
 import kr.co.kmarket.db.ProductSQL;
 import kr.co.kmarket.dto.ProductDTO;
+import kr.co.kmarket.dto.ProductSearchForm;
 
 public class Admin_ProductListDAO extends DBHelper {
 	private static Admin_ProductListDAO instance = new Admin_ProductListDAO();
@@ -56,6 +60,18 @@ public class Admin_ProductListDAO extends DBHelper {
 		
 	}
 	
+	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start) {
+		List<ProductDTO> products = new ArrayList<>();
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCTS);
+			rs = psmt.executeQuery();
+			
+		}catch (Exception e) {
+			logger.error("selectProducts error : " + e.getMessage());
+		}
+		return products;
+	}
+	
 	public void updateProduct(ProductDTO dto) {
 
 	}
@@ -64,7 +80,19 @@ public class Admin_ProductListDAO extends DBHelper {
 
 	}
 	
-	
+	public List<ProductDTO> deleteProducts(int prodNo) {
+		List<ProductDTO> products = new ArrayList<>();
+		conn = getConnection();
+		try {
+
+					
+			
+		} catch (Exception e) {
+			logger.error("deleteProducts error : " + e.getMessage());
+		}
+		return products;
+
+	}
 	
 	
 	
