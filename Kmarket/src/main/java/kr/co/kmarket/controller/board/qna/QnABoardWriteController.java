@@ -55,11 +55,13 @@ public class QnABoardWriteController extends HttpServlet {
 		String group = request.getParameter("group");
 		String cate = request.getParameter("cate");
 		
+		String uid = request.getParameter("uid");
 		String type = request.getParameter("type");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
 		CS_BoardDTO dto = new CS_BoardDTO();
+		dto.setUid(uid);
 		dto.setGroup(group);
 		dto.setCate(cate);
 		dto.setType(Integer.parseInt(type));

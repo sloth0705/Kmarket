@@ -38,7 +38,7 @@ public class AjaxQnABoardWriteController extends HttpServlet {
 		logger.info("ajax value : " + optionValue);
 		
 		List<BoardTypeDTO> type
-			= service.selectQnABoardType(Integer.parseInt(optionValue));
+			= service.selectQnABoardType(optionValue);
 		logger.info("ajax type list : " + type);
 		
 		respones.setContentType("application/json;charset=UTF-8");

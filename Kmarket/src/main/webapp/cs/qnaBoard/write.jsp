@@ -3,6 +3,8 @@
 <c:import url="../inc/aside/qna.jsp" />
 			<article>
 		    	<form action="${path }/cs/qnaBoard/write.do" method="post">
+		    		<input type="hidden" name="group" value="${group }" />
+		    		<input type="hidden" name="uid" value="${sessMember.uid }" />
 			        <table>
 			            <tbody>
 			                <tr>

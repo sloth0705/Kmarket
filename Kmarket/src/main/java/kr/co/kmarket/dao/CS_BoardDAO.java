@@ -32,7 +32,7 @@ public class CS_BoardDAO extends DBHelper {
 		try {
 			sql = "INSERT INTO km_cs_board SET "
 					+ " uid = ?, "
-					+ " group = ?, "
+					+ " `group` = ?, "
 					+ " cate = ?, "
 					+ " type = ?, "
 					+ " title = ?, "
@@ -145,7 +145,13 @@ public class CS_BoardDAO extends DBHelper {
 	public List<BoardCateDTO> selectQnABoardCate(){
 		List<BoardCateDTO> list = new ArrayList<>();
 		conn = getConnection();
-		sql = "SELECT * FROM km_cs_boardCate ";
+		sql = "SELECT "
+				+ "	DISTINCT bc.`cate`,"
+					+ " bc.cateName "
+				+ " FROM km_cs_boardCate AS bc "
+				+ " JOIN km_cs_boardType AS bt "
+				+ " ON bc.`cate` = bt.`cate` "
+				+ " WHERE `type` < 20";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -165,14 +171,14 @@ public class CS_BoardDAO extends DBHelper {
 	}
 	
 	// qna 글 쓸 때 cate 별로 type 가져오기
-	public List<BoardTypeDTO> selectQnABoardType(int type){
+	public List<BoardTypeDTO> selectQnABoardType(String cate){
 		List<BoardTypeDTO> list = new ArrayList<>();
 		conn = getConnection();
 		sql = "SELECT * FROM km_cs_boardType "
-				+ " WHERE type = ?";
+				+ " WHERE cate = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, type);
+			psmt.setString(1, cate);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
