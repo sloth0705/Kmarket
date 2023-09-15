@@ -25,7 +25,59 @@ public class ProductDAO extends DBHelper {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public void insertProduct(ProductDTO dto) {
-
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement("INSERT INTO `km_product` SET "
+										+ "`seller`=?,"
+										+ "`prodCate1`=?,"
+										+ "`prodCate2`=?,"
+										+ "`prodName`=?,"
+										+ "`descript`=?,"
+										+ "`company`=?,"
+										+ "`price`=?,"
+										+ "`discount`=?,"
+										+ "`point`=?,"
+										+ "`stock`=?,"
+										+ "`delivery`=?,"
+										+ "`thumb1`=?,"
+										+ "`thumb2`=?,"
+										+ "`thumb3`=?,"
+										+ "`detail`=?,"
+										+ "`status`=?,"
+										+ "`duty`=?,"
+										+ "`receipt`=?,"
+										+ "`bizType`=?,"
+										+ "`origin`=?,"
+										+ "`ip`=?,"
+										+ "`rdate`=NOW()");
+			psmt.setString(1, dto.getSeller());
+			psmt.setInt(2, dto.getProdCate1());
+			psmt.setInt(3, dto.getProdCate2());
+			psmt.setString(4, dto.getProdName());
+			psmt.setString(5, dto.getDescript());
+			psmt.setString(6, dto.getCompany());
+			psmt.setInt(7, dto.getPrice());
+			psmt.setInt(8, dto.getDiscount());
+			psmt.setInt(9, dto.getPoint());
+			psmt.setInt(10, dto.getStock());
+			psmt.setInt(11, dto.getDelivery());
+			psmt.setString(12, dto.getThumb1());
+			psmt.setString(13, dto.getThumb2());
+			psmt.setString(14, dto.getThumb3());
+			psmt.setString(15, dto.getDetail());
+			psmt.setString(16, dto.getStatus());
+			psmt.setString(17, dto.getDuty());
+			psmt.setString(18, dto.getReceipt());
+			psmt.setString(19, dto.getBizType());
+			psmt.setString(20, dto.getOrigin());
+			psmt.setString(21, dto.getIp());
+			
+			psmt.executeUpdate();
+			close();
+			
+		}catch (Exception e) {
+			logger.error("insertProduct() error : " + e.getMessage());
+		}
 	}
 
 	public ProductDTO selectProduct(String prodNo) {
