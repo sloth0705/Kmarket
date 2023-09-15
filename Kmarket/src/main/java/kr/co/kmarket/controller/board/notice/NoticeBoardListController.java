@@ -32,14 +32,13 @@ public class NoticeBoardListController extends HttpServlet {
 		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
 		
-		String typeName = request.getParameter("typeName");
 		// map의 key 값으로 value값 가져오기
 		// -> key를 cate로 받아서 value값을 출력하는거임
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
 		List<CS_BoardDTO> list 
-			= service.selectCS_Boards(group, typeName, cate);
+			= service.selectCS_Boards(group, cate);
 		
 		request.setAttribute("cs", list);
 		logger.info("BoardList_get list : " + list);

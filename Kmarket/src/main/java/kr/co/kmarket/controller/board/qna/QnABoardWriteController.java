@@ -1,6 +1,7 @@
 package kr.co.kmarket.controller.board.qna;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.BoardCateDTO;
 import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
@@ -38,6 +40,10 @@ public class QnABoardWriteController extends HttpServlet {
 		
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
+		
+		List<BoardCateDTO> cateDTO 
+			= service.selectQnABoardCate();
+		request.setAttribute("cate", cateDTO);
 		
 		request.getRequestDispatcher("/cs/qnaBoard/write.jsp").forward(request, respones);
 	}

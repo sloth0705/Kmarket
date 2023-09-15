@@ -15,7 +15,7 @@
 							        <tr>
 							            <td>
 							                <a href="./view.do?group=${group }&cate=${cate}&bno=${cs.bno}">
-							                	[typeName] ${cs.title }
+							                	[${cs.typeName }] ${cs.title }
 						                	</a>
 							            </td>
 							            <td>${cs.rdate }</td>

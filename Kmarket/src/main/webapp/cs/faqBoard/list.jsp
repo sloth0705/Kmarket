@@ -8,7 +8,7 @@
 				</nav>
 				
                 <div>
-                    <h3>가입</h3>
+                    <h3>${cs.get(0).typeName }</h3>
                     <ul>
                         <li>
                             <a href="#">
@@ -26,7 +26,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3>탈퇴</h3>
+                    <h3>${cs.get(1).typeName }</h3>
                     <ul>
                         <li>
                             <a href="#">
