@@ -57,7 +57,7 @@
             });
         });
         
-		const success = ${success};
+		const success = '${success}';
     	if (success == 200) // 로그아웃
     		alert('로그아웃되었습니다.');
     </script>

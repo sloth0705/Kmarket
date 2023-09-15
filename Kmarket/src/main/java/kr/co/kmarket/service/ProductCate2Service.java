@@ -20,6 +20,10 @@ public enum ProductCate2Service {
 	public List<ProductCate2DTO> selectProductCate2s(String cate1) {
 		return dao.selectProductCate2s(cate1);
 	}
+	
+	public List<ProductCate2DTO> selectProductCate2s() {
+		return dao.selectProductCate2s();
+	}
 
 	public void updateProductCate2(ProductCate2DTO dto) {
 		dao.updateProductCate2(dto);
