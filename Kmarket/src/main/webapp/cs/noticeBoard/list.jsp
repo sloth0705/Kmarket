@@ -15,7 +15,7 @@
 							        <tr>
 							            <td>
 							                <a href="./view.do?group=${group }&cate=${cate}&bno=${cs.bno}">
-							                	[이걸 뭘로 하지?] ${cs.title }
+							                	[typeName] ${cs.title }
 						                	</a>
 							            </td>
 							            <td>${cs.rdate }</td>
@@ -24,7 +24,7 @@
 							</c:when>
 							<c:otherwise>
 		           			<tr>
-								<td colspan="3">등록된 게시물이 없습니다.</td>
+								<td colspan="2">등록된 게시물이 없습니다.</td>
 							</tr>
 		           			</c:otherwise>
 						</c:choose>
@@ -51,3 +51,4 @@
 	</div>
 </section>
 <%@ include file="../inc/footer.jsp" %>
+<script src="/Kmarket/cs/js/list.js"></script>

@@ -19,10 +19,15 @@ public enum CS_BoardService {
 		return dao.selectCS_Board(bno);
 	}
 
-	public List<CS_BoardDTO> selectCS_Boards() {
-		return dao.selectCS_Boards();
+	public List<CS_BoardDTO> selectCS_Boards(String group, String typeName, String cate) {
+		if(cate.equals("All")) {
+			return dao.selectCS_Boards(group);
+		}else {
+			return dao.selectBoardTypes(group, typeName, cate);
+		}
 	}
 
+	
 	public void updateCS_Board(CS_BoardDTO dto) {
 		dao.updateCS_Board(dto);
 	}
