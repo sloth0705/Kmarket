@@ -44,6 +44,10 @@ public class MemberPointDTO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	
+	public void setPoint(String point) {
+		this.point = Integer.parseInt(point);
+	}
 
 	public String getPointDate() {
 		return pointDate;

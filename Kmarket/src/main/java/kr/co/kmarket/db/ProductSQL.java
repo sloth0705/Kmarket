@@ -85,6 +85,10 @@ public class ProductSQL {
 			"UPDATE `km_member` "
 			+ "SET `point` = `point` - ? "
 			+ "WHERE `uid` = ?";
+	public static String SAVE_POINT = 
+			"UPDATE `km_member` "
+			+ "SET `point` = `point` + ? "
+			+ "WHERE `uid` = ?";
 	public static String SELECT_PRODUCT_ORDER =
 			"SELECT a.*, b.`name` FROM `km_product_order` AS a "
 			+ "LEFT OUTER JOIN `km_member` AS b ON a.`ordUid` = b.`uid` "
@@ -94,4 +98,10 @@ public class ProductSQL {
 			+ "FROM `km_product_order_item` AS a "
 			+ "LEFT OUTER JOIN `km_product` AS b ON a.`prodNo` = b.`prodNo` "
 			+ "WHERE a.`ordNo` = ?";
+	public static String INSERT_MEMBER_POINT = 
+			"INSERT INTO `km_member_point` "
+			+ "SET `uid` = ?, "
+			+ "`ordNo` = ?, "
+			+ "`point` = ?,"
+			+ "`pointDate` = NOW()";
 }

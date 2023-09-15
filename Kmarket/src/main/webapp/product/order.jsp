@@ -31,6 +31,10 @@
 		$('#disPrice').text(ordDiscount.toLocaleString());
 		$('#delivery').text(ordDelivery.toLocaleString());
 		$('#total').text(ordTotPrice.toLocaleString());
+		
+		$('input[name=ordSubmit]').click(function() {
+			$('#ordForm').submit();
+		});
 	});
 	// 포인트 사용 구현
 	function usePoint() {
@@ -56,7 +60,8 @@
 		</p>
 	</nav>
 
-	<form action="#">
+	<form id="ordForm" action="${path }/product/order.do" method="post">
+		<input type="hidden" name="uid" value="${sessMember.uid }"/>
 		<!-- 주문 상품 목록 -->
 		<table>
 			<thead>
@@ -71,6 +76,9 @@
 			</thead>
 			<tbody>
 				<c:forEach var="cart" items="${carts }" varStatus="status">
+					<input type="hidden" name="prodNo" value="${cart.product.prodNo }">
+					<input type="hidden" name="cartNo" value="${cart.cartNo }">
+					<input type="hidden" name="userPoint" value="${cart.product.point }">
 					<tr>
 						<td>
 							<article>
@@ -162,7 +170,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" name="" value="결제하기">
+			<input type="button" name="ordSubmit" value="결제하기">
 		</div>
 
 		<!-- 배송정보 -->
@@ -171,7 +179,7 @@
 			<table>
 				<tr>
 					<td>수령인</td>
-					<td><input type="text" name="recipName" value="ppp"/></td>
+					<td><input type="text" name="recipName" value=""/></td>
 				</tr>
 				<tr>
 					<td>휴대폰</td>
@@ -200,7 +208,7 @@
 			<h1>할인정보</h1>
 			<div>
 				<p>
-					현재 포인트 : <span>500</span>점
+					현재 포인트 : <span>${sessMember.point }</span>점
 				</p>
 				<label> 
 					<input type="number" name="usedPoint" min="0"/>점 
