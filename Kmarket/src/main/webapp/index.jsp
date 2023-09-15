@@ -1,11 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp" %>
+<script>
+	$(function() {
+		$.ajax({
+			url: '${path}/cate.do',
+			type: 'GET',
+			data: '',
+			dataType: 'json',
+		 	contentType: "application/json; charset:UTF-8", 
+			success: function(data) {
+				$('.category').children().remove();
+				$('.category').append(data.cate);
+			}
+		});
+	});
+</script>
       <main>
         <!-- 카테고리/베스트 상품 영역 -->
         <aside>
           <!-- 카테고리 -->
           <ul class="category">
-            <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
+            <%-- <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
             <li>
                 <a href="#"><i class="fas fa-tshirt"></i>패션·의류·뷰티</a>
                 <ol>
@@ -41,7 +56,7 @@
                     <li><a href="${path }/product/list.do?pg=1&cate1=14&cate2=13">생활용품</a></li>
                     <li><a href="${path }/product/list.do?pg=1&cate1=14&cate2=15">사무용품</a></li>
                 </ol>
-            </li>
+            </li> --%>
           </ul>
 
           <!-- 베스트상품 배너 -->
