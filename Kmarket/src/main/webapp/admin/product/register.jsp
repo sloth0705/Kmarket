@@ -36,12 +36,34 @@
 		
 		// 알아보는 중
 		// 카테고리 분류 파라미터로 넘기기
-		/*$("#category2").on('change', function(){
+		$("#category2").on('change', function(){
 			
-			let form_data = $("#form").serialize();
-			form_data += '?prodCate1='+$("#category1 option:selected").val()+'&prodCate2='+$("#category2 option:selected").val();
-		});*/
+			var prodCate1 = $("#category1 :selected").val();
+			var prodCate2 = $("#category2 :selected").val();
+			console.log("cate1 선택됨 : "+prodCate1);
+			console.log("cate2 선택됨 : "+prodCate2);
+			
+			const currentUrl = window.location.href; // 현재 주소
+			console.log(currentUrl);
+			
+			//const newUrl = currentUrl + "?prodCate1="+prodCate1+"&prodCate2="+prodCate2;
+			//window.location.replace(newUrl); // -> 리다이렉트됨
+			
+			history.pushState(null, null, '?prodCate1='+prodCate1+"&prodCate2="+prodCate2);
+			const submitUrl = window.location.href; // 현재 주소
+			console.log(submitUrl);
+			
+			var form = document.form;
+			form.action = submitUrl;
+			console.log("form action 변경함 - "+form.action);
+		});
 	});
+	
+	window.onkeydown = function() {
+		var kcode = event.keyCode;
+		if(kcode == 116)
+			history.replaceState({}, null, location.pathname);
+	}
 </script>
 <main>
 <%@ include file="../inc/aside.jsp" %>
@@ -53,8 +75,10 @@
         </p>
     </nav>
     <article>
-        <form id="form" action="${path}/admin/product/register.do" method="post" enctype="multipart/form-data">
+        <form name="form" action="${path}/admin/product/register.do" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="seller" value="${sessMember.uid}"/>
+        	<input type="hidden" name="prodCate1" value="${prodCate1}"/>
+        	<input type="hidden" name="prodCate2" value="${prodCate2}"/>
             <section>
                 <h4>상품분류</h4>
                 <p>
@@ -81,9 +105,9 @@
                     <tr>
                         <td>2차 분류</td>
                         <td>
-                            <select id="category2" name="prodCate2" required onchange="this.form.submit()">
+                            <select id="category2" name="prodCate2" required> <!-- onchange="this.form.submit()" -->
                                 <option value="" selected disabled>2차 분류 선택</option>
-                                <!-- ajax로 추가 -->
+                                <!-- ajax로 option 추가됨 -->
                             </select>
                         </td>
                     </tr>
@@ -184,14 +208,14 @@
                     <tr>
                         <td>사업자구분</td>
                         <td><input type="text" name="bizType" value="사업자 판매자" required/></td>
-                    </tr>                                
+                    </tr>
                     <tr>
                         <td>원산지</td>
                         <td><input type="text" name="origin" value="국내산" required/></td>
-                    </tr>                                
-                </table>                                
+                    </tr>
+                </table>
             </section>
-            <input type="submit" value="등록하기"/>
+            <input id="submit" type="submit" value="등록하기"/>
         </form>
     </article>
     <p class="ico alert">

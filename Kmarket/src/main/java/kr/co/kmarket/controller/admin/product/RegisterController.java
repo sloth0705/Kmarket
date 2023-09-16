@@ -26,6 +26,13 @@ public class RegisterController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		/*String prodCate1 = req.getParameter("prodCate1");
+		String prodCate2 = req.getParameter("prodCate2");
+		req.setAttribute("prodCate1", prodCate1);
+		req.setAttribute("prodCate1", prodCate2);
+		logger.info("doGet() : "+prodCate1);
+		logger.info("doGet() : "+prodCate2);*/
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/register.jsp");
 		dispatcher.forward(req, resp);
 	}
@@ -34,8 +41,8 @@ public class RegisterController extends HttpServlet{
 		
 		String prodCate1Value = req.getParameter("prodCate1");
 		String prodCate2Value = req.getParameter("prodCate2");
-		logger.info(prodCate1Value);
-		logger.info(prodCate2Value);
+		logger.info("doPost() : "+prodCate1Value);
+		logger.info("doPost() : "+prodCate2Value);
 		
 		// 썸네일 업로드
 		String path = service.getPath(req, "/thumb/"+prodCate1Value+"/"+prodCate2Value);
