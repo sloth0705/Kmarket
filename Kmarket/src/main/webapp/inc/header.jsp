@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
-    <link rel="stylesheet" href="${path }/css/common.css" />
+    <link rel="stylesheet" href="${path}/css/common.css" />
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js" ></script>
     <style>
@@ -82,10 +82,10 @@
                     </c:if>
                     <c:if test="${not empty sessMember}">
                     	<c:if test="${sessMember.type eq 2}">
-                			<a href="${Path}/admin/index.do">관리자</a>
+                			<a href="${path}/admin/index.do">관리자</a>
 	                	</c:if>
 	                    <a href="#">마이페이지</a>
-	                    <a href="${path }/product/cart.do"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
+	                    <a href="${path}/product/cart.do"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>
 	                    <a href="${path}/member/logout.do">로그아웃</a>
                     </c:if>
                 </div>
@@ -122,16 +122,16 @@
                     </ul>
                     <ul>
                         <li>
-                            <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All">공지사항</a>
+                            <a href="${path}/cs/noticeBoard/list.do?group=notice&cate=All">공지사항</a>
                         </li>
                         <li>
-                            <a href="${path }/cs/faqBoard/list.do?group=faq&cate=member">자주묻는질문</a>
+                            <a href="${path}/cs/faqBoard/list.do?group=faq&cate=member">자주묻는질문</a>
                         </li>
                         <li>
-                            <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member">문의하기</a>
+                            <a href="${path}/cs/qnaBoard/list.do?group=qna&cate=member">문의하기</a>
                         </li>
                         <li>
-                            <a href="${path }/cs/index.do">고객센터</a>
+                            <a href="${path}/cs/index.do">고객센터</a>
                         </li>
                     </ul>
                 </div>
