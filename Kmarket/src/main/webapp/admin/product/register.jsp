@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp" %>
+<script src="/Kmarket/admin/js/validation.js"></script>
 <script>
 	$(document).ready(function(){
 		
@@ -34,8 +35,7 @@
 			});
 		});
 		
-		// 알아보는 중
-		// 카테고리 분류 파라미터로 넘기기
+		// 카테고리 분류 파라미터로 넘기기(썸네일 업로드 폴더 경로 위해서)
 		$("#category2").on('change', function(){
 			
 			var prodCate1 = $("#category1 :selected").val();
@@ -45,9 +45,6 @@
 			
 			const currentUrl = window.location.href; // 현재 주소
 			console.log(currentUrl);
-			
-			//const newUrl = currentUrl + "?prodCate1="+prodCate1+"&prodCate2="+prodCate2;
-			//window.location.replace(newUrl); // -> 리다이렉트됨
 			
 			history.pushState(null, null, '?prodCate1='+prodCate1+"&prodCate2="+prodCate2);
 			const submitUrl = window.location.href; // 현재 주소
@@ -75,10 +72,8 @@
         </p>
     </nav>
     <article>
-        <form name="form" action="${path}/admin/product/register.do" method="post" enctype="multipart/form-data">
+        <form id="form" name="form" action="${path}/admin/product/register.do" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="seller" value="${sessMember.uid}"/>
-        	<input type="hidden" name="prodCate1" value="${prodCate1}"/>
-        	<input type="hidden" name="prodCate2" value="${prodCate2}"/>
             <section>
                 <h4>상품분류</h4>
                 <p>
@@ -105,7 +100,7 @@
                     <tr>
                         <td>2차 분류</td>
                         <td>
-                            <select id="category2" name="prodCate2" required> <!-- onchange="this.form.submit()" -->
+                            <select id="category2" name="prodCate2" required>
                                 <option value="" selected disabled>2차 분류 선택</option>
                                 <!-- ajax로 option 추가됨 -->
                             </select>
@@ -122,28 +117,38 @@
                 <table>
                     <tr>
                         <td>상품명</td>
-                        <td><input type="text" name="prodName" required/></td>
+                        <td>
+                        	<input type="text" name="prodName" required/>
+                        	<span class="resultProdName"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>기본설명</td>
                         <td>
                             <span>상품명 하단에 상품에 대한 추가적인 설명이 필요한 경우에 입력</span>
-                            <input type="text" name="descript" required/>
+                            <input type="text" name="descript"/>
                         </td>
                     </tr>
                     <tr>
                         <td>제조사</td>
-                        <td><input type="text" name="company" required/></td>
+                        <td>
+                        	<input type="text" name="company" required/>
+                        	<span class="resultCompany"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>판매가격</td>
-                        <td><input type="text" name="price" required/>원</td>
+                        <td>
+                        	<input type="text" name="price" required/>원
+                        	<span class="resultPrice"></span>
+                        </td>
                     </tr>                                    
                     <tr>
                         <td>할인율</td>
                         <td>
                             <span>0을 입력하면 할인율 없음</span>
                             <input type="text" name="discount" required/>원
+                            <span class="resultDiscount"></span>
                         </td>
                     </tr>
                     <tr>
@@ -151,17 +156,22 @@
                         <td>
                             <span>0을 입력하면 포인트 없음</span>
                             <input type="text" name="point" required/>점
+                            <span class="resultPoint"></span>
                         </td>
                     </tr>
                     <tr>
                         <td>재고수량</td>
-                        <td><input type="text" name="stock" required/>개</td>
+                        <td>
+                        	<input type="text" name="stock" required/>개
+                        	<span class="resultStock"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>배송비</td>
                         <td>
                             <span>0을 입력하면 배송비 무료</span>
                             <input type="text" name="delivery" required/>원
+                            <span class="resultDelivery"></span>
                         </td>
                     </tr>
                     <tr>
@@ -195,11 +205,17 @@
                 <table>
                     <tr>
                         <td>상품상태</td>
-                        <td><input type="text" name="status" value="새상품" required/></td>
+                        <td>
+                        	<input type="text" name="status" value="새상품" required/>
+                        	<span class="resultStatus"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>부가세 면세여부</td>
-                        <td><input type="text" name="duty" value="과세상품" required/></td>
+                        <td>
+                        	<input type="text" name="duty" value="과세상품" required/>
+                        	<span class="resultDuty"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td>영수증발행</td>
@@ -211,7 +227,10 @@
                     </tr>
                     <tr>
                         <td>원산지</td>
-                        <td><input type="text" name="origin" value="국내산" required/></td>
+                        <td>
+                        	<input type="text" name="origin" value="국내산" required/>
+                        	<span class="resultOrigin"></span>
+                        </td>
                     </tr>
                 </table>
             </section>

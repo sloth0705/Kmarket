@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="/Kmarket/js/zipcode.js"></script>
-<script src="/Kmarket/js/validation.js"></script>
-<script src="/Kmarket/js/checkMember.js"></script>
+<script src="/Kmarket/member/js/zipcode.js"></script>
+<script src="/Kmarket/member/js/validation.js"></script>
+<script src="/Kmarket/member/js/checkMember.js"></script>
 <main id="member">
     <div class="register">
         <nav>
