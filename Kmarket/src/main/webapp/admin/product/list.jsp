@@ -48,14 +48,15 @@
                 	<c:forEach var="product" items="${products}">
                     <td><input type="checkbox" name="상품코드"/></td>
                     <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>201603292</td>
-                    <td>FreeMovement BLUEFORCE</td>
-                    <td>36,000</td>
-                    <td>10</td>
-                    <td>360</td>
-                    <td>400</td>
-                    <td>홍길동</td>
-                    <td>126</td>
+                    <td>${product.thumb1}</td>
+                    <td>${product.prodNo}</td>
+                    <td>${product.prodName}</td>
+                    <td>${product.price}</td>
+                    <td>${product.discount}</td>
+                    <td>${product.point}</td>
+                    <td>${product.stock}</td>
+                    <td>${product.seller}</td>
+                    <td>${product.hit}</td>
                     <td>
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
@@ -65,19 +66,24 @@
             </table>
             
             <input type="button" value="선택삭제" />                          
-
-
-            <div class="paging">
-                <span class="prev">
-	            <a href="#" class="prev"><</a>
-                </span>
-                <span class="num">
-	            <a href="#"class="on">[1]</a>
-                </span>
-                <span class="next">
-	            <a href="#" class="next">></a>
-                </span>
-             </div>
+ 	  <!-- 상품목록 페이지번호 -->
+      <div class="paging">
+      	<c:if test="${pageGroupStart gt 1 }">
+	        <span class="prev">
+	          <a href="#"><&nbsp;이전</a>
+	        </span>
+        </c:if>
+        <c:forEach var="i" begin="${pageGroupStart }" end="${pageGroupEnd }">
+	        <span class="num">
+	          <a href="${path }/product/list.do?pg=${pg}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
+	        </span>
+        </c:forEach>
+        <c:if test="${pageGroupEnd lt lastPageNum }">
+	        <span class="next">
+	          <a href="#">다음&nbsp;></a>
+	        </span>
+        </c:if>
+      </div>
 
         </section>                
 

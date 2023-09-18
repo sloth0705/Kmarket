@@ -33,7 +33,7 @@ public class Admin_ProductListDAO extends DBHelper {
 	public void insertProduct(ProductDTO dto ) {
 		
 	}
-	
+	// 상세 정보
 	public ProductDTO selectProduct(String prodNo) {
 		ProductDTO dto = null;
 		try {
@@ -60,12 +60,28 @@ public class Admin_ProductListDAO extends DBHelper {
 		
 	}
 	
+	// 목록 전체 불러오기
 	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start) {
 		List<ProductDTO> products = new ArrayList<>();
 		try {
 			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCTS);
-			rs = psmt.executeQuery();
-			
+			psmt.setInt(1, start);
+			rs = psmt.executeQuery(); // db의 데이터를 조회할 때 사용
+			while (rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setThumb1(rs.getString("thumb1"));
+				dto.setProdNo(rs.getInt("prodNo"));
+				dto.setProdName(rs.getString("prodName"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setDiscount(rs.getInt("discount"));
+				dto.setPoint(rs.getInt("point"));
+				dto.setStock(rs.getInt("stock"));
+				dto.setSeller(rs.getString("seller"));
+				dto.setHit(rs.getInt("hit"));
+				products.add(dto);
+			}
+			close();
+		
 		}catch (Exception e) {
 			logger.error("selectProducts error : " + e.getMessage());
 		}
