@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./inc/header.jsp"%>
 <%@ include file="./inc/aside.jsp"%>
+<script src="${path }/product/js/validation.js"></script>
+<script src="${path }/product/js/checkOrder.js"></script>
 <script>
 	$(function() {
 		$('.tmpTotal').text(($('input[name=total]').val() * 1).toLocaleString())
@@ -23,23 +25,10 @@
 		
 		// 폼 전송
 		$('input[name=orderSubmit]').click(function() {
-			$('#orderForm').submit();
+			$('#ordForm').submit();
 		});
 		
 	});
-	// 포인트 사용 구현
-	function usePoint() {
-		const savePoint = $('input[name=savePoint]');
-		const point = savePoint.val() * 1;
-		const ordTotPrice = $('input[name=ordTotPrice]');
-		let TotPrice = ordTotPrice.val() * 1;
-		const usedPoint =  $('input[name=usedPoint]').val() * 1;
-		TotPrice = TotPrice + point - usedPoint;
-		savePoint.val(usedPoint);
-		$('#point').text(usedPoint.toLocaleString());
-		$('#total').text(TotPrice.toLocaleString());
-		ordTotPrice.val(TotPrice);
-	}
 </script>
 <!-- 주문 페이지 시작-->
 <section class="order">
@@ -51,7 +40,7 @@
 		</p>
 	</nav>
 
-	<form id="orderForm" action="${path }/product/orderStraight.do" method="post">
+	<form id="ordForm" action="${path }/product/orderStraight.do" method="post">
 		<input type="hidden" name="uid" value="${sessMember.uid }"/>
 		<!-- 주문 상품 목록 -->
 		<table>
@@ -166,26 +155,26 @@
 			<h1>배송정보</h1>
 			<table>
 				<tr>
-					<td>수령인</td>
+					<td><span class="essential">*</span>수령인</td>
 					<td><input type="text" name="recipName" value=""/></td>
 				</tr>
 				<tr>
-					<td>휴대폰</td>
-					<td><input type="text" name="recipHp" /> <span>- 포함 입력</span></td>
+					<td><span class="essential">*</span>휴대폰</td>
+					<td><input type="text" name="recipHp" /> <span>- 포함 입력</span><span class="msgHp"></span></td>
 				</tr>
 				<tr>
-					<td>우편번호</td>
+					<td><span class="essential">*</span>우편번호</td>
 					<td>
 						<input type="text" name="recipZip" /> 
 						<input type="button" value="검색" onclick="zipcode()"/>
 					</td>
 				</tr>
 				<tr>
-					<td>기본주소</td>
+					<td><span class="essential">*</span>기본주소</td>
 					<td><input type="text" name="recipAddr1" /></td>
 				</tr>
 				<tr>
-					<td>상세주소</td>
+					<td><span class="essential">*</span>상세주소</td>
 					<td><input type="text" name="recipAddr2" /></td>
 				</tr>
 			</table>
@@ -196,18 +185,18 @@
 			<h1>할인정보</h1>
 			<div>
 				<p>
-					현재 포인트 : <span>${sessMember.point }</span>점
+					현재 포인트 : <span id="sessPoint">${sessMember.point }</span>점
 				</p>
 				<label> 
 					<input type="number" name="usedPoint" min="0"/>점 
-					<input type="button" value="적용" onclick="usePoint()"/>
+					<!-- <input type="button" value="적용" onclick="usePoint()"/> -->
 				</label> <span>포인트 5,000점 이상이면 현금처럼 사용 가능합니다.</span>
 			</div>
 		</article>
 
 		<!-- 결제방법 -->
 		<article class="payment">
-			<h1>결제방법</h1>
+			<h1><span class="essential">*</span>결제방법</h1>
 			<div>
 				<span>신용카드</span>
 				<p>

@@ -46,6 +46,7 @@
 	    
 		$('input[name=chk]').change(function() {
 			const chk = $('input[name=chk]');
+			let cnt = 0;
 			let count = 0;
 			let price = 0;
 			let disPrice = 0;
@@ -69,6 +70,7 @@
 					delivery += tmpDelivery;
 					point += tmpPoint;
 					total += tmpTotal;
+					cnt++;
 				}
 			}
 			$('#count').text(count.toLocaleString());
@@ -77,6 +79,11 @@
 			$('#delivery').text(delivery.toLocaleString());
 			$('#point').text(point.toLocaleString());
 			$('#total').text(total.toLocaleString());
+			if (!$(this).is(':checked')) {
+				$('input[name=all]').prop('checked', false);
+			} else if (cnt == chk.length) {
+				$('input[name=all]').prop('checked', true);
+			}
 		});
 		
 		// 선택삭제
