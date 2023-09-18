@@ -8,7 +8,7 @@
                     </nav>
 
                     <div class="content">
-                        <p>${cs.content }</p>
+                        <p><c:out value="${cs.content }" /></p>
                     </div>
                     <a href="./list.do?group=${group }&cate=${cate}" 
                     	class="btnList">목록보기</a>
