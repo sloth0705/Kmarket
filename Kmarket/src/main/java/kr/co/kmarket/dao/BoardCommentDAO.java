@@ -31,7 +31,7 @@ public class BoardCommentDAO extends DBHelper {
 		sql = "INSERT INTO km_comment SET "
 				+ " cno = ?, "
 				+ " re_bno = ?, "
-				+ " group = ?, "
+				+ " `group` = ?, "
 				+ " cate = ?, "
 				+ " uid = ?, "
 				+ " content = ?, "
