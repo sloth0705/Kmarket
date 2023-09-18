@@ -59,7 +59,10 @@ public class CS_BoardDAO extends DBHelper {
 		CS_BoardDTO dto = null;
 		conn = getConnection();
 		try {
-			sql = "SELECT * FROM km_cs_board "
+			sql = "SELECT * FROM km_cs_board AS b "
+					+ " JOIN km_cs_boardType AS bt "
+						+ " ON b.cate = bt.cate "
+						+ " AND b.`type` = bt.`type`"
 					+ " WHERE bno = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, bno);
@@ -68,6 +71,7 @@ public class CS_BoardDAO extends DBHelper {
 			if(rs.next()) {
 				dto = new CS_BoardDTO();
 				dto = getCS(rs);
+				dto.setTypeName(rs.getString("typeName"));
 			}
 			logger.info("selectCS_Board dto : " + dto);
 			close();

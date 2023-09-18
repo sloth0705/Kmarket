@@ -51,4 +51,3 @@
 	</div>
 </section>
 <%@ include file="../inc/footer.jsp" %>
-<script src="/Kmarket/cs/js/list.js"></script>

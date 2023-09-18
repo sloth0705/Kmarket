@@ -3,7 +3,7 @@
 <c:import url="../inc/aside/notice.jsp" />
                 <article>
                     <nav>
-                        <h2 class="title">[이거 뭘로 하지?] ${cs.title }</h2>
+                        <h2 class="title">[${cs.typeName}] ${cs.title }</h2>
                         <span class="date">${cs.rdate }</span>
                     </nav>
 
