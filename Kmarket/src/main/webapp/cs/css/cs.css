@@ -14,9 +14,16 @@ a {
   text-decoration: none;
   color: #111;
 }
-input,
-textarea {
+input{
   outline: none;
+}
+textarea { 
+    width: 100%;
+    outline: none;
+    /* textarea는 사이즈를 사용자 마음대로 조절 가능
+        -> resize none을 해줘야 크기조절 x
+    */
+    resize: none;
 }
 
 #wrapper {
