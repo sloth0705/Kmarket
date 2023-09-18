@@ -49,7 +49,7 @@
 				    				|| sessMember.level eq 5}">
 						<section class="commentForm">
 							<h3>댓글쓰기</h3>
-							<form action="#" method="post">
+							<form action="${path }/cs/comment/write.do" method="post">
 								<input type="hidden" name="bno" value="${cs.bno }" /> 
 								<input type="hidden" name="uid" value="${sessMember.uid }" /> 
 								<input type="hidden" name="cate" value="${cate }" />
