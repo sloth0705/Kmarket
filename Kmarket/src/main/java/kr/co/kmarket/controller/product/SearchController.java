@@ -12,25 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import kr.co.kmarket.dto.ProductCate2DTO;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.dto.ProductSearchForm;
-import kr.co.kmarket.service.ProductCate2Service;
 import kr.co.kmarket.service.ProductService;
 
-@WebServlet("/product/list.do")
-public class ListController extends HttpServlet {
-	private static final long serialVersionUID = 8126906125168496409L;
+@WebServlet("/product/search.do")
+public class SearchController extends HttpServlet {
+	private static final long serialVersionUID = -1009294374807136370L;
 	private ProductService pService = ProductService.INSTANCE;
-	private ProductCate2Service c2Serivce = ProductCate2Service.INSTANCE;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pg = req.getParameter("pg");
-		String cate1 = req.getParameter("cate1");
-		String cate2 = req.getParameter("cate2");
 		String sort = req.getParameter("sort");
+		String search = req.getParameter("search");
 		if (sort == null || sort.equals("")) {
 			sort = "sold";
 		}
@@ -38,8 +34,7 @@ public class ListController extends HttpServlet {
 		ProductSearchForm searchForm = new ProductSearchForm();
 		searchForm.setPg(pg);
 		searchForm.setSort(sort);
-		searchForm.setCate1(cate1);
-		searchForm.setCate2(cate2);
+		searchForm.setSearch(search);
 
 		// 페이지 관련 변수 선언
 		int currentPage = 1;
@@ -53,13 +48,15 @@ public class ListController extends HttpServlet {
 		// 현재 페이지 계산
 		if (pg != null) {
 			currentPage = Integer.parseInt(pg);
+		} else {
+			pg = "1";
 		}
 
 		// Limit 시작값 개선
 		int start = (currentPage - 1) * 10;
 
 		// 전체 개시물 갯수 조회
-		total = pService.selectCountTotal(cate1, cate2);
+		total = pService.selectCountTotalBySearch(search);
 
 		if (total % 10 == 0) {
 			lastPageNum = total / 10;
@@ -79,14 +76,10 @@ public class ListController extends HttpServlet {
 		// 페이지 시작번호 계산
 		pageStartNum = total - start;
 
-		// 현재 페이지 게시물 조회
-		List<ProductDTO> products = pService.selectProducts(searchForm, start);
-		ProductCate2DTO category = c2Serivce.selectProductCate2(cate1, cate2);
-		req.setAttribute("category", category);
+		List<ProductDTO> products = pService.selectProductsBySearch(searchForm, start);
 		req.setAttribute("pg", pg);
-		req.setAttribute("cate1", cate1);
-		req.setAttribute("cate2", cate2);
 		req.setAttribute("sort", sort);
+		req.setAttribute("search", search);
 		req.setAttribute("pageGroupStart", pageGroupStart);
 		req.setAttribute("pageGroupEnd", pageGroupEnd);
 		req.setAttribute("pageStartNum", pageStartNum);
@@ -94,7 +87,6 @@ public class ListController extends HttpServlet {
 		req.setAttribute("lastPageNum", lastPageNum);
 		req.setAttribute("products", products);
 		logger.info("product listController 조회 개수 : " + products.size());
-
-		req.getRequestDispatcher("/product/list.jsp").forward(req, resp);
+		req.getRequestDispatcher("/product/search.jsp").forward(req, resp);
 	}
 }

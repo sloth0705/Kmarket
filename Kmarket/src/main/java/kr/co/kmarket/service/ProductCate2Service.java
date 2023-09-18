@@ -13,8 +13,8 @@ public enum ProductCate2Service {
 		dao.insertProductCate2(dto);
 	}
 
-	public ProductCate2DTO selectProductCate2(int cate1) {
-		return dao.selectProductCate2(cate1);
+	public ProductCate2DTO selectProductCate2(String cate1, String cate2) {
+		return dao.selectProductCate2(cate1, cate2);
 	}
 
 	public List<ProductCate2DTO> selectProductCate2s(String cate1) {

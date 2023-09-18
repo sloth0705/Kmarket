@@ -6,6 +6,7 @@ public class ProductSearchForm {
 	private String cate2;
 	private String pg;
 	private String sort;
+	private String search;
 
 	public String getCate1() {
 		return cate1;
@@ -37,5 +38,13 @@ public class ProductSearchForm {
 
 	public void setSort(String sort) {
 		this.sort = sort;
+	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
 	}
 }

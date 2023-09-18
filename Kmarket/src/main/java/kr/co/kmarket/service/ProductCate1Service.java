@@ -15,7 +15,7 @@ public enum ProductCate1Service {
 		dao.insertProductCate1(dto);
 	}
 
-	public ProductCate1DTO selectProductCate1(int cate1) {
+	public ProductCate1DTO selectProductCate1(String cate1) {
 		return dao.selectProductCate1(cate1);
 	}
 

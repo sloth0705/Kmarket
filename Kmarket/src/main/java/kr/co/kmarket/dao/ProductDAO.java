@@ -27,29 +27,11 @@ public class ProductDAO extends DBHelper {
 	public void insertProduct(ProductDTO dto) {
 		try {
 			conn = getConnection();
-			psmt = conn.prepareStatement("INSERT INTO `km_product` SET "
-										+ "`seller`=?,"
-										+ "`prodCate1`=?,"
-										+ "`prodCate2`=?,"
-										+ "`prodName`=?,"
-										+ "`descript`=?,"
-										+ "`company`=?,"
-										+ "`price`=?,"
-										+ "`discount`=?,"
-										+ "`point`=?,"
-										+ "`stock`=?,"
-										+ "`delivery`=?,"
-										+ "`thumb1`=?,"
-										+ "`thumb2`=?,"
-										+ "`thumb3`=?,"
-										+ "`detail`=?,"
-										+ "`status`=?,"
-										+ "`duty`=?,"
-										+ "`receipt`=?,"
-										+ "`bizType`=?,"
-										+ "`origin`=?,"
-										+ "`ip`=?,"
-										+ "`rdate`=NOW()");
+			psmt = conn.prepareStatement("INSERT INTO `km_product` SET " + "`seller`=?," + "`prodCate1`=?,"
+					+ "`prodCate2`=?," + "`prodName`=?," + "`descript`=?," + "`company`=?," + "`price`=?,"
+					+ "`discount`=?," + "`point`=?," + "`stock`=?," + "`delivery`=?," + "`thumb1`=?," + "`thumb2`=?,"
+					+ "`thumb3`=?," + "`detail`=?," + "`status`=?," + "`duty`=?," + "`receipt`=?," + "`bizType`=?,"
+					+ "`origin`=?," + "`ip`=?," + "`rdate`=NOW()");
 			psmt.setString(1, dto.getSeller());
 			psmt.setInt(2, dto.getProdCate1());
 			psmt.setInt(3, dto.getProdCate2());
@@ -71,11 +53,11 @@ public class ProductDAO extends DBHelper {
 			psmt.setString(19, dto.getBizType());
 			psmt.setString(20, dto.getOrigin());
 			psmt.setString(21, dto.getIp());
-			
+
 			psmt.executeUpdate();
 			close();
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			logger.error("insertProduct() error : " + e.getMessage());
 		}
 	}
@@ -130,11 +112,13 @@ public class ProductDAO extends DBHelper {
 	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start) {
 		List<ProductDTO> products = new ArrayList<>();
 		try {
-			psmt = getConnection().prepareStatement(ProductSQL.SELECT_PRODUCTS);
+			String sql = ProductSQL.SELECT_PRODUCTS1;
+			String reason = orderReason(searchForm.getSort());
+			sql += reason + ProductSQL.SELECT_PRODUCTS2;
+			psmt = getConnection().prepareStatement(sql);
 			psmt.setString(1, searchForm.getCate1());
 			psmt.setString(2, searchForm.getCate2());
-			psmt.setString(3, orderReason(searchForm.getSort()));
-			psmt.setInt(4, start);
+			psmt.setInt(3, start);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -187,20 +171,21 @@ public class ProductDAO extends DBHelper {
 	}
 
 	public String orderReason(String sort) {
-		String reason = "a.`rdate` DESC";
+		String reason = "a.rdate DESC";
 		if (sort.equals("sold")) { // 판매 많은 순
-			reason = "a.`sold` DESC ";
+			reason = "a.sold DESC ";
 		} else if (sort.equals("priceA")) { // 낮은 가격순
-			reason = "a.`price` ASC ";
+			reason = "a.price ASC ";
 		} else if (sort.equals("priceD")) { // 높은 가격순
-			reason = "a.`price` DESC ";
+			reason = "a.price DESC ";
 		} else if (sort.equals("score")) { // 평점 높은순
-			reason = "a.`score` DESC ";
+			reason = "a.score DESC ";
 		} else if (sort.equals("review")) { // 후기 많은순
-			reason = "a.`review` DESC";
+			reason = "a.review DESC";
 		} else if (sort.equals("rdate")) { // 최근 등록순
-			reason = "a.`rdate` DESC ";
+			reason = "a.rdate DESC ";
 		}
+		logger.info("reason : " + reason);
 		return reason;
 	}
 
@@ -219,5 +204,73 @@ public class ProductDAO extends DBHelper {
 			logger.error("selectCountTotal error : " + e.getMessage());
 		}
 		return count;
+	}
+
+	public int selectCountTotalBySearch(String search) {
+		int result = 0;
+		try {
+			psmt = getConnection().prepareStatement(ProductSQL.SELECT_SEARCH_PRODUCT_COUNT_TOTAL);
+			psmt.setString(1, search);
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("selectCountTotalBySearch error : " + e.getMessage());
+		}
+		return result;
+	}
+
+	public List<ProductDTO> selectProductsBySearch(ProductSearchForm searchForm, int start) {
+		List<ProductDTO> products = new ArrayList<>();
+		try {
+			String sql = ProductSQL.SELECT_PRODUCTS_BY_SEARCH1;
+			String reason = orderReason(searchForm.getSort());
+			sql += reason + ProductSQL.SELECT_PRODUCTS_BY_SEARCH2;
+			psmt = getConnection().prepareStatement(sql);
+			psmt.setString(1, searchForm.getSearch());
+			psmt.setInt(2, start);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setProdNo(rs.getInt("prodNo"));
+				dto.setProdCate1(rs.getInt("prodCate1"));
+				dto.setProdCate2(rs.getInt("prodCate2"));
+				dto.setProdName(rs.getString("prodName"));
+				dto.setDescript(rs.getString("descript"));
+				dto.setCompany(rs.getString("company"));
+				dto.setSeller(rs.getString("seller"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setDiscount(rs.getInt("discount"));
+				dto.setPoint(rs.getInt("point"));
+				dto.setStock(rs.getInt("stock"));
+				dto.setSold(rs.getInt("sold"));
+				dto.setDelivery(rs.getInt("delivery"));
+				dto.setHit(rs.getInt("hit"));
+				dto.setScore(rs.getInt("score"));
+				dto.setReview(rs.getInt("review"));
+				dto.setThumb1(rs.getString("thumb1"));
+				dto.setThumb2(rs.getString("thumb2"));
+				dto.setThumb3(rs.getString("thumb3"));
+				dto.setDetail(rs.getString("detail"));
+				dto.setStatus(rs.getString("status"));
+				dto.setDuty(rs.getString("duty"));
+				dto.setReceipt(rs.getString("receipt"));
+				dto.setBizType(rs.getString("bizType"));
+				dto.setOrigin(rs.getString("origin"));
+				dto.setIp(rs.getString("ip"));
+				dto.setRdate(rs.getString("rdate"));
+				dto.setEtc1(rs.getInt("etc1"));
+				dto.setEtc2(rs.getInt("etc2"));
+				dto.setEtc3(rs.getString("etc3"));
+				dto.setEtc4(rs.getString("etc4"));
+				dto.setEtc5(rs.getString("etc5"));
+				products.add(dto);
+			}
+		} catch (Exception e) {
+			logger.error("selectProducts error : " + e.getMessage());
+		}
+		return products;
 	}
 }

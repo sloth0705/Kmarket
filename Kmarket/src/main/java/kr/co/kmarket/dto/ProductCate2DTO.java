@@ -5,6 +5,16 @@ public class ProductCate2DTO {
 	private int cate2;
 	private String c2Name;
 
+	private String c1Name;
+
+	public String getC1Name() {
+		return c1Name;
+	}
+
+	public void setC1Name(String c1Name) {
+		this.c1Name = c1Name;
+	}
+
 	@Override
 	public String toString() {
 		return "Km_product_cate2 [cate1=" + cate1 + ", cate2=" + cate2 + ", c2Name=" + c2Name + "]";

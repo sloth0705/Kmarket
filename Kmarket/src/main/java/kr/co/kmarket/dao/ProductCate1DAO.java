@@ -28,7 +28,7 @@ public class ProductCate1DAO extends DBHelper {
 
 	}
 
-	public ProductCate1DTO selectProductCate1(int cate1) {
+	public ProductCate1DTO selectProductCate1(String cate1) {
 		ProductCate1DTO dto = null;
 		return dto;
 	}
