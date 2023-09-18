@@ -40,8 +40,8 @@
             <div class="logo">
                 <div>
                     <a href="${path }"><img src="./img/header_logo.png" alt="로고"/></a>
-                    <form action="#">
-                        <input type="text" name="search"/>
+                    <form action="${path }/product/search.do" method="get">
+                        <input type="text" name="search" value="${search }"/>
                         <button><i class="fa fa-search"></i></button>
                     </form>
                 </div>

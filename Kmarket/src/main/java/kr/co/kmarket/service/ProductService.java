@@ -1,17 +1,11 @@
 package kr.co.kmarket.service;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +14,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.kmarket.dao.ProductDAO;
-import kr.co.kmarket.dto.FileDTO;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.dto.ProductSearchForm;
 
@@ -104,5 +97,13 @@ public enum ProductService {
 			logger.error("uploadFile() error : " + e.getMessage());
 		}
 		return mr;
+	}
+
+	public int selectCountTotalBySearch(String search) {
+		return dao.selectCountTotalBySearch(search);
+	}
+
+	public List<ProductDTO> selectProductsBySearch(ProductSearchForm searchForm, int start) {
+		return dao.selectProductsBySearch(searchForm, start);
 	}
 }

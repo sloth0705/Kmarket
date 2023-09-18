@@ -12,6 +12,18 @@ public class ProductSQL {
 			+ "a.`prodCate2` = ? " 
 			+ "ORDER BY ? " 
 			+ "LIMIT ?, 10";
+	public static String SELECT_PRODUCTS1 = 
+			"SELECT a.*, b.`c1Name`, c.`c2Name` "
+					+ "FROM `km_product` AS a "
+					+ "LEFT OUTER JOIN `km_product_cate1` AS b "
+					+ "ON a.`prodCate1` = b.`cate1` "
+					+ "LEFT OUTER JOIN `km_product_cate2` AS c ON "
+					+ "a.`prodCate2` = c.`cate2` AND a.`prodCate1` = c.`cate1` "
+					+ "WHERE a.`prodCate1` = ? AND "
+					+ "a.`prodCate2` = ? " 
+					+ "ORDER BY ";
+	public static String SELECT_PRODUCTS2 = 
+					" LIMIT ?, 10";
 	public static String SELECT_PRODUCT_COUNT_TOTAL = 
 			"SELECT COUNT(*) "
 			+ "FROM `km_product` "
@@ -104,4 +116,25 @@ public class ProductSQL {
 			+ "`ordNo` = ?, "
 			+ "`point` = ?,"
 			+ "`pointDate` = NOW()";
+	public static String SELECT_PRODUCT_CATE2 = 
+			"SELECT a.*, b.`c1Name` FROM `km_product_cate2` AS a "
+			+ "JOIN `km_product_cate1` AS b "
+			+ "ON a.`cate1` = b.`cate1` "
+			+ "WHERE a.`cate1` = ? "
+			+ "AND a.`cate2` = ?";
+	public static String SELECT_SEARCH_PRODUCT_COUNT_TOTAL = 
+			"SELECT COUNT(*) "
+			+ "FROM `km_product` "
+			+ "WHERE `prodName` LIKE CONCAT('%', ?, '%')";
+	public static String SELECT_PRODUCTS_BY_SEARCH1 = 
+			"SELECT a.*, b.`c1Name`, c.`c2Name` "
+			+ "FROM `km_product` AS a "
+			+ "LEFT OUTER JOIN `km_product_cate1` AS b "
+			+ "ON a.`prodCate1` = b.`cate1` "
+			+ "LEFT OUTER JOIN `km_product_cate2` AS c ON "
+			+ "a.`prodCate2` = c.`cate2` AND a.`prodCate1` = c.`cate1` "
+			+ "WHERE a.`prodName` LIKE CONCAT('%', ?, '%') "
+			+ "ORDER BY ";
+	public static String SELECT_PRODUCTS_BY_SEARCH2 = 
+			" LIMIT ?, 10";
 }
