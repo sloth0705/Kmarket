@@ -28,10 +28,14 @@
           <td>
             <ul>
               <li><ins class="dis-price">${product.getDisPriceWithComma() }</ins></li>
-              <li>
-                <del class="org-price">${product.getPriceWithComma() }</del>
-                <span class="discount">${product.discount }%</span>
-              </li>
+              <c:choose>
+              		<c:when test="${product.discount gt 0 }">
+              			<li>
+			                <del class="org-price">${product.getPriceWithComma() }</del>
+			                <span class="discount">${product.discount }%</span>
+		              	</li>
+              		</c:when>
+              	</c:choose>
               <li>
               	<c:choose>
               		<c:when test="${product.delivery gt 0 }">
