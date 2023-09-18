@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,19 @@ public class LoginController extends HttpServlet {
 		String success = req.getParameter("success");
 		req.setAttribute("success", success);
 		
+		// 쿠키 가져오기
+		Cookie[] cookies = req.getCookies();
+		if (cookies != null)
+		{
+			for(Cookie tempCookie : cookies)
+			{
+		        if(tempCookie.getName().equals("uid"))
+		        {
+		            resp.sendRedirect("/Kmarket");
+		        }
+		    }
+		}
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/login.jsp");
 		dispatcher.forward(req, resp);	
 	}
@@ -36,6 +50,7 @@ public class LoginController extends HttpServlet {
 		
 		String uid  = req.getParameter("uid");
 		String pass = req.getParameter("pass");
+		String autoChk = req.getParameter("auto");
 		
 		MemberDTO member = service.selectMember(uid, pass); // 사용자가 존재하지 않으면 null
 		
@@ -43,6 +58,15 @@ public class LoginController extends HttpServlet {
 		{
 			HttpSession session = req.getSession();
 			session.setAttribute("sessMember", member);
+			
+			// 로그인 유지처리
+			if (autoChk != null)
+			{
+				Cookie cookie = new Cookie("uid", uid);
+				cookie.setMaxAge(60);
+				cookie.setPath("/");
+				resp.addCookie(cookie);
+			}
 			
 			logger.info("sessMember level : " + member.getLevel());
 			resp.sendRedirect("/Kmarket/index.do");
