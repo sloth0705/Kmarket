@@ -20,6 +20,8 @@ function zipcode() {
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementsByName('recipZip')[0].value = data.zonecode;
 			document.getElementsByName("recipAddr1")[0].value = addr;
+			isRecipZipOk = true;
+			isRecipAddr1Ok = true;
 			// 커서를 상세주소 필드로 이동한다.
 			document.getElementsByName("recipAddr2")[0].focus();
 		}
