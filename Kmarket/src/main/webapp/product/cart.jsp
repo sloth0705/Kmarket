@@ -144,7 +144,7 @@
 							</td>
 							<td>
 								<article>
-									<a href="#"><img src="${path }/upload/${cart.product.thumb1}"
+									<a href="#"><img src="${path }/thumb/${cart.product.prodCate1 }/${cart.product.prodCate2 }/${cart.product.thumb1}"
 										alt=""></a>
 									<div class="w450">
 										<h2>
