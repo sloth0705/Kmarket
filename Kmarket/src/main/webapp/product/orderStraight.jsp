@@ -59,7 +59,7 @@
 					<td>
 						<article>
 							<a href="#"><img
-								src="${path }/upload/${product.thumb1}" alt=""></a>
+								src="${path }/thumb/${product.prodCate1 }/${product.prodCate2 }/${product.thumb1}" alt=""></a>
 							<div class="w450">
 								<h2>
 									<a href="#">${product.prodName }</a>

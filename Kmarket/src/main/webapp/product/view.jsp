@@ -102,7 +102,7 @@
                 <!-- 상품 전체 정보 내용 -->                
                 <article class="info">
                     <div class="image">
-                        <img src="${path }/upload/${product.thumb2}" alt="상품이미지"/>
+                        <img src="${path }/thumb/${cate1 }/${cate2 }/${product.thumb2}" alt="상품이미지"/>
                     </div>
                     <div class="summary">
                         <nav>
@@ -157,7 +157,7 @@
                         <h1>상품정보</h1>
                     </nav>
                     <!-- 상품상세페이지 이미지 -->
-                    <img src="${path }/upload/${product.detail}" alt="상세페이지1">
+                    <img src="${path }/thumb/${cate1 }/${cate2 }/${product.detail}" alt="상세페이지1">
                 </article>
                 <!-- 상품 정보 제공 고시 내용 -->
                 <article class="notice">
