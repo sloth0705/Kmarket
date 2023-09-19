@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.co.kmarket.dto.BoardTypeDTO;
 import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
@@ -35,11 +36,15 @@ public class FaqBoardListController extends HttpServlet {
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
-		List<CS_BoardDTO> list 
+		List<CS_BoardDTO> cates 
 			= service.selectCS_Boards(group, cate);
+		List<BoardTypeDTO> types
+			=service.selectBoardType(cate);
 		
-		request.setAttribute("cs", list);
-		logger.info("BoardList_get list : " + list);
+		request.setAttribute("cs", cates);
+		logger.info("BoardList_get cate : " + cates);
+		request.setAttribute("types", types);
+		logger.info("BoardList_get types : " + types);
 		
 		request.getRequestDispatcher("/cs/faqBoard/list.jsp").forward(request, respones);
 	}

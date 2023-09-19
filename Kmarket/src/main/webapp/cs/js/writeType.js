@@ -2,7 +2,7 @@
  * 
  */
 $(function(){
-	const url = "/Kmarket/cs/qnaBoard/ajaxWrite.do"
+	const url = "/Kmarket/cs/Board/ajaxWrite.do"
 	
 	$("#cate").change(function(){
 		let optionValue = $(this).val();

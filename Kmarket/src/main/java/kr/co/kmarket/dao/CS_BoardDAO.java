@@ -145,8 +145,37 @@ public class CS_BoardDAO extends DBHelper {
 		return list;
 	}
 
+	// notice 글 쓸 때 cate 가져오기
+	public List<BoardCateDTO> selectNoticeCate(){
+		List<BoardCateDTO> list = new ArrayList<>();
+		conn = getConnection();
+		sql = "SELECT "
+				+ "	DISTINCT bc.`cate`,"
+					+ " bc.cateName "
+				+ " FROM km_cs_boardCate AS bc "
+				+ " JOIN km_cs_boardType AS bt "
+				+ " ON bc.`cate` = bt.`cate` "
+				+ " WHERE `type` > 20";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardCateDTO dto = new BoardCateDTO();
+				dto.setCate(rs.getString("cate"));
+				dto.setCateName(rs.getString("CateName"));
+				list.add(dto);
+			}
+			logger.info("selectQnABoardCate list : " + list);
+			close();
+		} catch (SQLException e) {
+			logger.error("selectQnABoardCate : " + e.getMessage());
+		}
+		return list;
+	}
+	
 	// qna 글 쓸 때 cate 가져오기
-	public List<BoardCateDTO> selectQnABoardCate(){
+	public List<BoardCateDTO> selectBoardCate(){
 		List<BoardCateDTO> list = new ArrayList<>();
 		conn = getConnection();
 		sql = "SELECT "
@@ -175,7 +204,7 @@ public class CS_BoardDAO extends DBHelper {
 	}
 	
 	// qna 글 쓸 때 cate 별로 type 가져오기
-	public List<BoardTypeDTO> selectQnABoardType(String cate){
+	public List<BoardTypeDTO> selectBoardType(String cate){
 		List<BoardTypeDTO> list = new ArrayList<>();
 		conn = getConnection();
 		sql = "SELECT * FROM km_cs_boardType "

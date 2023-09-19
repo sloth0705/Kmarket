@@ -1,4 +1,4 @@
-package kr.co.kmarket.controller.board.qna;
+package kr.co.kmarket.controller.board.notice;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,17 +17,12 @@ import kr.co.kmarket.dto.CS_BoardDTO;
 import kr.co.kmarket.service.CS_BoardService;
 import kr.co.kmarket.util.BoardMap;
 
-@WebServlet("/cs/qnaBoard/write.do")
-public class QnABoardWriteController extends HttpServlet {
-	private static final long serialVersionUID = 4233589879373746478L;
+@WebServlet("/cs/noticeBoard/write.do")
+public class NoticeBoardWriteController extends HttpServlet {
+	private static final long serialVersionUID = -255669837665243361L;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private CS_BoardService service = CS_BoardService.INSTANCE;
-	
-	@Override
-	public void init() throws ServletException {
-		logger.info("qan write page init==========================");
-	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, 
@@ -41,11 +36,13 @@ public class QnABoardWriteController extends HttpServlet {
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
-		List<BoardCateDTO> cateDTO 
-			= service.selectBoardCate();
-		request.setAttribute("cate", cateDTO);
+		List<BoardCateDTO> list 
+			= service.selectNoticeCate();
 		
-		request.getRequestDispatcher("/cs/qnaBoard/write.jsp").forward(request, respones);
+		request.setAttribute("cs", list);
+		logger.info("noticeBoard_writre_Get list : " + list);
+		
+		request.getRequestDispatcher("/cs/noticeBoard/write.jsp").forward(request, respones);
 	}
 	
 	@Override
@@ -71,7 +68,6 @@ public class QnABoardWriteController extends HttpServlet {
 		service.insertCS_Board(dto);
 		logger.info("writePost dto : " + dto);
 		
-		respones.sendRedirect("/Kmarket/cs/qnaBoard/list.do?group="+group+"&cate="+cate);
-		
+		respones.sendRedirect("/Kmarket/cs/noticeBoard/list.do?group="+group+"&cate="+cate);
 	}
 }
