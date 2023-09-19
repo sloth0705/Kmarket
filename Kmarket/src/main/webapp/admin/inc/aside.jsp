@@ -6,8 +6,8 @@
         <li>
             <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>환경설정</a>
             <ol>
-                <li><a href="${path }/admin/config/info.do">기본환경정보</a></li>
-                <li><a href="${path }/admin/config/banner.do">배너관리</a></li>
+                <li><a href="${path}/admin/config/info.do">기본환경정보</a></li>
+                <li><a href="${path}/admin/config/banner.do">배너관리</a></li>
             </ol>
         </li>
         <li>
@@ -29,8 +29,8 @@
         <li>
             <a href="#"><i class="fas fa-box-open" aria-hidden="true"></i>상품관리</a>
             <ol>
-                <li><a href="${path }/admin/product/list.do">상품현황</a></li>
-                <li><a href="${path }/admin/product/register.do">상품등록</a></li>
+                <li><a href="${path}/admin/product/list.do">상품현황</a></li>
+                <li><a href="${path}/admin/product/register.do">상품등록</a></li>
                 <li><a href="#">재고관리</a></li>
             </ol>
         </li>
@@ -44,10 +44,11 @@
             </ol>
         </li>
         <li>
-            <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>게시판관리</a>
+            <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>고객센터</a>
             <ol>
-                <li><a href="#">게시판현황</a></li>
-                <li><a href="#">고객문의</a></li>
+                <li><a href="${path}/admin/cs/notice/list.do">공지사항</a></li>
+                <li><a href="${path}/admin/cs/faq/list.do">자주묻는질문</a></li>
+                <li><a href="${path}/admin/cs/qna/list.do">문의하기</a></li>
             </ol>
         </li>
     </ul>

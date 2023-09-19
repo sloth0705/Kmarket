@@ -3,7 +3,6 @@
  */
 
  // 폼 데이터 검증결과 상태변수
-let isProdNameOk = false;
 let isCompanyOk  = false;
 let isPriceOk    = false;
 let isDiscountOk = false;
@@ -15,36 +14,15 @@ let isDutyOk     = false;
 let isOriginOk   = false;
 
 // 데이터 검증에 사용하는 정규표현식
-const reProdName = /^[가-힣a-zA-Z]+$/;
 const reCompany  = /^[가-힣a-zA-Z]+$/;
 const rePrice    = /^[0-9]+$/;    // 숫자만 가능
 const reDiscount = /[0-9]{1,2}$/; // 두자리 수까지 가능
 const rePoint    = /^[0-9]+$/;
 const reStock    = /^[0-9]+$/;
 const reDelivery = /^[0-9]+$/;
-const reStatus   = /^[가-힣a-zA-Z]+$/; // 한글, 영문만 가능
-const reDuty     = /^[가-힣a-zA-Z]+$/; // 한글, 영문만 가능
-const reOrigin   = /^[가-힣a-zA-Z]+$/; // 한글, 영문만 가능
 
 // 유효성검증 (Validation)
 $(function(){
-	
-	// 상품명 입력값 검사
-	$('input[name=prodName]').focusout(function(){
-		
-		const prodName = $(this).val();
-		
-		if (!prodName.match(reProdName))
-		{
-			$('.resultProdName').css('color', 'red').text('숫자나 특수문자만 입력은 불가합니다.');
-			isProdNameOk = false;
-		}
-		else
-		{
-			$('.resultProdName').text('');
-			isProdNameOk = true;
-		}
-	});
 	
 	// 제조사 입력값 검사
 	$('input[name=company]').focusout(function(){
@@ -145,57 +123,6 @@ $(function(){
 		{
 			$('.resultDelivery').text('');
 			isDeliveryOk = true;
-		}
-	});
-	
-	// 상품상태 입력값 검사
-	$('input[name=status]').focusout(function(){
-		
-		const status = $(this).val();
-		
-		if (!status.match(reStatus))
-		{
-			$('.resultStatus').css('color', 'red').text('한글, 영문만 입력 가능합니다.');
-			isStatusOk = false;
-		}
-		else
-		{
-			$('.resultStatus').text('');
-			isStatusOk = true;
-		}
-	});
-	
-	// 부가세 면세여부 입력값 검사
-	$('input[name=duty]').focusout(function(){
-		
-		const duty = $(this).val();
-		
-		if (!duty.match(reDuty))
-		{
-			$('.resultDuty').css('color', 'red').text('한글, 영문만 입력 가능합니다.');
-			isDutyOk = false;
-		}
-		else
-		{
-			$('.resultDuty').text('');
-			isDutyOk = true;
-		}
-	});
-	
-	// 원산지 입력값 검사
-	$('input[name=origin]').focusout(function(){
-		
-		const origin = $(this).val();
-		
-		if (!origin.match(reOrigin))
-		{
-			$('.resultOrigin').css('color', 'red').text('한글, 영문만 입력 가능합니다.');
-			isOriginOk = false;
-		}
-		else
-		{
-			$('.resultOrigin').text('');
-			isOriginOk = true;
 		}
 	});
 	
