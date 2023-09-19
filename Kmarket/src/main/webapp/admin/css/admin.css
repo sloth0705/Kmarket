@@ -470,7 +470,7 @@ button[type=submit] {
     text-decoration: none;
 }
 #admin-product-list .paging > .num > a.on {
-    color: #fe434c;
+    color: rgb(69, 173, 74);
     font-weight: bold;
 }
 
@@ -698,58 +698,394 @@ button[type=submit] {
     cursor: pointer;
 }
 
-/* 고객센터(cs) - 공지사항(notice) */
-#admin-cs-list > .notice > .list > article > table {
-  width: 100%;
-  border-collapse: collapse;
-  border-top: 2px solid #111;
-}
-#admin-cs-list table > tr {
-  width: 100%;
-  height: 26px;
-}
-#admin-cs-list table > tr:hover {
-  background-color: #f7f7f7;
-}
-#admin-cs-list table td {
-  padding: 16px;
-  border-bottom: 1px solid #ccc;
-}
-#admin-cs-list table td:last-child {
-  text-align: center;
-  font-size: 14px;
-}
-#admin-cs-list table a {
-  font-size: 16px;
+/* --------------- 고객센터(cs) - 공지사항(notice) --------------- */
+/* cs-notice-list */
+#admin-cs-notice-list > section > div  {
+    margin-bottom: 10px;
 }
 
-#admin-cs-list .paging {
-  text-align: center;
-  margin-top: 26px;
+#admin-cs-notice-list > section > table  {
+    border-top: 2px solid #8798a3;
 }
-#admin-cs-list .paging > a {
-  display: inline-block;
-  width: 34px;
-  height: 34px;        
-  box-sizing: border-box;
-  text-align: center;
-  line-height: 34px;
-  font-size: 13px;
-  font-weight: bold;        
-  vertical-align: bottom;
+#admin-cs-notice-list > section > table  tr > th{
+    padding: 10px 0;
+    background: #f6f6f6;
 }
-#admin-cs-list .paging > .prev {
-  font-size: 0;
-  background-image: url('../img/cs_sprites.png');
-  background-position: -706px -652px;
+#admin-cs-notice-list > section > table  tr > td {
+    background: #fff;
+    text-align: center;
+    box-sizing: border-box;
 }
-#admin-cs-list .paging > .next {
-  font-size: 0;
-  background-image: url('../img/cs_sprites.png');
-  background-position: -628px -652px;
+#admin-cs-notice-list table a:hover {
+	border-bottom: 1px solid black;
 }
-#admin-cs-list .paging > .on {
-  background: #006cff;
-  border-radius: 17px;
-  color: #fff;
+
+#admin-cs-notice-list > section > table  tr > td:nth-child(1) {width: 20px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(2) {width: 80px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(3) {width: 80px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(5) {width: 80px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(6) {width: 80px;}
+
+#admin-cs-notice-list > section > table img.thumb {width: 60px;}
+
+#admin-cs-notice-list > section > input[type=button]:nth-child(3) {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    float: left;
+    background-color: rgb(228, 228, 228);
 }
+#admin-cs-notice-list > section > input[type=button]:nth-child(5) {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    float: right;
+    background-color: rgb(69, 173, 74);
+    color: #fff;
+}
+#admin-cs-notice-list > section > input[type=button]:nth-child(3):hover {
+	cursor: pointer;
+}
+#admin-cs-notice-list > section > input[type=button]:nth-child(5):hover {
+	cursor: pointer;
+}
+
+#admin-cs-notice-list .paging {
+    width: 890px;
+    display: inline-block;
+    padding: 30px 0;
+    text-align: center;
+}
+
+#admin-cs-notice-list .paging > span > a {
+    color: #777;
+    font-family: "ë‹ì›€", Dotum, Tahoma, sans-serif;
+    font-size: 11px;
+    letter-spacing: -1px;
+}
+  
+#admin-cs-notice-list .paging > span > a:hover {
+    text-decoration: underline;
+}
+  
+#admin-cs-notice-list .paging > .num > a {
+    display: inline-block;
+    min-width: 14px;
+    margin: 0 2px;
+    padding: 8px 9px;
+    border: 1px solid #c4c4c4;
+    background: url() 0 0 repeat-x;
+    color: #000;
+    font-family: Tahoma;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+#admin-cs-notice-list .paging > .num > a:hover {
+    border: 1px solid #454c5f;
+    text-decoration: none;
+}
+#admin-cs-notice-list .paging > .num > a.on {
+    color: rgb(69, 173, 74);
+    font-weight: bold;
+}
+
+/* cs-notice-view */
+#admin-cs-notice-view > section > div  {
+    margin-bottom: 10px;
+}
+
+#admin-cs-notice-view > section > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-cs-notice-view > section th {
+	width: 120px;
+	font-weight: bold;
+	padding: 10px 0;
+    background: #f6f6f6;
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+#admin-cs-notice-view > section > table > tbody > tr:nth-child(3) {
+	height: 245px;
+}
+
+#admin-cs-notice-view > section > div {
+	display: inline-block;
+	position: relative;
+	left: 810px;
+}
+#admin-cs-notice-view div > input[type=button] {
+	width: 90px;
+	height: 35px;
+    margin-top: 15px;
+    float: left;
+    margin-right: 5px;
+}
+#admin-cs-notice-view div > input[type=button]:nth-child(1) { background-color: rgb(228, 228, 228); }
+#admin-cs-notice-view div > input[type=button]:nth-child(2) { background-color: rgb(228, 228, 228); }
+#admin-cs-notice-view div > input[type=button]:nth-child(3) { background-color: rgb(69, 173, 74); color: #fff; }
+#admin-cs-notice-view div > input[type=button]:nth-child(1):hover { cursor: pointer; }
+#admin-cs-notice-view div > input[type=button]:nth-child(2):hover { cursor: pointer; }
+#admin-cs-notice-view div > input[type=button]:nth-child(3):hover { cursor: pointer; }
+
+/* --------------- 고객센터(cs) - 자주묻는질문(faq) --------------- */
+#admin-cs-faq-list > section > div  {
+    margin-bottom: 10px;
+}
+
+#admin-cs-faq-list > section > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-cs-faq-list > section > table  tr > th{
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+#admin-cs-faq-list > section > table  tr > td {
+    background: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+#admin-cs-faq-list table a:hover {
+	border-bottom: 1px solid black;
+}
+
+#admin-cs-faq-list > section > table  tr > td:nth-child(1) {width: 20px;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(2) {width: 80px;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(3) {width: 80px;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(4) {width: 80px;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(5) {width: auto; text-align: left;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(6) {width: 80px;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(7) {width: 80px;}
+#admin-cs-faq-list > section > table  tr > td:nth-child(8) {width: 80px;}
+
+#admin-cs-faq-list > section > table img.thumb {width: 60px;}
+
+#admin-cs-faq-list > section > input[type=button]:nth-child(3) {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    float: left;
+    background-color: rgb(228, 228, 228);
+}
+#admin-cs-faq-list > section > input[type=button]:nth-child(5) {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    float: right;
+    background-color: rgb(69, 173, 74);
+    color: #fff;
+}
+#admin-cs-faq-list > section > input[type=button]:nth-child(3):hover {
+	cursor: pointer;
+}
+#admin-cs-faq-list > section > input[type=button]:nth-child(5):hover {
+	cursor: pointer;
+}
+
+#admin-cs-faq-list .paging {
+    width: 890px;
+    display: inline-block;
+    padding: 30px 0;
+    text-align: center;
+}
+
+#admin-cs-faq-list .paging > span > a {
+    color: #777;
+    font-family: "ë‹ì›€", Dotum, Tahoma, sans-serif;
+    font-size: 11px;
+    letter-spacing: -1px;
+}
+  
+#admin-cs-faq-list .paging > span > a:hover {
+    text-decoration: underline;
+}
+  
+#admin-cs-faq-list .paging > .num > a {
+    display: inline-block;
+    min-width: 14px;
+    margin: 0 2px;
+    padding: 8px 9px;
+    border: 1px solid #c4c4c4;
+    background: url() 0 0 repeat-x;
+    color: #000;
+    font-family: Tahoma;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+#admin-cs-faq-list .paging > .num > a:hover {
+    border: 1px solid #454c5f;
+    text-decoration: none;
+}
+#admin-cs-faq-list .paging > .num > a.on {
+    color: rgb(69, 173, 74);
+    font-weight: bold;
+}
+
+/* cs-faq-view */
+#admin-cs-faq-view > section > div  {
+    margin-bottom: 10px;
+}
+
+#admin-cs-faq-view > section > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-cs-faq-view > section th {
+	width: 120px;
+	font-weight: bold;
+	padding: 10px 0;
+    background: #f6f6f6;
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+#admin-cs-faq-view > section > table > tbody > tr:nth-child(3) {
+	height: 245px;
+}
+
+#admin-cs-faq-view > section > div {
+	display: inline-block;
+	position: relative;
+	left: 810px;
+}
+#admin-cs-faq-view div > input[type=button] {
+	width: 90px;
+	height: 35px;
+    margin-top: 15px;
+    float: left;
+    margin-right: 5px;
+}
+#admin-cs-faq-view div > input[type=button]:nth-child(1) { background-color: rgb(228, 228, 228); }
+#admin-cs-faq-view div > input[type=button]:nth-child(2) { background-color: rgb(228, 228, 228); }
+#admin-cs-faq-view div > input[type=button]:nth-child(3) { background-color: rgb(69, 173, 74); color: #fff; }
+#admin-cs-faq-view div > input[type=button]:nth-child(1):hover { cursor: pointer; }
+#admin-cs-faq-view div > input[type=button]:nth-child(2):hover { cursor: pointer; }
+#admin-cs-faq-view div > input[type=button]:nth-child(3):hover { cursor: pointer; }
+
+/* --------------- 고객센터(cs) - 문의하기(qna) --------------- */
+#admin-cs-qna-list > section > div  {
+    margin-bottom: 10px;
+}
+
+#admin-cs-qna-list > section > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-cs-qna-list > section > table  tr > th{
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+#admin-cs-qna-list > section > table  tr > td {
+    background: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+#admin-cs-qna-list table a:hover {
+	border-bottom: 1px solid black;
+}
+#admin-cs-qna-list > section > table tr { height: 53px; }
+#admin-cs-qna-list > section > table > tbody > tr:nth-child(1) { height: 38px; }
+#admin-cs-qna-list > section > table tr > td:nth-child(1) {width: 20px;}
+#admin-cs-qna-list > section > table tr > td:nth-child(2) {width: 80px;}
+#admin-cs-qna-list > section > table tr > td:nth-child(3) {width: 80px;}
+#admin-cs-qna-list > section > table tr > td:nth-child(4) {width: 80px;}
+#admin-cs-qna-list > section > table tr > td:nth-child(5) {width: auto; text-align: left;}
+#admin-cs-qna-list > section > table tr > td:nth-child(6) {width: 80px;}
+#admin-cs-qna-list > section > table tr > td:nth-child(7) {width: 80px;}
+#admin-cs-qna-list > section > table tr > td:nth-child(8) {width: 80px;}
+
+#admin-cs-qna-list > section > table img.thumb {width: 60px;}
+
+#admin-cs-qna-list > section > input[type=button]:nth-child(3) {
+    width: 100px;
+    height: 35px;
+    margin-top: 30px;
+    float: right;
+    background-color: rgb(228, 228, 228);
+}
+#admin-cs-qna-list > section > input[type=button]:nth-child(3):hover {
+	cursor: pointer;
+}
+
+#admin-cs-qna-list .paging {
+    width: 990px;
+    display: inline-block;
+    padding: 30px 0;
+    text-align: center;
+}
+
+#admin-cs-qna-list .paging > span > a {
+    color: #777;
+    font-family: "ë‹ì›€", Dotum, Tahoma, sans-serif;
+    font-size: 11px;
+    letter-spacing: -1px;
+}
+  
+#admin-cs-qna-list .paging > span > a:hover {
+    text-decoration: underline;
+}
+  
+#admin-cs-qna-list .paging > .num > a {
+    display: inline-block;
+    min-width: 14px;
+    margin: 0 2px;
+    padding: 8px 9px;
+    border: 1px solid #c4c4c4;
+    background: url() 0 0 repeat-x;
+    color: #000;
+    font-family: Tahoma;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+#admin-cs-qna-list .paging > .num > a:hover {
+    border: 1px solid #454c5f;
+    text-decoration: none;
+}
+#admin-cs-qna-list .paging > .num > a.on {
+    color: rgb(69, 173, 74);
+    font-weight: bold;
+}
+
+/* cs-qna-view */
+#admin-cs-qna-view > section > div  {
+    margin-bottom: 10px;
+}
+
+#admin-cs-qna-view > section > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-cs-qna-view > section th {
+	width: 120px;
+	font-weight: bold;
+	padding: 10px 0;
+    background: #f6f6f6;
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+#admin-cs-qna-view > section > table > tbody > tr:nth-child(3) {
+	height: 150px;
+}
+#admin-cs-qna-view > section > table > tbody > tr:nth-child(4) {
+	height: 150px;
+}
+
+#admin-cs-qna-view > section > div {
+	display: inline-block;
+	position: relative;
+	left: 905px;
+}
+#admin-cs-qna-view div > input[type=button] {
+	width: 90px;
+	height: 35px;
+    margin-top: 15px;
+    float: left;
+    margin-right: 5px;
+}
+#admin-cs-qna-view div > input[type=button]:nth-child(1) { background-color: rgb(228, 228, 228); }
+#admin-cs-qna-view div > input[type=button]:nth-child(2) { background-color: rgb(69, 173, 74); color: #fff; }
+#admin-cs-qna-view div > input[type=button]:nth-child(1):hover { cursor: pointer; }
+#admin-cs-qna-view div > input[type=button]:nth-child(2):hover { cursor: pointer; }
