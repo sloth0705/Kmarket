@@ -34,7 +34,6 @@ public class IndexController extends HttpServlet {
 		req.setAttribute("scoreProducts", scoreProducts);
 		req.setAttribute("rdateProducts", rdateProducts);
 		req.setAttribute("discountProducts", discountProducts);
-		
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 }

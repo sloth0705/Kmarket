@@ -49,18 +49,20 @@
             <div class="menu">
                 <div>
                     <ul>
-                        <li><a href="#">히트상품</a></li>
-                        <li><a href="#">추천상품</a></li>
-                        <li><a href="#">최신상품</a></li>
-                        <li><a href="#">인기상품</a></li>
-                        <li><a href="#">할인상품</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">쿠폰존</a></li>
-                        <li><a href="#">사용후기</a></li>
-                        <li><a href="#">개인결제</a></li>
-                        <li><a href="#">고객센터</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li>
+                            <a href="${path}/cs/noticeBoard/list.do?group=notice&cate=All">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="${path}/cs/faqBoard/list.do?group=faq&cate=member">자주묻는질문</a>
+                        </li>
+                        <li>
+                            <a href="${path}/cs/qnaBoard/list.do?group=qna&cate=member">문의하기</a>
+                        </li>
+                        <li>
+                            <a href="${path}/cs/index.do">고객센터</a>
+                        </li>
                     </ul>
                 </div>
             </div>
