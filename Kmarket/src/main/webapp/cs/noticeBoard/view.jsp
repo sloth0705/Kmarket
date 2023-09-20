@@ -12,6 +12,12 @@
                        		<c:out value="${cs.content }" />
                         </textarea>
                     </div>
+	                <c:if test="${sessMember.uid eq cs.uid}">
+		                <div>
+		                    <a href="#" class="delete">삭제</a>
+		                    <a href="${path}/cs/modify.do?group=${group}&cate=${cate}&bno=${cs.bno}" class="modify">수정</a>
+		                </div>
+	               	</c:if>
                     <a href="./list.do?group=${group }&cate=${cate}" 
                     	class="btnList">목록보기</a>
                 </article>
