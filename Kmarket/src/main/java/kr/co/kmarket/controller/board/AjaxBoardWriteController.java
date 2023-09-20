@@ -1,4 +1,4 @@
-package kr.co.kmarket.controller.board.qna;
+package kr.co.kmarket.controller.board;
 
 import java.io.IOException;
 import java.util.List;

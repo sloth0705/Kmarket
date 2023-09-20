@@ -3,8 +3,10 @@
 <%@ include file="../inc/header.jsp" %>
 <c:import url="../inc/aside/notice.jsp" />
 			<article>
-		    	<form action="${path }/cs/noticeBoard/write.do" method="post">
+		    	<form action="${path }/cs/noticeBoard/modify.do" method="post">
 		    		<input type="hidden" name="group" value="${group }" />
+		    		<input type="hidden" name="cate" value="${cate }" />
+		    		<input type="hidden" name="bno" value="${board.bno}" />
 		    		<input type="hidden" name="uid" value="${sessMember.uid }" />
 			        <table>
 			            <tbody>
@@ -29,19 +31,19 @@
 			                <tr>
 			                    <td>공지제목</td>
 			                    <td>
-			                        <input type="text" name="title" required placeholder="제목을 입력하세요." />
+			                        <input type="text" name="title" value="${board.title }" required />
 			                    </td>
 			                </tr>
 			                <tr>
 			                    <td>공지내용</td>
 			                    <td>
-			                        <textarea name="content" required placeholder="내용을 입력하세요."></textarea>
+			                        <textarea name="content" required>${board.content }</textarea>
 			                    </td>
 			                </tr>
 			            </tbody>
 			        </table>
 			        <div>
-			            <a href="./list.do?group=${group }&cate=${cate}" class="btnList">취소하기</a>
+			            <a href="./view.do?group=${group }&cate=${cate}&bno=${board.bno}" class="btnList">취소하기</a>
 			            <input type="submit" class="btnSubmit" value="수정하기">
 			        </div>
 			    </form>

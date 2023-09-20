@@ -229,8 +229,29 @@ public class CS_BoardDAO extends DBHelper {
 		return list;
 	}
 	
+	// 게시글 수정
 	public void updateCS_Board(CS_BoardDTO dto) {
-
+		conn = getConnection();
+		sql = "UPDATE km_cs_board SET "
+				+ " cate = ?, "
+				+ " `type` = ?, "
+				+ " title = ?, "
+				+ " content = ? "
+				+ " WHERE bno = ?";		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto.getCate());
+			psmt.setInt(2, dto.getType());
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getContent());
+			psmt.setInt(5, dto.getBno());
+			psmt.executeUpdate();
+			
+			logger.info("updateCS_Board dto : " + dto);
+			close();
+		} catch (SQLException e) {
+			logger.error("updateCS_Board : " + e.getMessage());
+		}
 	}
 
 	public void deleteCS_Board(int bno) {
