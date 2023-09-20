@@ -105,19 +105,16 @@
                 <div>
                     <ul>
                         <li>
-                            <a href="#">히트상품</a>
+                            <a href="#hit">히트상품</a>
                         </li>
                         <li>
-                            <a href="#">추천상품</a>
+                            <a href="#score">추천상품</a>
                         </li>
                         <li>
-                            <a href="#">최신상품</a>
+                            <a href="#rdate">최신상품</a>
                         </li>
                         <li>
-                            <a href="#">인기상품</a>
-                        </li>
-                        <li>
-                            <a href="#">할인상품</a>
+                            <a href="#discount">할인상품</a>
                         </li>
                     </ul>
                     <ul>
