@@ -9,9 +9,7 @@
 					    </nav>
 					
 					    <div class="content">
-					        <textarea>
-	                       		<c:out value="${cs.content }" />
-	                        </textarea>
+					        <textarea><c:out value="${cs.content }" /></textarea>
 					    </div>
 					    <a href="./list.do?group=${group }&cate=${cate}" 
 					        class="btnList">목록보기</a>

@@ -12,9 +12,7 @@
 				
 				    <div class="content">
 				    	<%-- <c:out>으로 감싸주면 content안에서 장난질 막을 수 있음 --%>
-				        <textarea>
-                       		<c:out value="${cs.content }" />
-                        </textarea>
+				        <textarea><c:out value="${cs.content }" /></textarea>
 				    </div>
 				    
 				    <!-- 댓글(답글) -->
