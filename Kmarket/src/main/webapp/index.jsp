@@ -28,7 +28,7 @@
           <ul class="category">
           </ul>
           <!-- 베스트상품 배너 -->
-          <article class="best">
+          <article class="best" id="sold">
             <h1><i class="fas fa-crown"></i>베스트상품</h1>
             <ol>
             	<c:forEach var="product" items="${bestProducts }" varStatus="status">
@@ -108,7 +108,7 @@
             </ul>
           </section>
           <!-- 히트상품 영역 -->
-          <section class="hit">
+          <section class="hit" id="hit">
             <h3><span>히트상품</span></h3>
             <c:forEach var="product" items="${hitProducts }">
             <article>
@@ -138,7 +138,7 @@
             </c:forEach>
           </section>
           <!-- 추천상품 영역 -->
-          <section class="recommend">
+          <section class="recommend" id="score">
             <h3><span>추천상품</span></h3>
             <c:forEach var="product" items="${scoreProducts }">
             <article>
@@ -168,7 +168,7 @@
             </c:forEach>
           </section>
           <!-- 최신상품 영역 -->
-          <section class="new">
+          <section class="new" id="rdate">
             <h3><span>최신상품</span></h3>
             <c:forEach var="product" items="${rdateProducts }">
             <article>
@@ -198,7 +198,7 @@
             </c:forEach>
           </section>
           <!-- 할인상품 영역 -->
-          <section class="discount">
+          <section class="discount" id="discount">
             <h3><span>할인상품</span></h3>
             <c:forEach var="product" items="${discountProducts }">
             <article>
