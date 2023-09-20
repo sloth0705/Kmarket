@@ -21,19 +21,6 @@ public class IndexController extends HttpServlet {
 		
 		String success = req.getParameter("success");
 		req.setAttribute("success", success);
-		// 쿠키 가져오기
-		Cookie[] cookies = req.getCookies();
-		if (cookies != null)
-		{
-			for (Cookie tempCookie : cookies)
-			{
-				if (tempCookie.getName().equals("uid"))
-				{
-					HttpSession session = req.getSession();
-					session.setAttribute("uid", tempCookie.getValue());
-				}
-			}
-		}
 		
 		// 베스트 상품, 히트 상품 등 상품 가져오기
 		List<ProductDTO> bestProducts = pService.selectProductsByReasonLimit(" a.`score` ", 5);
