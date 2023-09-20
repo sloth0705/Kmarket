@@ -137,4 +137,12 @@ public class ProductSQL {
 			+ "ORDER BY ";
 	public static String SELECT_PRODUCTS_BY_SEARCH2 = 
 			" LIMIT ?, 10";
+	public static String SELECT_PRODUCTS_BY_REASON_LIMIT1 = 
+			"SELECT a.*, b.`c1Name`, c.`c2Name` "
+					+ "FROM `km_product` AS a "
+					+ "LEFT OUTER JOIN `km_product_cate1` AS b "
+					+ "ON a.`prodCate1` = b.`cate1` "
+					+ "LEFT OUTER JOIN `km_product_cate2` AS c ON "
+					+ "a.`prodCate2` = c.`cate2` AND a.`prodCate1` = c.`cate1` "
+					+ "ORDER BY ";
 }
