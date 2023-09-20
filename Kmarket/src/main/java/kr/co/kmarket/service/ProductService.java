@@ -106,4 +106,8 @@ public enum ProductService {
 	public List<ProductDTO> selectProductsBySearch(ProductSearchForm searchForm, int start) {
 		return dao.selectProductsBySearch(searchForm, start);
 	}
+
+	public List<ProductDTO> selectProductsByReasonLimit(String reason, int limit) {
+		return dao.selectProductsByReasonLimit(reason, limit);
+	}
 }

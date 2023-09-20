@@ -46,6 +46,11 @@
                     	class="next">&raquo;</a>
                 </div>
                 
+                <!-- notice 글쓰기 -->
+				<c:if test="${sessMember.type eq 99}">
+					<a href="./write.do?group=${group }&cate=${cate}" 
+						class="btnWrite">글쓰기</a>
+				</c:if>
 			</article>
 		</section>
 	</div>

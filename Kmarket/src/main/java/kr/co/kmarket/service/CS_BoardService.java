@@ -33,13 +33,18 @@ public enum CS_BoardService {
 	}
 
 	// qna 글 쓸 때 cate 가져오기
-	public List<BoardCateDTO> selectQnABoardCate(){
-		return dao.selectQnABoardCate();
+	public List<BoardCateDTO> selectBoardCate(){
+		return dao.selectBoardCate();
 	}
 	
-	// qna 게시판 글 쓸 때 cate별로 type 가져오기
-	public List<BoardTypeDTO> selectQnABoardType(String cate){
-		return dao.selectQnABoardType(cate);
+	// notice 글 쓸 때 cate 가져오기
+	public List<BoardCateDTO> selectNoticeCate(){
+		return dao.selectNoticeCate();
+	}
+	
+	// cate별로 type 가져오기
+	public List<BoardTypeDTO> selectBoardType(String cate){
+		return dao.selectBoardType(cate);
 	}
 	
 	// 게시판 수정

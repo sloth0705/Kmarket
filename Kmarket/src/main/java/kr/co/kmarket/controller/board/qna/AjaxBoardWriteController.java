@@ -17,8 +17,8 @@ import com.google.gson.Gson;
 import kr.co.kmarket.dto.BoardTypeDTO;
 import kr.co.kmarket.service.CS_BoardService;
 
-@WebServlet("/cs/qnaBoard/ajaxWrite.do")
-public class AjaxQnABoardWriteController extends HttpServlet {
+@WebServlet("/cs/Board/ajaxWrite.do")
+public class AjaxBoardWriteController extends HttpServlet {
 	private static final long serialVersionUID = 5233589879373746478L;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -38,7 +38,7 @@ public class AjaxQnABoardWriteController extends HttpServlet {
 		logger.info("ajax value : " + optionValue);
 		
 		List<BoardTypeDTO> type
-			= service.selectQnABoardType(optionValue);
+			= service.selectBoardType(optionValue);
 		logger.info("ajax type list : " + type);
 		
 		respones.setContentType("application/json;charset=UTF-8");

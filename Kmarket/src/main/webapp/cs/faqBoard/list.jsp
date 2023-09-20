@@ -7,79 +7,34 @@
 					<h2>[${cateName }] 문의 내용입니다.</h2>
 				</nav>
 				
-                <div>
-                    <h3>${cs.get(0).typeName }</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>개인회원과 법인회원에 차이가 있나요?
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>개인회원과 법인회원에 차이가 있나요?
-                            </a>
-                        </li>
-                        <li class="more">
-                            <a href="#">더보기</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>${cs.get(1).typeName }</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>회원 탈퇴 어케 하나요?
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>회원 탈퇴 어케 하나요?
-                            </a>
-                        </li>
-                        <li class="more">
-                            <a href="#">더보기</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>회원정보</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>회원 정보 수정 어케 하나요?
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>회원 정보 수정 어케 하나요?
-                            </a>
-                        </li>
-                        <li class="more">
-                            <a href="#">더보기</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>로그인</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>로그인이 안되요
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span>Q.</span>로그인이 안되요
-                            </a>
-                        </li>
-                        <li class="more">
-                            <a href="#">더보기</a>
-                        </li>
-                    </ul>
-                </div>
-                
+				<c:choose>
+					<c:when test="${!empty cs }">
+						<c:forEach var="type" items="${types }">
+			                <div>
+			                    <h3>${type.typeName }</h3>
+			                    <ul>
+									<c:forEach var="board" items="${cs }">
+										<c:if test="${board.type eq type.type }">
+					                        <li>
+					                            <a href="#">
+					                                <span>Q.</span>${board.title }
+					                            </a>
+					                        </li>
+				                        </c:if>
+			                        </c:forEach>
+			                        <li class="more">
+			                            <a href="#">더보기</a>
+			                        </li>
+			                    </ul>
+			                </div>
+	                	</c:forEach>
+	                </c:when>
+	                <c:otherwise>
+		                <ul>
+							<li>등록된 게시물이 없습니다.</li>
+						</ul>
+	                </c:otherwise>
+                </c:choose>
             </article>
         </section>
     </div>

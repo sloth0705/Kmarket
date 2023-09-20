@@ -28,4 +28,5 @@
     </div>    
 </body>
 <script src='${path }/product/js/zipcode.js'></script>
+<script src="${path}/js/moveTop.js"></script>
 </html>
