@@ -29,19 +29,6 @@ public class LoginController extends HttpServlet {
 		String success = req.getParameter("success");
 		req.setAttribute("success", success);
 		
-		// 쿠키 가져오기
-		Cookie[] cookies = req.getCookies();
-		if (cookies != null)
-		{
-			for(Cookie tempCookie : cookies)
-			{
-		        if(tempCookie.getName().equals("uid"))
-		        {
-		            resp.sendRedirect("/Kmarket");
-		        }
-		    }
-		}
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/member/login.jsp");
 		dispatcher.forward(req, resp);	
 	}
@@ -60,10 +47,10 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("sessMember", member);
 			
 			// 로그인 유지처리
-			if (autoChk != null)
+			if (autoChk != null) // 자동로그인 체크
 			{
-				Cookie cookie = new Cookie("uid", uid);
-				cookie.setMaxAge(60);
+				Cookie cookie = new Cookie("memberCookie", member.getUid());
+				cookie.setMaxAge(60*60*24*7);
 				cookie.setPath("/");
 				resp.addCookie(cookie);
 			}

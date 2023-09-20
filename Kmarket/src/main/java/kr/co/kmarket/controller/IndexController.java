@@ -5,11 +5,9 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.service.ProductService;
@@ -23,7 +21,6 @@ public class IndexController extends HttpServlet {
 		
 		String success = req.getParameter("success");
 		req.setAttribute("success", success);
-		
 		// 쿠키 가져오기
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null)
@@ -50,7 +47,6 @@ public class IndexController extends HttpServlet {
 		req.setAttribute("scoreProducts", scoreProducts);
 		req.setAttribute("rdateProducts", rdateProducts);
 		req.setAttribute("discountProducts", discountProducts);
-		
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 }

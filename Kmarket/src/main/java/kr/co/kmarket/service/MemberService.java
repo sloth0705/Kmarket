@@ -17,6 +17,9 @@ public enum MemberService {
 	public MemberDTO selectMember(String uid, String pass) {
 		return dao.selectMember(uid, pass);
 	}
+	public MemberDTO selectCookie(String uid) {
+		return dao.selectCookie(uid);
+	}
 	public int selectCountUid(String uid) {
 		return dao.selectCountUid(uid);
 	}

@@ -20,6 +20,8 @@
     	
     	if (success == 100) // 아이디 비밀번호 불일치
     		alert('아이디와 비밀번호를 다시 확인해주세요.');
+    	else if (success == 101)
+    		alert('로그인을 먼저 하셔야합니다.');
     </script>
 </head>
 <body>
