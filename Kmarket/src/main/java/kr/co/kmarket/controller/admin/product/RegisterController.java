@@ -26,13 +26,6 @@ public class RegisterController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*String prodCate1 = req.getParameter("prodCate1");
-		String prodCate2 = req.getParameter("prodCate2");
-		req.setAttribute("prodCate1", prodCate1);
-		req.setAttribute("prodCate1", prodCate2);
-		logger.info("doGet() : "+prodCate1);
-		logger.info("doGet() : "+prodCate2);*/
-		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/product/register.jsp");
 		dispatcher.forward(req, resp);
 	}

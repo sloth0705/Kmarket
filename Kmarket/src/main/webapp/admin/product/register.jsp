@@ -56,6 +56,7 @@
 		});
 	});
 	
+	// 새로고침 시 주소 파라미터 리셋
 	window.onkeydown = function() {
 		var kcode = event.keyCode;
 		if(kcode == 116)
@@ -119,7 +120,6 @@
                         <td>상품명</td>
                         <td>
                         	<input type="text" name="prodName" required/>
-                        	<span class="resultProdName"></span>
                         </td>
                     </tr>
                     <tr>
@@ -207,14 +207,12 @@
                         <td>상품상태</td>
                         <td>
                         	<input type="text" name="status" value="새상품" required/>
-                        	<span class="resultStatus"></span>
                         </td>
                     </tr>
                     <tr>
                         <td>부가세 면세여부</td>
                         <td>
                         	<input type="text" name="duty" value="과세상품" required/>
-                        	<span class="resultDuty"></span>
                         </td>
                     </tr>
                     <tr>
@@ -229,7 +227,6 @@
                         <td>원산지</td>
                         <td>
                         	<input type="text" name="origin" value="국내산" required/>
-                        	<span class="resultOrigin"></span>
                         </td>
                     </tr>
                 </table>

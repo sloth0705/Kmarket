@@ -103,6 +103,7 @@ public class ProductDAO extends DBHelper {
 				dto.setEtc4(rs.getString("etc4"));
 				dto.setEtc5(rs.getString("etc5"));
 			}
+			close();
 		} catch (Exception e) {
 			logger.error("selectProduct error : " + e.getMessage());
 		}
@@ -156,6 +157,7 @@ public class ProductDAO extends DBHelper {
 				dto.setEtc5(rs.getString("etc5"));
 				products.add(dto);
 			}
+			close();
 		} catch (Exception e) {
 			logger.error("selectProducts error : " + e.getMessage());
 		}
@@ -268,6 +270,7 @@ public class ProductDAO extends DBHelper {
 				dto.setEtc5(rs.getString("etc5"));
 				products.add(dto);
 			}
+			close();
 		} catch (Exception e) {
 			logger.error("selectProducts error : " + e.getMessage());
 		}

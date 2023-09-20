@@ -19,7 +19,7 @@
     <div id="admin-wrapper">
         <header>
             <div>
-                <a href="${path }/admin/index.do" class="logo"><img src="${path }/admin/img/admin_logo.png" alt="admin_logo"/></a>
+                <a href="${path}/admin/index.do" class="logo"><img src="${path}/admin/img/admin_logo.png" alt="admin_logo"/></a>
                 <p>
                     <span>홍길동</span>님 반갑습니다.
                     <a href="${path}">HOME |</a>

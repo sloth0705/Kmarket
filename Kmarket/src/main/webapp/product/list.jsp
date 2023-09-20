@@ -20,7 +20,7 @@
       <table>     
       	<c:forEach var="product" items="${products}" varStatus="status">             
         <tr>
-          <td><a href="#" class="thumb"><img src="${path }/upload/${product.thumb1}" alt="상품이미지"/></a></td>
+          <td><a href="#" class="thumb"><img src="${path }/thumb/${product.prodCate1 }/${product.prodCate2 }/${product.thumb1}" alt="상품이미지"/></a></td>
           <td>
             <h3 class="name">${product.prodName }</h3>
             <a href="${path }/product/view.do?prodNo=${product.prodNo}&cate1=${cate1}&cate2=${cate2}" class="desc">${product.descript }</a>
@@ -65,7 +65,7 @@
         </c:if>
         <c:forEach var="i" begin="${pageGroupStart }" end="${pageGroupEnd }">
 	        <span class="num">
-	          <a href="${path }/product/list.do?pg=${pg}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
+	          <a href="${path }/product/list.do?pg=${i}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
 	        </span>
         </c:forEach>
         <c:if test="${pageGroupEnd lt lastPageNum }">
