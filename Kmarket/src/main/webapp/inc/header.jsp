@@ -93,7 +93,7 @@
             <div class="logo">
                 <div>
                     <a href="${path}"><img src="./img/header_logo.png" alt="로고" /></a>
-                    <form action="#">
+                    <form action="${path }/product/search.do" method="get">
                         <input type="text" name="search" />
                         <button>
                             <i class="fa fa-search"></i>
