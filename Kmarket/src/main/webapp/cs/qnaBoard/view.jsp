@@ -12,7 +12,9 @@
 				
 				    <div class="content">
 				    	<%-- <c:out>으로 감싸주면 content안에서 장난질 막을 수 있음 --%>
-				        <p><c:out value="${cs.content }" /></p>
+				        <textarea>
+                       		<c:out value="${cs.content }" />
+                        </textarea>
 				    </div>
 				    
 				    <!-- 댓글(답글) -->
@@ -45,8 +47,8 @@
 					</div>
 				    
 				    <!-- 댓글입력폼 -->
-				    <c:if test="${sessMember.level eq 99 
-				    				|| sessMember.level eq 5}">
+				    <c:if test="${sessMember.type eq 99 
+				    				|| sessMember.type eq 2}">
 						<section class="commentForm">
 							<h3>댓글쓰기</h3>
 							<form action="${path }/cs/comment/write.do" method="post">

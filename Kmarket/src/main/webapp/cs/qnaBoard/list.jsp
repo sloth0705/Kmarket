@@ -51,8 +51,10 @@
                 </div>
 
 				<!-- 로그인 한 "일반 유저"가 문의 하기 -->
-				<a href="./write.do?group=${group }&cate=${cate}" 
-					class="btnWrite">문의하기</a>
+				<c:if test="${sessMember.type eq 1}">
+					<a href="./write.do?group=${group }&cate=${cate}" 
+						class="btnWrite">문의하기</a>
+				</c:if>
 			</article>
 		</section>
 	</div>
