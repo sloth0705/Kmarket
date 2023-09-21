@@ -13,9 +13,11 @@
 			                <div>
 			                    <h3>${type.typeName }</h3>
 			                    <ul>
-									<c:forEach var="board" items="${cs }">
-										<c:if test="${board.type eq type.type }">
-					                        <li>
+			                    	<!-- varStatus : 상태용 변수(참고 링크 : https://jetalog.net/20) -->
+									<c:forEach var="board" items="${cs }" varStatus="status">
+										<c:if test="${board.type eq type.type}">
+					                        <li class="${status.index ge 3 
+					                        	&& status.index le 9 ? board.type : '' }">
 					                            <a href="${path }/cs/faqBoard/view.do?group=faq&cate=${cate}&bno=${board.bno}">
 					                                <span>Q.</span>${board.title }
 					                            </a>
@@ -23,7 +25,8 @@
 				                        </c:if>
 			                        </c:forEach>
 			                        <li class="more">
-			                            <a href="#">더보기</a>
+			                            <a class="moreAteg ${type.type }" href="#">더보기</a>
+			                            <a class="lessAteg ${type.type }" style="display: none" href="#">간단히보기</a>
 			                        </li>
 			                    </ul>
 			                </div>
@@ -40,3 +43,4 @@
     </div>
 </section>
 <%@ include file="../inc/footer.jsp" %>
+<script src="${path }/cs/js/faqMore.js"></script>
