@@ -31,7 +31,7 @@
             
             <div>
 	            <input type="button" value="삭제" />
-				<input type="button" value="목록" />
+				<input type="button" value="목록" onclick="location.href='${path}/admin/cs/qna/list.do'"/>
 			</div>
         </section>     
 </section>

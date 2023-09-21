@@ -27,8 +27,8 @@
             
             <div>
 	            <input type="button" value="삭제" />
-	            <input type="button" value="수정" />
-				<input type="button" value="목록" />
+	            <input type="button" value="수정" onclick="location.href='${path}/admin/cs/notice/modify.do'"/>
+				<input type="button" value="목록" onclick="location.href='${path}/admin/cs/notice/list.do'"/>
 			</div>
         </section>     
 </section>

@@ -42,13 +42,23 @@
                 </tr>
                 <tr>
                 	<td><input type="checkbox" name=""/></td>
+					<td>37</td>
+					<td>회원</td>
+					<td>가입</td>
+					<td><a href="${path}/admin/cs/qna/reply.do">회원 종류 및 혜택 안내</a></td>
+					<td>koo2**</td>
+					<td>23.09.22</td>
+					<td class="ing">검토중</td>
+                </tr>
+                <tr>
+                	<td><input type="checkbox" name=""/></td>
 					<td>29</td>
 					<td>회원</td>
 					<td>가입</td>
 					<td><a href="${path}/admin/cs/qna/view.do">회원탈퇴 방법 알려주세요.</a></td>
 					<td>a12**</td>
 					<td>23.09.18</td>
-					<td>검토중</td>
+					<td class="end">답변완료</td>
                 </tr>
             </table>
             
