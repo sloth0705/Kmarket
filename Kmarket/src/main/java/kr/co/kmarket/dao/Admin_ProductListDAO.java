@@ -193,11 +193,12 @@ public class Admin_ProductListDAO extends DBHelper {
 		int count = 0;
 		try {
 			String sql = "";
+			logger.info("level: " + level);
 			// 최고관리자 level:7이라면 전체 상품의 갯수 조회
 			if (level == 7) {
 				sql = "SELECT COUNT(*) FROM `km_product` AS a "
 						+ "JOIN `km_member` AS b ON a.`seller` = b.`uid` "
-						+ "WHERE `deleteYn` = 'N'";
+						+ "WHERE `deleteYn` = 'N' ";
 			} else {
 				sql = "SELECT COUNT(*) FROM `km_product` AS a "
 						+ "JOIN `km_member` AS b ON a.`seller` = b.`uid` "
@@ -216,7 +217,7 @@ public class Admin_ProductListDAO extends DBHelper {
 			
 			if (level == 7) {
 				psmt = getConnection().prepareStatement(sql);
-				psmt.setString(1, uid);
+				psmt.setString(1, searchForm.getSearch());
 			} else {
 				psmt = getConnection().prepareStatement(sql);
 				psmt.setString(1, uid);
@@ -230,6 +231,7 @@ public class Admin_ProductListDAO extends DBHelper {
 		} catch (Exception e) {
 			logger.error("selectCountTotal error : " + e.getMessage());
 		}
+		logger.info("count : " + count);
 		return count;
 	}
 }
