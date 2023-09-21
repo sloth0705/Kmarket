@@ -44,25 +44,24 @@
                     <th>조회</th>
                     <th>관리</th>
                 </tr>
-                <tr>
                 	<c:forEach var="product" items="${products}">
-                    <td><input type="checkbox" name="상품코드"/></td>
-                    <td><img src="../img/sample_thumb.jpg" class="thumb"></td>
-                    <td>${product.thumb1}</td>
-                    <td>${product.prodNo}</td>
-                    <td>${product.prodName}</td>
-                    <td>${product.price}</td>
-                    <td>${product.discount}</td>
-                    <td>${product.point}</td>
-                    <td>${product.stock}</td>
-                    <td>${product.seller}</td>
-                    <td>${product.hit}</td>
-                    <td>
+                		<tr>
+		                    <td><input type="checkbox" name="상품코드"/></td>
+		                    <td><img src="${path }/thumb/${product.prodCate1 }/${product.prodCate2 }/${product.thumb1}" class="thumb"></td>
+		                    <td>${product.prodNo}</td>
+		                    <td>${product.prodName}</td>
+		                    <td>${product.getPriceWithComma()}</td>
+		                    <td>${product.discount}</td>
+		                    <td>${product.point}</td>
+		                    <td>${product.stock}</td>
+		                    <td>${product.seller}</td>
+		                    <td>${product.hit}</td>
+		                    <td>
                         <a href="#">[삭제]</a>
                         <a href="#">[수정]</a>
                     </td>
+		                </tr>
                     </c:forEach>
-                </tr>
             </table>
             
             <input type="button" value="선택삭제" />                          
@@ -75,7 +74,7 @@
         </c:if>
         <c:forEach var="i" begin="${pageGroupStart }" end="${pageGroupEnd }">
 	        <span class="num">
-	          <a href="${path }/product/list.do?pg=${pg}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
+	          <a href="${path }/admin/product/list.do?pg=${i}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
 	        </span>
         </c:forEach>
         <c:if test="${pageGroupEnd lt lastPageNum }">
