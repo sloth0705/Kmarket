@@ -71,7 +71,7 @@
 					<td class="count">
 						<input type="hidden" name="prodNo" value="${product.prodNo }"/>
 						<input type="hidden" name="count" value="${count }"/>
-						<input type="hidden" name="savePoint" value="${cart.product.point }">
+						<input type="hidden" name="userPoint" value="${product.point }">
 						${count }
 					</td>
 					<td class="price">
