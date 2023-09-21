@@ -104,7 +104,7 @@
 				</c:if>
 				<c:forEach var="i" begin="${pageGroupStart }" end="${pageGroupEnd }">
 				<span class="num">
-				  <a href="${path }/admin/product/list.do?pg=${i}&cate1=${cate1}&cate2=${cate2}" class="${i eq pg ? 'on' : '' }">${i }</a>
+				  <a href="${path }/admin/product/list.do?pg=${i}&searchType=${searchType}&search=${search}" class="${i eq pg ? 'on' : '' }">${i }</a>
 				</span>
 				</c:forEach>
 				<c:if test="${pageGroupEnd lt lastPageNum }">
