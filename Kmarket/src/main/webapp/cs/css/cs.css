@@ -63,7 +63,7 @@ header > .top > div > p > .memberUid {
 	color : #45AD4A;
 	/* 로고의 남색 */
 /*	color : #063772;*/
-	
+	font-weight: bold;
 	margin-right: 10px;
 }
 
