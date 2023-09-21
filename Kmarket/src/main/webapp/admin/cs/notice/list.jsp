@@ -18,7 +18,7 @@
 				    <option value="">안전거래</option>
 				    <option value="">위해상품</option>
 				    <option value="">이벤트 당첨</option>
-				</select>            
+				</select>
             </div>
             <table>
                 <tr>
@@ -40,7 +40,7 @@
 					<td>
 						<a href="#">[삭제]</a>
 						<br>
-						<a href="#">[수정]</a>
+						<a href="${path}/admin/cs/notice/modify.do">[수정]</a>
 					</td>
                 </tr>
             </table>
@@ -53,7 +53,7 @@
 				<span class="next"><a href="#" class="next">다음</a></span>
 			</div>
 			
-			<input type="button" value="작성하기" />
+			<input type="button" value="작성하기" onclick="location.href='${path}/admin/cs/notice/write.do'"/>
 
         </section>     
 </section>

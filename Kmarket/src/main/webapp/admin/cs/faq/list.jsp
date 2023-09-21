@@ -64,7 +64,7 @@
 				<span class="next"><a href="#" class="next">다음</a></span>
 			</div>
 			
-			<input type="button" value="작성하기" />
+			<input type="button" value="작성하기" onclick="location.href='${path}/admin/cs/faq/write.do'"/>
 
         </section>     
 </section>
