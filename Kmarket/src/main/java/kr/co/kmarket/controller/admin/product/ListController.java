@@ -38,10 +38,17 @@ public class ListController extends HttpServlet {
 		}
 		// 현재 페이지 가져오기
 		String pg = req.getParameter("pg");
-		
+
 		// 세션에서 현재 로그인 사용자의 정보를 가져온다
 		MemberDTO member = (MemberDTO) req.getSession().getAttribute("sessMember");
-
+		
+		// 검색조건들을 모으기 위한 form
+		ProductSearchForm searchForm = new ProductSearchForm();
+		searchForm.setUid(member.getUid());
+		searchForm.setLevel(member.getLevel());
+		searchForm.setSearch(search);
+		searchForm.setSearchType(searchType);
+		
 		// 페이지 관련 변수 선언
 		int currentPage = 1;
 		int total = 0;
@@ -60,7 +67,7 @@ public class ListController extends HttpServlet {
 		int start = (currentPage - 1) * 10;
 
 		// 전체 개시물 갯수 조회
-		total = pService.selectCountTotal(member.getUid(), member.getLevel());
+		total = pService.selectCountTotal(member.getUid(), member.getLevel(), searchForm);
 
 		if (total % 10 == 0) {
 			lastPageNum = total / 10;
@@ -80,12 +87,6 @@ public class ListController extends HttpServlet {
 		// 페이지 시작번호 계산
 		pageStartNum = total - start;
 
-		// 검색조건들을 모으기 위한 form
-		ProductSearchForm searchForm = new ProductSearchForm();
-		searchForm.setUid(member.getUid());
-		searchForm.setLevel(member.getLevel());
-		searchForm.setSearch(search);
-		searchForm.setSearchType(searchType);
 		List<ProductDTO> products = pService.selectProducts(searchForm, start);
 
 		logger.info("listnumber" + products.size());

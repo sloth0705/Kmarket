@@ -37,7 +37,7 @@ public enum Admin_ProductService {
 		dao.deleteProduct(in);
 	}
 
-	public int selectCountTotal(String uid, int level) {
-		return dao.selectCountTotal(uid, level);
+	public int selectCountTotal(String uid, int level, ProductSearchForm searchForm) {
+		return dao.selectCountTotal(uid, level, searchForm);
 	}
 }
