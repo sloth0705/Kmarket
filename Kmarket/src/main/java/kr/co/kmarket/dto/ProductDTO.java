@@ -39,6 +39,15 @@ public class ProductDTO {
 	private String etc4;
 	private String etc5;
 	private String path; // 추가필드
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public ProductDTO() {
 	}
