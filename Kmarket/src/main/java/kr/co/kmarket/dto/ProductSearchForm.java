@@ -8,6 +8,17 @@ public class ProductSearchForm {
 	private String sort;
 	private String search;
 
+	// 추가필드
+	private String uid;
+	
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
 	public String getCate1() {
 		return cate1;
 	}

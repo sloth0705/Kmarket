@@ -29,7 +29,7 @@ public class Admin_ProductListDAO extends DBHelper {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	String sql = "";
+	
 	public void insertProduct(ProductDTO dto ) {
 		try {
 			conn = getConnection(); 
@@ -58,7 +58,7 @@ public class Admin_ProductListDAO extends DBHelper {
 	public ProductDTO selectProduct(String prodNo) {
 		ProductDTO dto = null;
 		try {
-			sql = "";
+			
 			/* psmt = getConnection().prepareStatement(sql ""); */
 			psmt.setString(1, prodNo);
 			rs = psmt.executeQuery();
@@ -83,25 +83,48 @@ public class Admin_ProductListDAO extends DBHelper {
 	}
 	
 	// 목록 전체 불러오기
-	public List<ProductDTO> selectProducts(/* ProductSearchForm searchForm, int start */) {
+	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start ) {
 		List<ProductDTO> products = new ArrayList<>();
-		sql = "";
-		try {
-			psmt = getConnection().prepareStatement("SELECT `thumb1`, `prodNo`, `prodName`, `price`, "
-					+ "`discount`, `point`, `stock`, `seller`, `hit` FROM `km_product`");
 		
+		try {
+			psmt = getConnection().prepareStatement("SELECT * FROM `km_product` WHERE `seller`= ? LIMIT ?, 10");
+			psmt.setString(1, searchForm.getUid());
+			psmt.setInt(2, start);
 			rs = psmt.executeQuery(); // db의 데이터를 조회할 때 사용
 			while (rs.next()) {
 				ProductDTO dto = new ProductDTO();
-				dto.setThumb1(rs.getString("thumb1"));
 				dto.setProdNo(rs.getInt("prodNo"));
+				dto.setProdCate1(rs.getInt("prodCate1"));
+				dto.setProdCate2(rs.getInt("prodCate2"));
 				dto.setProdName(rs.getString("prodName"));
+				dto.setDescript(rs.getString("descript"));
+				dto.setCompany(rs.getString("company"));
+				dto.setSeller(rs.getString("seller"));
 				dto.setPrice(rs.getInt("price"));
 				dto.setDiscount(rs.getInt("discount"));
 				dto.setPoint(rs.getInt("point"));
 				dto.setStock(rs.getInt("stock"));
-				dto.setSeller(rs.getString("seller"));
+				dto.setSold(rs.getInt("sold"));
+				dto.setDelivery(rs.getInt("delivery"));
 				dto.setHit(rs.getInt("hit"));
+				dto.setScore(rs.getInt("score"));
+				dto.setReview(rs.getInt("review"));
+				dto.setThumb1(rs.getString("thumb1"));
+				dto.setThumb2(rs.getString("thumb2"));
+				dto.setThumb3(rs.getString("thumb3"));
+				dto.setDetail(rs.getString("detail"));
+				dto.setStatus(rs.getString("status"));
+				dto.setDuty(rs.getString("duty"));
+				dto.setReceipt(rs.getString("receipt"));
+				dto.setBizType(rs.getString("bizType"));
+				dto.setOrigin(rs.getString("origin"));
+				dto.setIp(rs.getString("ip"));
+				dto.setRdate(rs.getString("rdate"));
+				dto.setEtc1(rs.getInt("etc1"));
+				dto.setEtc2(rs.getInt("etc2"));
+				dto.setEtc3(rs.getString("etc3"));
+				dto.setEtc4(rs.getString("etc4"));
+				dto.setEtc5(rs.getString("etc5"));
 				products.add(dto);
 			}
 			close();
@@ -112,7 +135,7 @@ public class Admin_ProductListDAO extends DBHelper {
 		return products;
 	}
 	
-	public void updateProduct() {
+	public void updateProduct(ProductDTO dto) {
 
 	}
 
