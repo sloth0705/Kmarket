@@ -47,7 +47,7 @@ public class Admin_ProductListDAO extends DBHelper {
 			psmt.setInt(7, dto.getStock());
 			psmt.setString(8, dto.getSeller());
 			psmt.setInt(9, dto.getHit());
-			
+			close();
 		} catch (Exception e) {
 			logger.error("insertProduct() error : " + e.getMessage());
 			
@@ -58,7 +58,6 @@ public class Admin_ProductListDAO extends DBHelper {
 	public ProductDTO selectProduct(String prodNo) {
 		ProductDTO dto = null;
 		try {
-			
 			/* psmt = getConnection().prepareStatement(sql ""); */
 			psmt.setString(1, prodNo);
 			rs = psmt.executeQuery();
@@ -74,7 +73,7 @@ public class Admin_ProductListDAO extends DBHelper {
 				dto.setSeller(rs.getString("seller"));
 				dto.setHit(rs.getInt("hit"));
 			}
-			
+			close();
 		}catch (Exception e) {
 			logger.error("selectProduct error : " + e.getMessage());
 		}
@@ -85,11 +84,40 @@ public class Admin_ProductListDAO extends DBHelper {
 	// 목록 전체 불러오기
 	public List<ProductDTO> selectProducts(ProductSearchForm searchForm, int start ) {
 		List<ProductDTO> products = new ArrayList<>();
-		
 		try {
-			psmt = getConnection().prepareStatement("SELECT * FROM `km_product` WHERE `seller`= ? LIMIT ?, 10");
-			psmt.setString(1, searchForm.getUid());
-			psmt.setInt(2, start);
+			// 쿼리문 생성
+			// StringBuilder의 경우 일반 String보다 문자를 가공하는 속도가 빠르다.
+			StringBuilder sql = new StringBuilder("SELECT a.*, b.`name` FROM `km_product` AS a JOIN `km_member` "
+												+ "AS b ON a.`seller` = b.`uid` "
+												+ "WHERE `deleteYn` = 'N' ");
+			// 로그인한 사람이 최고관리자(level:7)가 아닐경우 자신이 등록한 상품만 조회
+			if (searchForm.getLevel() != 7) {
+				sql.append(" AND a.`seller` = ? ");
+			}
+			// 검색조건에 따라서 조회
+			if (searchForm.getSearchType().equals("prodName")) {
+				sql.append(" AND a.`prodName` LIKE CONCAT('%', ?, '%') ");
+			} else if (searchForm.getSearchType().equals("prodNo")) {
+				sql.append(" AND a.`prodNo` LIKE CONCAT('%', ?, '%') ");
+			} else if (searchForm.getSearchType().equals("company")) {
+				sql.append(" AND a.`company` LIKE CONCAT('%', ?, '%') ");
+			} else if (searchForm.getSearchType().equals("seller")) {
+				sql.append(" AND b.`name` LIKE CONCAT('%', ?, '%') ");
+			}
+			
+			// 한 페이지당 10개씩만 가져오도록 LIMIT
+			sql.append(" LIMIT ?, 10");
+			psmt = getConnection().prepareStatement(sql.toString());
+			
+			// 최고관리자와 아닌사람의 분리
+			if (searchForm.getLevel() == 7) {
+				psmt.setString(1, searchForm.getSearch());
+				psmt.setInt(2, start);
+			} else {
+				psmt.setString(1, searchForm.getUid());
+				psmt.setString(2, searchForm.getSearch());
+				psmt.setInt(3, start);
+			}
 			rs = psmt.executeQuery(); // db의 데이터를 조회할 때 사용
 			while (rs.next()) {
 				ProductDTO dto = new ProductDTO();
@@ -125,10 +153,10 @@ public class Admin_ProductListDAO extends DBHelper {
 				dto.setEtc3(rs.getString("etc3"));
 				dto.setEtc4(rs.getString("etc4"));
 				dto.setEtc5(rs.getString("etc5"));
+				dto.setName(rs.getString("name"));
 				products.add(dto);
 			}
 			close();
-		
 		}catch (Exception e) {
 			logger.error("selectProducts error : " + e.getMessage());
 		}
@@ -139,8 +167,15 @@ public class Admin_ProductListDAO extends DBHelper {
 
 	}
 
-	public void deleteProduct(int prodNo) {
-
+	public void deleteProduct(String in) {
+		try {
+			String sql = "UPDATE `km_product` SET `deleteYn` = 'Y' WHERE `prodNo` IN " + in;
+			stmt = getConnection().createStatement();
+			stmt.executeUpdate(sql);
+			close();
+		} catch (Exception e) {
+			logger.error("deleteProduct error : " + e.getMessage());
+		}
 	}
 	
 	public List<ProductDTO> deleteProducts(int prodNo) {
@@ -156,9 +191,28 @@ public class Admin_ProductListDAO extends DBHelper {
 		return products;
 
 	}
-	
-	
-	
-	
 
+	public int selectCountTotal(String uid, int level) {
+		int count = 0;
+		try {
+			// 최고관리자 level:7이라면 전체 상품의 갯수 조회 
+			if (level == 7) {
+				String sql = "SELECT COUNT(*) FROM `km_product` WHERE `deleteYn` = 'N'";
+				psmt = getConnection().prepareStatement(sql);
+			} else {
+				String sql = "SELECT COUNT(*) FROM `km_product` WHERE `deleteYn` = 'N' AND `seller` = ?";
+				psmt = getConnection().prepareStatement(sql);
+				psmt.setString(1, uid);
+			}
+			
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+			close();
+		} catch (Exception e) {
+			logger.error("selectCountTotal error : " + e.getMessage());
+		}
+		return count;
+	}
 }

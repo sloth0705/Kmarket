@@ -7,10 +7,11 @@ public class ProductSearchForm {
 	private String pg;
 	private String sort;
 	private String search;
-
+	private String searchType;
+	private int level;
 	// 추가필드
 	private String uid;
-	
+
 	public String getUid() {
 		return uid;
 	}
@@ -57,5 +58,21 @@ public class ProductSearchForm {
 
 	public void setSearch(String search) {
 		this.search = search;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
 	}
 }

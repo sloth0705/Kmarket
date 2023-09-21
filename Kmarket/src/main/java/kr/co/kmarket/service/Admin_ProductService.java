@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.co.kmarket.dao.Admin_ProductListDAO;
-import kr.co.kmarket.dao.ProductDAO;
 import kr.co.kmarket.dto.ProductDTO;
 import kr.co.kmarket.dto.ProductSearchForm;
 
@@ -34,11 +33,11 @@ public enum Admin_ProductService {
 		dao.updateProduct(dto);
 	}
 
-	public void deleteProduct(int prodNo) {
-		dao.deleteProduct(prodNo);
+	public void deleteProduct(String in) {
+		dao.deleteProduct(in);
 	}
-	
-	
-	
 
+	public int selectCountTotal(String uid, int level) {
+		return dao.selectCountTotal(uid, level);
+	}
 }
