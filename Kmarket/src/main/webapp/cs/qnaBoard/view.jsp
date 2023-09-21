@@ -15,9 +15,9 @@
 				        <textarea><c:out value="${cs.content }" /></textarea>
 				    </div>
 				    
-				    <!-- 댓글(답글) -->
+				    <!-- 댓글(답변) -->
 					<div>
-						<h3>댓글목록</h3>
+						<h3>답변</h3>
 						<c:choose>
 							<c:when test="${!empty comments }">
 								<c:forEach var="comment" items="${comments }">
@@ -28,9 +28,8 @@
 											<textarea class="textarea" name="comment" disabled>${comment.content }</textarea>
 											<c:if test="${sessMember.uid eq comment.uid }">
 												<div>
-													<a href="#" class="del" data-no="${comment.cno}">삭제</a> 
-													<a href="#" class="cancel" data-no="${comment.cno}">취소</a> 
-													<a href="#" class="modify" data-no="${comment.cno}">수정</a>
+													<a href="#" class="del">삭제</a> 
+													<a href="#" class="modify">수정</a>
 												</div>
 											</c:if>
 										</form>
@@ -39,16 +38,15 @@
 								<!-- for end -->
 							</c:when>
 							<c:otherwise>
-								<p class="empty">등록된 댓글이 없습니다.</p>
+								<p class="empty">등록된 답변이 없습니다.</p>
 							</c:otherwise>
 						</c:choose>
 					</div>
 				    
 				    <!-- 댓글입력폼 -->
-				    <c:if test="${sessMember.type eq 99 
-				    				|| sessMember.type eq 2}">
+				    <c:if test="${sessMember.type ge 2}">
 						<section class="commentForm">
-							<h3>댓글쓰기</h3>
+							<h3>답변 달기</h3>
 							<form action="${path }/cs/comment/write.do" method="post">
 								<input type="hidden" name="bno" value="${cs.bno }" /> 
 								<input type="hidden" name="uid" value="${sessMember.uid }" /> 

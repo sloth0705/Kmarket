@@ -92,7 +92,8 @@ public class CS_BoardDAO extends DBHelper {
 						+ " AND b.`cate` = bt.`cate`"
 					+ " JOIN km_cs_boardCate AS bc"
 						+ " ON b.`cate` = bc.`cate` "
-					+ " WHERE `group` = 'notice'";
+					+ " WHERE `group` = 'notice'"
+					+ " ORDER BY bno DESC";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
@@ -124,7 +125,8 @@ public class CS_BoardDAO extends DBHelper {
 					+ " JOIN km_cs_boardCate AS bc"
 						+ " ON b.`cate` = bc.`cate` "
 					+ " WHERE `group` = ? "
-					+ " AND b.cate = ?";
+					+ " AND b.cate = ? "
+					+ " ORDER BY bno DESC";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, group);
 			psmt.setString(2, cate);

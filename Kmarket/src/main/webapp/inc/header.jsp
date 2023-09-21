@@ -81,7 +81,7 @@
 	                    <a href="${path}/member/join.do">회원가입</a>
                     </c:if>
                     <c:if test="${not empty sessMember}">
-                    	<c:if test="${sessMember.type eq 2}">
+                    	<c:if test="${sessMember.type ge 2}">
                 			<a href="${path}/admin/index.do">관리자</a>
 	                	</c:if>
 	                    <a href="#">마이페이지</a>

@@ -22,7 +22,7 @@
                     <p>
 	                    <c:choose>
 	                    	<c:when test="${sessMember != null }">
-		                		<span class="memberUid">${sessMember.uid }</span> 님 반갑습니다.
+		                		<span class="memberUid">${sessMember.uid }</span>
 		                    	<a href="${path }/index.do">HOME</a>
 			                	<c:if test="${sessMember.type eq 99 }">
 			                		<a href="${path }/admin/index.do">관리자 </a>
