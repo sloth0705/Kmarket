@@ -16,7 +16,7 @@
 									<c:forEach var="board" items="${cs }">
 										<c:if test="${board.type eq type.type }">
 					                        <li>
-					                            <a href="#">
+					                            <a href="${path }/cs/faqBoard/view.do?group=faq&cate=${cate}&bno=${board.bno}">
 					                                <span>Q.</span>${board.title }
 					                            </a>
 					                        </li>

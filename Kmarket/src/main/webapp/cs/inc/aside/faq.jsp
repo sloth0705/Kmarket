@@ -35,5 +35,8 @@
 					<li class="${cate eq 'travel' ? 'on' : '' }">
 					    <a href="${path }/cs/faqBoard/list.do?group=faq&cate=travel">여행/숙박/항공</a>
 					</li>
+					<li class="${cate eq 'safe' ? 'on' : '' }">
+					    <a href="${path }/cs/faqBoard/list.do?group=faq&cate=safe">안전거래</a>
+					</li>
 				</ul>
 			</aside>
