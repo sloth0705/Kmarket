@@ -61,7 +61,7 @@
 							<img src="${path }/thumb/${orderItem.product.prodCate1 }/${orderItem.product.prodCate2 }/${orderItem.product.thumb1}" alt="">
 							<div class="w450">
 								<h2>
-									<a href="#">${orderItem.product.prodName } </a>
+									<a href="${path }/product/view.do?prodNo=${orderItem.product.prodNo}&cate1=${orderItem.product.prodCate1}&cate2=${orderItem.product.prodCate2}">${orderItem.product.prodName } </a>
 								</h2>
 								<p>${orderItem.product.descript }</p>
 							</div>

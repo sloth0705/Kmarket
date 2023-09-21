@@ -32,14 +32,17 @@ public class ProductDTO {
 	private String origin;
 	private String ip;
 	private String rdate;
+	private String deleteYn;
 	private int etc1;
 	private int etc2;
 	private String etc3;
 	private String etc4;
 	private String etc5;
 	private String path; // 추가필드
-	
-	public ProductDTO() {}
+
+	public ProductDTO() {
+	}
+
 	public ProductDTO(String path) {
 		this.path = path;
 	}
@@ -81,6 +84,7 @@ public class ProductDTO {
 	public void setProdCate1(int prodCate1) {
 		this.prodCate1 = prodCate1;
 	}
+
 	public void setProdCate1(String prodCate1) {
 		this.prodCate1 = Integer.parseInt(prodCate1);
 	}
@@ -92,6 +96,7 @@ public class ProductDTO {
 	public void setProdCate2(int prodCate2) {
 		this.prodCate2 = prodCate2;
 	}
+
 	public void setProdCate2(String prodCate2) {
 		this.prodCate2 = Integer.parseInt(prodCate2);
 	}
@@ -160,6 +165,7 @@ public class ProductDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	public void setPrice(String price) {
 		this.price = Integer.parseInt(price);
 	}
@@ -171,6 +177,7 @@ public class ProductDTO {
 	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
+
 	public void setDiscount(String discount) {
 		this.discount = Integer.parseInt(discount);
 	}
@@ -182,6 +189,7 @@ public class ProductDTO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
 	public void setPoint(String point) {
 		this.point = Integer.parseInt(point);
 	}
@@ -193,6 +201,7 @@ public class ProductDTO {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
 	public void setStock(String stock) {
 		this.stock = Integer.parseInt(stock);
 	}
@@ -217,6 +226,7 @@ public class ProductDTO {
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
 	}
+
 	public void setDelivery(String delivery) {
 		this.delivery = Integer.parseInt(delivery);
 	}
@@ -252,6 +262,7 @@ public class ProductDTO {
 	public void setThumb1(String thumb1) {
 		this.thumb1 = thumb1;
 	}
+
 	public void setThumb1ForRename(String thumb1) {
 		this.thumb1 = fileRename(thumb1);
 	}
@@ -263,6 +274,7 @@ public class ProductDTO {
 	public void setThumb2(String thumb2) {
 		this.thumb2 = thumb2;
 	}
+
 	public void setThumb2ForRename(String thumb2) {
 		this.thumb2 = fileRename(thumb2);
 	}
@@ -274,6 +286,7 @@ public class ProductDTO {
 	public void setThumb3(String thumb3) {
 		this.thumb3 = thumb3;
 	}
+
 	public void setThumb3ForRename(String thumb3) {
 		this.thumb3 = fileRename(thumb3);
 	}
@@ -285,6 +298,7 @@ public class ProductDTO {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
+
 	public void setDetailForRename(String detail) {
 		this.detail = fileRename(detail);
 	}
@@ -345,6 +359,14 @@ public class ProductDTO {
 		this.rdate = rdate;
 	}
 
+	public String getDeleteYn() {
+		return deleteYn;
+	}
+
+	public void setDeleteYn(String deleteYn) {
+		this.deleteYn = deleteYn;
+	}
+
 	public int getEtc1() {
 		return etc1;
 	}
@@ -384,19 +406,19 @@ public class ProductDTO {
 	public void setEtc5(String etc5) {
 		this.etc5 = etc5;
 	}
-	
+
 	// 추가
 	public String fileRename(String thumb) {
 		int i = thumb.lastIndexOf(".");
 		String ext = thumb.substring(i);
-		
+
 		String uuid = UUID.randomUUID().toString();
 		String sName = uuid + ext;
-		
+
 		File f1 = new File(path + "/" + thumb);
 		File f2 = new File(path + "/" + sName);
 		f1.renameTo(f2);
-		
+
 		return sName;
 	}
 }

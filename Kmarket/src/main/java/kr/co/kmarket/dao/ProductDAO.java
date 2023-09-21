@@ -97,6 +97,7 @@ public class ProductDAO extends DBHelper {
 				dto.setOrigin(rs.getString("origin"));
 				dto.setIp(rs.getString("ip"));
 				dto.setRdate(rs.getString("rdate"));
+				dto.setDeleteYn(rs.getString("deleteYn"));
 				dto.setEtc1(rs.getInt("etc1"));
 				dto.setEtc2(rs.getInt("etc2"));
 				dto.setEtc3(rs.getString("etc3"));

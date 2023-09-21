@@ -136,6 +136,8 @@
                             <span class="origin">원산지-${product.origin }</span>
                         </nav>
                         <img src="./img/vip_plcc_banner.png" alt="100원만 결제해도 1만원 적립!" class="banner" />
+                        <!-- 해당 상품이 삭제된 상태라면 구입이 불가능하도록 수정 -->
+                        <c:if test="${product.deleteYn eq 'N' }">
                         <div class="count">
                             <button class="decrease">-</button>
                             <input type="text" name="num" value="1" min="1" readonly/>
@@ -149,6 +151,7 @@
                             <input type="button" class="cart"  value="장바구니"/>
                             <input type="button" class="order" value="구매하기"/>
                         </div>
+                        </c:if>
                     </div>
                 </article>
                 <!-- 상품 정보 내용 -->
