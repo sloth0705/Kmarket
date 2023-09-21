@@ -4,7 +4,7 @@
 <%@ include file="../../inc/aside.jsp" %>
 <section id="admin-cs-notice-modify">
     <nav>
-        <h3>자주묻는질문 수정</h3>
+        <h3>공지사항 수정</h3>
         <p>
             HOME > 고객센터 > <strong>자주묻는질문</strong>
         </p>

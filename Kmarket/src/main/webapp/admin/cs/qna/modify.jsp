@@ -2,9 +2,9 @@
 <%@ include file="../../inc/header.jsp" %>
 <main>
 <%@ include file="../../inc/aside.jsp" %>
-<section id="admin-cs-qna-view">
+<section id="admin-cs-qna-modify">
     <nav>
-        <h3>문의하기 보기</h3>
+        <h3>문의하기 수정</h3>
         <p>
             HOME > 고객센터 > <strong>문의하기</strong>
         </p>
@@ -25,13 +25,12 @@
                 </tr>
                 <tr>
 				    <th>답변</th>
-				    <td>안녕하세요. K마켓입니다.<br>회원 탈퇴하는 방법은~</td>
+				    <td><textarea>안녕하세요. K마켓입니다. 회원 탈퇴하는 방법은~</textarea></td>
                 </tr>
             </table>
             
             <div>
-	            <input type="button" value="삭제" />
-	            <input type="button" value="수정" onclick="location.href='${path}/admin/cs/qna/modify.do'"/>
+	            <input type="button" value="취소" onclick="location.href='${path}/admin/cs/qna/view.do'"/>
 				<input type="button" value="목록" onclick="location.href='${path}/admin/cs/qna/list.do'"/>
 			</div>
         </section>     
