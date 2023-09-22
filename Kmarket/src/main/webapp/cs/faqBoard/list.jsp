@@ -14,7 +14,7 @@
 			                    <h3>${type.typeName }</h3>
 			                    <ul>
 			                    	<!-- varStatus : 상태용 변수(참고 링크 : https://jetalog.net/20) -->
-									<c:forEach var="board" items="${cs }" varStatus="status">
+									<c:forEach var="board" items="${type.dto }" varStatus="status">
 										<c:if test="${board.type eq type.type}">
 					                        <li class="${status.index ge 3 
 					                        	&& status.index le 9 ? board.type : '' }">
