@@ -1,6 +1,7 @@
 package kr.co.kmarket.controller.board.faq;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,6 +41,17 @@ public class FaqBoardListController extends HttpServlet {
 			= service.selectCS_Boards(group, cate);
 		List<BoardTypeDTO> types
 			=service.selectBoardType(cate);
+		
+		// BoardTypeDTO에 있는 주석을 일단 봐
+		for(BoardTypeDTO type : types) {
+			List<CS_BoardDTO> csBoard = new ArrayList<>();
+			for(CS_BoardDTO board : cates) {
+				if(type.getType() == board.getType()) {
+					csBoard.add(board);
+				}
+			}
+			type.setDto(csBoard);
+		}
 		
 		request.setAttribute("cs", cates);
 		logger.info("BoardList_get cate : " + cates);
