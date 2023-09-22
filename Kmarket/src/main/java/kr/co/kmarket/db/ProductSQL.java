@@ -38,6 +38,8 @@ public class ProductSQL {
 	public static String SELECT_PRODUCT_CARTS =
 			"SELECT a.*, "
 			+ "b.`prodName`, "
+			+ "b.`prodCate1`, "
+			+ "b.`prodCate2`, "
 			+ "b.`descript`, "
 			+ "b.`price`, "
 			+ "b.`discount`, "
@@ -54,6 +56,8 @@ public class ProductSQL {
 	public static String SELECT_CHECKED_PRODUCT_CARTS =
 			"SELECT a.*, "
 			+ "b.`prodName`, "
+			+ "b.`prodCate1`, "
+			+ "b.`prodCate2`, "
 			+ "b.`descript`, "
 			+ "b.`price`, "
 			+ "b.`discount`, "
