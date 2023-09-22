@@ -10,33 +10,39 @@
         </p>
     </nav>
     <section>
+    		<input type="hidden" name="no" value="${no}"/>
+    		<input type="hidden" name="type" value="${type}"/>
             <table>
                 <tr>
 				    <th>유형</th>
 				    <td>
 				    	<select name="cate">
-						    <option value="" selected disabled>1차 선택</option>
-						    <option value="">고객서비스</option>
+						    <!-- <option value="" selected disabled>유형선택</option> -->
+						    <option value="All"        <c:if test="${cate eq 'All'}">selected</c:if>>전체</option>
+						    <option value="cs"         <c:if test="${cate eq 'cs'}">selected</c:if>>고객서비스</option>
+						    <option value="safe"       <c:if test="${cate eq 'safe'}">selected</c:if>>안전거래</option>
+						    <option value="dangerProd" <c:if test="${cate eq 'dangerProd'}">selected</c:if>>위해상품</option>
+						    <option value="event"      <c:if test="${cate eq 'event'}">selected</c:if>>이벤트 당첨</option>
 						</select>
 				    </td>
                 </tr>
                 <tr>
 				    <th>제목</th>
-				    <td><input type="text" value="[안내] 해외결제 사칭 문자 주의"></td>
+				    <td><input type="text" value="${title}"></td>
                 </tr>
                 <tr>
 				    <th>내용</th>
 				    <td>
-				    	<textarea>안녕하세요. K마켓입니다. K마켓 해외직구를 사칭하는 피싱문자가 최근~</textarea>
+				    	<textarea>${content}</textarea>
 				    </td>
                 </tr>
             </table>
             
             <div>
-	            <input type="button" value="취소하기" onclick="location.href='${path}/admin/cs/notice/view.do'"/>
-	            <input type="button" value="등록하기"/>
+	            <input type="button" value="취소하기" onclick="location.href='${path}/admin/cs/notice/view.do?no=${no}'"/>
+	            <input type="button" value="등록하기" onclick="location.href='${path}/admin/cs/notice/modify.do'"/>
 			</div>
-        </section>
+	</section>
 </section>
 </main>
 <%@ include file="../../inc/footer.jsp" %>

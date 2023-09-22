@@ -14,13 +14,13 @@
                 <tr>
 				    <th>유형</th>
 				    <td>
-				    	<select name="">
-						    <option value="" selected disabled>유형선택</option>
-						    <option value="">전체</option>
-						    <option value="">고객서비스</option>
-						    <option value="">안전거래</option>
-						    <option value="">위해상품</option>
-						    <option value="">이벤트 당첨</option>
+				    	<select name="cate">
+						    <!-- <option value="" selected disabled>유형선택</option> -->
+						    <option value="All">전체</option>
+						    <option value="cs">고객서비스</option>
+						    <option value="safe">안전거래</option>
+						    <option value="dangerProd">위해상품</option>
+						    <option value="event">이벤트 당첨</option>
 						</select>
 				    </td>
                 </tr>

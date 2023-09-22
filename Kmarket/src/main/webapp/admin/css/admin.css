@@ -722,10 +722,10 @@ button[type=submit] {
 
 #admin-cs-notice-list > section > table  tr > td:nth-child(1) {width: 20px;}
 #admin-cs-notice-list > section > table  tr > td:nth-child(2) {width: 80px;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(3) {width: 80px;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(5) {width: 80px;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(6) {width: 80px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(3) {width: 120px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(4) {width: auto; padding-left: 20px; text-align: left;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(5) {width: 120px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(6) {width: 120px;}
 
 #admin-cs-notice-list > section > table img.thumb {width: 60px;}
 
