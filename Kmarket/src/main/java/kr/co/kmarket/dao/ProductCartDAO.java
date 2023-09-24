@@ -60,6 +60,8 @@ public class ProductCartDAO extends DBHelper {
 
 				ProductDTO product = new ProductDTO();
 				product.setProdName(rs.getString("prodName"));
+				product.setProdCate1(rs.getString("prodCate1"));
+				product.setProdCate2(rs.getString("prodCate2"));
 				product.setDescript(rs.getString("descript"));
 				product.setPrice(rs.getInt("price"));
 				product.setDiscount(rs.getInt("discount"));
@@ -108,6 +110,8 @@ public class ProductCartDAO extends DBHelper {
 
 				ProductDTO product = new ProductDTO();
 				product.setProdNo(rs.getInt("prodNo"));
+				product.setProdCate1(rs.getInt("prodCate1"));
+				product.setProdCate2(rs.getInt("prodCate2"));
 				product.setProdName(rs.getString("prodName"));
 				product.setDescript(rs.getString("descript"));
 				product.setPrice(rs.getInt("price"));

@@ -4,9 +4,9 @@
 <%@ include file="../../inc/aside.jsp" %>
 <section id="admin-cs-qna-list">
     <nav>
-        <h3>자주묻는질문 목록</h3>
+        <h3>문의하기 목록</h3>
         <p>
-            HOME > 고객센터 > <strong>자주묻는질문</strong>
+            HOME > 고객센터 > <strong>문의하기</strong>
         </p>
     </nav>
     <section>

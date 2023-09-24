@@ -54,6 +54,14 @@
 			form.action = submitUrl;
 			console.log("form action 변경함 - "+form.action);
 		});
+		
+		// 상품금액의 1% 포인트 자동입력
+		$('input[name=price]').focusout(function(){
+			
+			const price = $(this).val();
+			
+			$('input[name=point]').val(price*0.01);
+		});
 	});
 	
 	// 새로고침 시 주소 파라미터 리셋
@@ -62,6 +70,7 @@
 		if(kcode == 116)
 			history.replaceState({}, null, location.pathname);
 	}
+	
 </script>
 <main>
 <%@ include file="../inc/aside.jsp" %>

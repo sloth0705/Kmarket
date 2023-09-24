@@ -428,8 +428,47 @@ button[type=submit] {
 #admin-product-list > section > table  tr > td:nth-child(11) {width: 100px;}
 
 #admin-product-list > section > table img.thumb {width: 60px;}
+#admin-product-list > section > table img.thumb {width: 60px;}
 
 #admin-product-list > section input[type=button] {
+   /* float: left; */
+    width: 100px;
+   /* margin-top: 10px; */
+}
+
+#admin-product-list {}
+#admin-product-list > section > form >  div  {
+    margin-bottom: 10px;
+}
+
+#admin-product-list > section > form > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-product-list > section > form > table  tr > th{
+    padding: 10px 0;
+    background: #f6f6f6;
+}
+#admin-product-list > section > form > table  tr > td {
+    background: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+#admin-product-list > section > form > table  tr > td:nth-child(1) {width: 20px;}
+#admin-product-list > section > form > table  tr > td:nth-child(2) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(3) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(4) {width: auto; text-align: left;}
+#admin-product-list > section > form > table  tr > td:nth-child(5) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(6) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(7) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(8) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(9) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(10) {width: 80px;}
+#admin-product-list > section > form > table  tr > td:nth-child(11) {width: 100px;}
+
+#admin-product-list > section > form > table img.thumb {width: 60px;}
+#admin-product-list > section > form > table img.thumb {width: 60px;}
+
+#admin-product-list > section input[type=submit] {
    /* float: left; */
     width: 100px;
    /* margin-top: 10px; */
@@ -722,10 +761,10 @@ button[type=submit] {
 
 #admin-cs-notice-list > section > table  tr > td:nth-child(1) {width: 20px;}
 #admin-cs-notice-list > section > table  tr > td:nth-child(2) {width: 80px;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(3) {width: 80px;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(4) {width: auto; text-align: left;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(5) {width: 80px;}
-#admin-cs-notice-list > section > table  tr > td:nth-child(6) {width: 80px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(3) {width: 120px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(4) {width: auto; padding-left: 20px; text-align: left;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(5) {width: 120px;}
+#admin-cs-notice-list > section > table  tr > td:nth-child(6) {width: 120px;}
 
 #admin-cs-notice-list > section > table img.thumb {width: 60px;}
 
@@ -1227,7 +1266,7 @@ button[type=submit] {
     height: 35px;
     border: none;
     margin-top: 30px;
-    float: right;
+    float: left;
     background-color: rgb(228, 228, 228);
 }
 #admin-cs-qna-list > section > input[type=button]:nth-child(3):hover {
@@ -1235,7 +1274,7 @@ button[type=submit] {
 }
 
 #admin-cs-qna-list .paging {
-    width: 990px;
+    width: 880px;
     display: inline-block;
     padding: 30px 0;
     text-align: center;
@@ -1301,7 +1340,7 @@ button[type=submit] {
 #admin-cs-qna-view > section > div {
 	display: inline-block;
 	position: relative;
-	left: 905px;
+	left: 810px;
 }
 #admin-cs-qna-view div > input[type=button] {
 	width: 90px;
@@ -1313,8 +1352,10 @@ button[type=submit] {
 }
 #admin-cs-qna-view div > input[type=button]:nth-child(1) { background-color: rgb(228, 228, 228); }
 #admin-cs-qna-view div > input[type=button]:nth-child(2) { background-color: rgb(69, 173, 74); color: #fff; }
+#admin-cs-qna-view div > input[type=button]:nth-child(3) { background-color: rgb(69, 173, 74); color: #fff; }
 #admin-cs-qna-view div > input[type=button]:nth-child(1):hover { cursor: pointer; }
 #admin-cs-qna-view div > input[type=button]:nth-child(2):hover { cursor: pointer; }
+#admin-cs-qna-view div > input[type=button]:nth-child(3):hover { cursor: pointer; }
 
 /* 답변하기 */
 #admin-cs-qna-reply > section > div  {
@@ -1366,3 +1407,55 @@ button[type=submit] {
 #admin-cs-qna-reply div > input[type=button]:nth-child(1):hover { cursor: pointer; }
 #admin-cs-qna-reply div > input[type=button]:nth-child(2):hover { cursor: pointer; }
 #admin-cs-qna-reply div > input[type=button]:nth-child(3):hover { cursor: pointer; }
+
+/* 수정 */
+#admin-cs-qna-modify > section > div  {
+    margin-bottom: 10px;
+}
+
+#admin-cs-qna-modify > section > table  {
+    border-top: 2px solid #8798a3;
+}
+#admin-cs-qna-modify > section th {
+	width: 120px;
+	font-weight: bold;
+	padding: 10px 0;
+    background: #f6f6f6;
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+#admin-cs-qna-modify > section > table > tbody > tr:nth-child(3) {
+	height: 245px;
+}
+#admin-cs-qna-modify table tr:nth-child(1) > td > select {
+	border: 1px solid rgb(228, 228, 228);
+}
+#admin-cs-qna-modify > section > table > tbody > tr:nth-child(3) {
+	height: 150px;
+}
+#admin-cs-qna-modify > section > table > tbody > tr:nth-child(4) textarea {
+	width: 100%;
+	height: 150px;
+	background-color: #fff;
+	border: 1px solid rgb(228, 228, 228);
+	outline: 0;
+}
+
+#admin-cs-qna-modify > section > div {
+	display: inline-block;
+	position: relative;
+	left: 430px;
+}
+#admin-cs-qna-modify div > input[type=button] {
+	width: 90px;
+	height: 35px;
+	border: none;
+    margin-top: 25px;
+    float: left;
+    margin-right: 15px;
+}
+#admin-cs-qna-modify div > input[type=button]:nth-child(1) { background-color: rgb(228, 228, 228); }
+#admin-cs-qna-modify div > input[type=button]:nth-child(2) { background-color: rgb(69, 173, 74); color: #fff; }
+#admin-cs-qna-modify div > input[type=button]:nth-child(1):hover { cursor: pointer; }
+#admin-cs-qna-modify div > input[type=button]:nth-child(2):hover { cursor: pointer; }
