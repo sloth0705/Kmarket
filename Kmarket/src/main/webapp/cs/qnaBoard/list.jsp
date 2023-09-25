@@ -18,10 +18,19 @@
 							                	[${cs.typeName }] ${cs.title }
 						                	</a>
 							            </td>
-							            <td>${cs.uid }</td>
+							            <td>
+							            	<c:choose>
+				                                <c:when test="${sessMember.type ge 2}">
+				                                    ${cs.uid}
+				                                </c:when>
+				                                <c:otherwise>
+			                                    	${cs.maskingUid(cs.uid)}
+				                                </c:otherwise>
+				                            </c:choose>
+							            </td>
 							            <td>${cs.rdate }</td>
 							            <td>
-							            	<!-- ajax로 답변 완료 / 미완료 처리 구현할 예정 -->
+							            	
 							            </td>
 							        </tr>
 					        	</c:forEach>

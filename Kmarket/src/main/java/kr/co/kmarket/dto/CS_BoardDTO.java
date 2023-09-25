@@ -36,6 +36,16 @@ public class CS_BoardDTO {
 	public String getUid() {
 		return uid;
 	}
+	public String maskingUid(String uid) {
+		StringBuilder maskingUid = new StringBuilder(uid);
+		int length = uid.length();
+		if(length > 1) {
+			for(int i = 1; i < Math.max(2, length - 1); i++) {
+				maskingUid.setCharAt(i, '*');
+			}
+		}
+		return maskingUid.toString();
+	}
 	public void setUid(String uid) {
 		this.uid = uid;
 	}

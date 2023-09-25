@@ -93,7 +93,7 @@ public class CS_BoardDAO extends DBHelper {
 					+ " JOIN km_cs_boardCate AS bc"
 						+ " ON b.`cate` = bc.`cate` "
 					+ " WHERE `group` = 'notice'"
-					+ " ORDER BY bno DESC "
+					+ " ORDER BY rdate DESC, bno DESC "
 					+ " LIMIT ?, ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, start);
@@ -129,7 +129,7 @@ public class CS_BoardDAO extends DBHelper {
 						+ " ON b.`cate` = bc.`cate` "
 					+ " WHERE `group` = ? "
 					+ " AND b.cate = ? "
-					+ " ORDER BY bno DESC"
+					+ " ORDER BY rdate DESC, bno DESC"
 					+ " LIMIT ?, ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, group);
@@ -276,6 +276,62 @@ public class CS_BoardDAO extends DBHelper {
 		return total;
 	}
 	
+	// index notice 조회
+	public List<CS_BoardDTO> indexNoticeBoard(){
+		List<CS_BoardDTO> list = new ArrayList<>();
+		conn = getConnection();
+		sql = "SELECT * FROM km_cs_board AS b "
+				+ " JOIN km_cs_boardType AS bt "
+					+ " ON b.`type` = bt.`type` "
+					+ " AND b.`cate` = bt.cate "
+				+ " WHERE `group` = 'notice' "
+				+ " AND b.`type` > 20"
+				+ " ORDER BY rdate DESC, bno DESC "
+				+ " LIMIT 0,5";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				CS_BoardDTO dto = new CS_BoardDTO();
+				dto = getCS(rs);
+				dto.setTypeName(rs.getString("typeName"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	// index qna 조회
+	public List<CS_BoardDTO> indexQnABoard(){
+		List<CS_BoardDTO> list = new ArrayList<>();
+		conn = getConnection();
+		sql = "SELECT * FROM km_cs_board AS b "
+				+ " JOIN km_cs_boardType AS bt "
+				+ " ON b.`type` = bt.`type` "
+				+ " AND b.`cate` = bt.cate "
+				+ " WHERE `group` = 'qna' "
+				+ " AND b.`type` < 20"
+				+ " ORDER BY rdate DESC, bno DESC "
+				+ " LIMIT 0,5";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				CS_BoardDTO dto = new CS_BoardDTO();
+				dto = getCS(rs);
+				dto.setTypeName(rs.getString("typeName"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	// 게시글 수정
 	public void updateCS_Board(CS_BoardDTO dto) {
 		conn = getConnection();
@@ -304,6 +360,8 @@ public class CS_BoardDAO extends DBHelper {
 	public void deleteCS_Board(int bno) {
 
 	}
+	
+	
 	
 	public CS_BoardDTO getCS(ResultSet rs) {
 		CS_BoardDTO dto = null;

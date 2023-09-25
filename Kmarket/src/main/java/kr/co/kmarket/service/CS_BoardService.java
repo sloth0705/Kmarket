@@ -56,6 +56,16 @@ public enum CS_BoardService {
 		return dao.selectBoardType(cate);
 	}
 	
+	// index notice 
+	public List<CS_BoardDTO> indexNoticeBoard(){
+		return dao.indexNoticeBoard();
+	}
+	
+	// index qna 
+	public List<CS_BoardDTO> indexQnABoard(){
+		return dao.indexQnABoard();
+	}
+	
 	// 게시판 수정
 	public void updateCS_Board(CS_BoardDTO dto) {
 		dao.updateCS_Board(dto);
@@ -65,6 +75,10 @@ public enum CS_BoardService {
 	public void deleteCS_Board(int bno) {
 		dao.deleteCS_Board(bno);
 	}
+	
+	
+	
+	
 	
 	// 페이지 마지막 번호
 	public int getLastPageNum(int total, int pageCount) {
