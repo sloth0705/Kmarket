@@ -24,7 +24,7 @@
 	                    	<c:when test="${sessMember != null }">
 		                		<span class="memberUid">${sessMember.uid }</span>
 		                    	<a href="${path }/index.do">HOME</a>
-			                	<c:if test="${sessMember.type eq 99 }">
+			                	<c:if test="${sessMember.type ge 2 }">
 			                		<a href="${path }/admin/index.do">관리자 </a>
 			                	</c:if>
 			               		<a href="${path }/member/logout.do">로그아웃 </a>

@@ -2,7 +2,7 @@
 <%@ include file="../inc/header.jsp" %>
 <c:import url="../inc/aside/qna.jsp" />
 			<article>
-		    	<form action="${path }/cs/qnaBoard/write.do" method="post">
+		    	<form id="writeForm" action="${path }/cs/qnaBoard/write.do" method="post">
 		    		<input type="hidden" name="group" value="${group }" />
 		    		<input type="hidden" name="uid" value="${sessMember.uid }" />
 			        <table>
@@ -40,7 +40,7 @@
 			            </tbody>
 			        </table>
 			        <div>
-			            <a href="./list.do?group=${group }&cate=${cate}" class="btnList">취소하기</a>
+			            <a href="#" class="btnList">취소하기</a>
 			            <input type="submit" class="btnSubmit" value="등록하기">
 			        </div>
 			    </form>
@@ -49,4 +49,4 @@
 	</div>
 </section>
 <%@ include file="../inc/footer.jsp" %>
-<script src="/Kmarket/cs/js/writeType.js"></script>    
+<script src="/Kmarket/cs/js/writeType.js"></script>  

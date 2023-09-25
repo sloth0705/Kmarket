@@ -5,7 +5,7 @@
  * 이후 js로 더보기 및 간단히 보기 로직 작성
  */
 $(function(){
-	let moreview = $("div > ul > li:nth-child(n+4)"); 
+	/*let moreview = $("div > ul > li:nth-child(n+4)");*/ 
 	
 	$(".moreAteg").click(function(e){
 		e.preventDefault();
@@ -30,8 +30,7 @@ $(function(){
 		let type = this.classList[1];
 
 		$("."+type).hide();
-		moreview.hide();
-		/*$(this).hide();*/
+		$(this).hide();
 		$(".moreAteg."+type).show();
 	});
 	

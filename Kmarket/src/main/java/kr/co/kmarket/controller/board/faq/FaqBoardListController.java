@@ -36,9 +36,14 @@ public class FaqBoardListController extends HttpServlet {
 		
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
-		
+	
+		int start = 1;
+		// 이거 왜 15개 해야 10개가 나옴??
+		// 10개 해야 10개 나와야되는거 아님?
+		// 10개하면 왜 5개만 나옴???
+		int pageCount = 15;
 		List<CS_BoardDTO> cates 
-			= service.selectCS_Boards(group, cate);
+			= service.selectCS_Boards(group, cate, start, pageCount);
 		List<BoardTypeDTO> types
 			=service.selectBoardType(cate);
 		

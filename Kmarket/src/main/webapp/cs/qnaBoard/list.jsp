@@ -36,18 +36,24 @@
 				</table>
 				
 				<div class="page">
-                    <a href="#" 
-                    	class="prev">&laquo;</a>
-                    <a href="#" 
-                    	class="prev">이전</a>
-                    	
-                    <a href="#" 
-                    	class="num on">1</a>
-                    	
-                    <a href="#" 
-                    	class="next">다음</a>
-                    <a href="#" 
-                    	class="next">&raquo;</a>
+                <c:if test="${pageGroupStart > 1}">
+					<a href="list.do?group=${group }&cate=${cate }&pg=1" 
+						class="prev">&laquo;</a> 
+					<a href="list.do?group=${group }&cate=${cate }&pg=${pageGroupStart -1 }" 
+						class="prev">이전</a>
+				</c:if>
+                 
+                 <c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}">
+					<a href="list.do?group=${group }&cate=${cate }&pg=${i}"
+						class="num ${currentPage == i? 'on' : ''}">${i }</a>
+				</c:forEach>   	
+                 
+                 <c:if test="${pageGroupEnd < lastPageNum}">
+					<a href="list.do?group=${group }&cate=${cate }&pg=${pageGroupEnd +1 }" 
+						class="next">다음</a> 
+					<a href="list.do?group=${group }&cate=${cate }&pg=${lastPageNum }" 
+						class="next">&raquo;</a>
+				</c:if>   	
                 </div>
 
 				<!-- 로그인 한 "일반 유저"가 문의 하기 -->
