@@ -10,7 +10,8 @@
         </p>
     </nav>
     <section>
-    		<input type="hidden" name="no" value="${no}"/>
+    	<form action="${path}/admin/cs/notice/modify.do" method="post">
+    		<input type="hidden" name="bno" value="${bno}"/>
     		<input type="hidden" name="type" value="${type}"/>
             <table>
                 <tr>
@@ -39,9 +40,10 @@
             </table>
             
             <div>
-	            <input type="button" value="취소하기" onclick="location.href='${path}/admin/cs/notice/view.do?no=${no}'"/>
+	            <input type="button" value="취소하기" onclick="location.href='${path}/admin/cs/notice/view.do?bno=${bno}'"/>
 	            <input type="button" value="등록하기" onclick="location.href='${path}/admin/cs/notice/modify.do'"/>
 			</div>
+    	</form>
 	</section>
 </section>
 </main>

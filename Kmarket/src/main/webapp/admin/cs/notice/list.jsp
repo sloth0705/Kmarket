@@ -31,10 +31,11 @@
 					$.each(list , function(i){
 						 str += '<td><input type="checkbox" name="chk"/></td>';
 					     str += '<td>' + list[i].bno + '</td><td>' + cateText;
-					     str += '</td><td><a href="${path}/admin/cs/notice/view.do?cate='+cate+'&bno='+list[i].bno+'">' + list[i].title + '</a></td>';
+					     str += '</td><td><a href="${path}/admin/cs/notice/view.do?bno='+list[i].bno+'">' + list[i].title + '</a></td>';
 					     /*str += '<td>조회수</td>';*/
 					     str += '<td>'+list[i].rdate+'</td>';
-					     str += '<td><a href="${path}/admin/cs/notice/delete.do?cate='+cate+'&bno='+list[i].bno+'">[삭제]<a><br><a href="${path}/admin/cs/notice/modify.do?cate='+cate+'&bno='+list[i].bno+'">[수정]</a></td>';
+					     str += '<td><a href="${path}/admin/cs/notice/delete.do?bno='+list[i].bno+'">[삭제]<a>'
+					     str += '<br><a href="${path}/admin/cs/notice/modify.do?cate='+cate+'&type='+list[i].type+'&bno='+list[i].bno+'">[수정]</a></td>';
 					     str += '</tr>';
 					});
 					$(".list").append(str);
@@ -80,19 +81,19 @@
                 	<td><input type="checkbox" name="chk"/></td>
 					<td>${list.bno}</td>
 					<td>${list.cateName}</td>
-					<td><a href="${path}/admin/cs/notice/view.do?no=${list.bno}">${list.title}</a></td>
+					<td><a href="${path}/admin/cs/notice/view.do?bno=${list.bno}">${list.title}</a></td>
 					<td>${list.rdate}</td>
 					<td>
-						<a href="${path}/admin/cs/notice/delete.do?no=${list.bno}">[삭제]</a>
+						<a href="${path}/admin/cs/notice/delete.do?bno=${list.bno}">[삭제]</a>
 						<br>
-						<a href="${path}/admin/cs/notice/modify.do?cate=${list.cate}&type=${type}&no=${list.bno}">[수정]</a>
+						<a href="${path}/admin/cs/notice/modify.do?cate=${list.cate}&type=${list.type}&bno=${list.bno}">[수정]</a>
 					</td>
                 </tr>
                 </c:forEach>
             </table>
             
             <input type="button" value="선택삭제" />
-                                  
+            
 			<div class="paging">
 				<span class="prev"><a href="#" class="prev">이전</a></span>
 				<span class="num"><a href="#"class="on">1</a></span>

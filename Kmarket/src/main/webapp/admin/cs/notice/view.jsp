@@ -26,8 +26,8 @@
             </table>
             
             <div>
-	            <input type="button" value="삭제" onclick="location.href='${path}/admin/cs/notice/delete.do?cate=${cate}&no=${no}'"/>
-	            <input type="button" value="수정" onclick="location.href='${path}/admin/cs/notice/modify.do?cate=${cate}&type=${type}&no=${no}'"/>
+	            <input type="button" value="삭제" onclick="location.href='${path}/admin/cs/notice/delete.do?cate=${cate}&bno=${bno}'"/>
+	            <input type="button" value="수정" onclick="location.href='${path}/admin/cs/notice/modify.do?cate=${cate}&type=${type}&bno=${bno}'"/>
 				<input type="button" value="목록" onclick="location.href='${path}/admin/cs/notice/list.do'"/>
 			</div>
         </section>     
