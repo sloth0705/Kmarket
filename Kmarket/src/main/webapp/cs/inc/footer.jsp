@@ -36,4 +36,13 @@
         </footer>
     </div>
     <script src="/Kmarket/cs/js/pageCSS.js"></script>
+    <script>
+		$(function(){
+			$(".btnList").click(function(e){
+				e.preventDefault();
+				history.go(-1);
+			});
+			
+		})
+	</script>  
 </body>

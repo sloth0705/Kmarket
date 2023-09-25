@@ -5,7 +5,7 @@
             <h1 class="title"><strong>케이마켓</strong>이 도와드릴게요!</h1>
             <section class="notice">
                 <h1>공지사항
-                    <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All">전체보기</a>
+                    <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All&pg=1">전체보기</a>
                 </h1>
                 <ul>
                     <li>
@@ -63,7 +63,7 @@
             <section class="qna">
                 <h1>
                     문의하기
-                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member">더보기</a>
+                    <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member&pg=1">더보기</a>
                 </h1>
                 <!-- jstl 반복문 -->
                 <ul>

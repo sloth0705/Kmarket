@@ -24,11 +24,20 @@ public enum CS_BoardService {
 	}
 
 	// 게시판 목록 조회
-	public List<CS_BoardDTO> selectCS_Boards(String group, String cate) {
+	public List<CS_BoardDTO> selectCS_Boards(String group, String cate, int start, int pageCount) {
 		if(cate.equals("All")) {
-			return dao.selectCS_Boards(group);
+			return dao.selectCS_Boards(group, start, pageCount);
 		}else {
-			return dao.selectBoardTypes(group, cate);
+			return dao.selectBoardTypes(group, cate, start, pageCount);
+		}
+	}
+	
+	// 게시판 전체 개수 조회
+	public int selectCountTotal(String group, String cate) {
+		if(group.equals("notice")) {
+			return dao.selectCountTotal_NoticeAll();
+		}else {
+			return dao.selectCountTotal(group, cate);
 		}
 	}
 
@@ -55,5 +64,56 @@ public enum CS_BoardService {
 	// 게시판 삭제
 	public void deleteCS_Board(int bno) {
 		dao.deleteCS_Board(bno);
+	}
+	
+	// 페이지 마지막 번호
+	public int getLastPageNum(int total, int pageCount) {
+		int lastPageNum = 0;
+		
+		if(total % pageCount == 0){
+			lastPageNum = total / pageCount;
+		}else{
+			lastPageNum = total / pageCount + 1;
+		}
+		
+		return lastPageNum;
+	}
+	
+	// 페이지 그룹 계산
+	public int[] getPageGroupNum(int currentPage, int lastPageNum, int pageCount) {
+		int pageGroupCurrent 
+			= (int) Math.ceil(currentPage / (double)pageCount);
+		int pageGroupStart 
+			= (pageGroupCurrent - 1) * pageCount + 1;
+		int pageGroupEnd 
+			= pageGroupCurrent * pageCount;
+		
+		// 마지막 페이지 보여줌
+		if(pageGroupEnd > lastPageNum){
+			pageGroupEnd = lastPageNum;
+		}
+		
+		int[] result = { pageGroupStart, pageGroupEnd };
+		
+		return result;
+	}
+	
+	// 페이지 시작번호
+	public int getPageStartNum(int total, int currentPage, int pageCount) {
+		int start = (currentPage - 1) * pageCount;
+		return total - start;
+	}
+	
+	// 현재 페이지 번호
+	public int getCurrentPage(String pg) {
+		int currentPage = 1;
+		if(pg != null) currentPage = Integer.parseInt(pg);	
+		
+		return currentPage;
+	}
+	
+	// Limit 시작번호
+	public int getStartNum(int currentPage, int pageCount) {
+		return (currentPage - 1) * pageCount;
 	}
 }
