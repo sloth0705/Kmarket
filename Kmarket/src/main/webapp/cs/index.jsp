@@ -7,14 +7,25 @@
                 <h1>공지사항
                     <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All&pg=1">전체보기</a>
                 </h1>
-                <ul>
-                    <li>
-                        <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All" class="title">
-                        	[typeName] 해외결제 사칭 문자 주의
-                        </a>
-                        <span class="date">22.10.31</span>
-                    </li>
-                </ul>
+                <c:choose>
+                <c:when test="${!empty boards }">
+	                <c:forEach var="notice" items="${boards }">
+	                <ul>
+	                    <li>
+	                        <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All" class="title">
+	                        	[${notice.typeName }] ${notice.title }
+	                        </a>
+	                        <span class="date">${notice.rdate }</span>
+	                    </li>
+	                </ul>
+	                </c:forEach>
+                </c:when>
+                <c:otherwise>
+           			<ul>
+						<li>등록된 게시물이 없습니다.</li>
+					</ul>
+        		</c:otherwise>
+        		</c:choose>
             </section>
 
             <section class="faq">
@@ -65,19 +76,37 @@
                     문의하기
                     <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member&pg=1">더보기</a>
                 </h1>
-                <!-- jstl 반복문 -->
-                <ul>
-                    <li>
-                        <a href="${path }/cs/qnaBoard/list.do?group=qna&cate=member" class="title">
-                        	[typeName] 개인회원과 법인회원에 차이가 있나요?
-                       	</a>
-                        <p>
-                            <span class="uid">아이디***</span>
-                            <span class="date">22.10.31</span>
-                        </p>
-                    </li>
-                </ul>
-                
+                <c:choose>
+				    <c:when test="${!empty qnas}">
+				        <c:forEach var="qna" items="${qnas}">
+				            <ul>
+				                <li>
+				                    <a href="${path}/cs/qnaBoard/list.do?group=qna&cate=member" class="title">
+				                        [${qna.typeName}] ${qna.title}
+				                    </a>
+				                    <p>
+				                        <span class="uid">
+				                            <c:choose>
+				                                <c:when test="${sessMember.type ge 2}">
+				                                    ${qna.uid}
+				                                </c:when>
+				                                <c:otherwise>
+			                                    	${qna.maskingUid(qna.uid)}
+				                                </c:otherwise>
+				                            </c:choose>
+				                        </span>
+				                        <span class="date">${qna.rdate}</span>
+				                    </p>
+				                </li>
+				            </ul>
+				        </c:forEach>
+				    </c:when>
+				    <c:otherwise>
+				        <ul>
+				            <li>등록된 게시물이 없습니다.</li>
+				        </ul>
+				    </c:otherwise>
+				</c:choose>
                 <a href="${path }/cs/qnaBoard/write.do" class="ask">
                 	문의글 작성 &gt;
                	</a>
