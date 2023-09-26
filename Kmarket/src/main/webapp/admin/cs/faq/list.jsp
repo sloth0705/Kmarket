@@ -4,10 +4,9 @@
 <%@ include file="../../inc/aside.jsp" %>
 <section id="admin-cs-faq-list">
 <script>
-<script>
-
 $(function(){
 	const url = "/Kmarket/cs/Board/ajaxWrite.do"
+	// /admin/cs/qna/list.do
 	
 	$("#cate").change(function(){
 		let optionValue = $(this).val();
@@ -56,22 +55,21 @@ $(function(){
     </nav>
     <section>
             <div>
-                <select name="cate">
+                <!-- cateName이랑 동일함 -->
+                <select name="cate" id="cate">
+              
 				    <option value="" selected disabled>1차 선택</option>
-				    <option value="">전체</option>
-				    <option value="">회원</option>
-				    <option value="">쿠폰/이벤트</option>
-				    <option value="">주문/결제</option>
-				    <option value="">배송</option>
-				    <option value="">취소/반품/교환</option>
-				    <option value="">여행/숙박/항공</option>
+				    <c:forEach var="cateOption" items="${cate }">
+				    	<option value="${cateOption.cate}">${cateOption.cateName}</option>
+					    
+				    </c:forEach>
 				</select>
-                <select name="type">
-				    <option value="" selected disabled>2차 선택</option>
-				    <option value="">가입</option>
-				    <option value="">회원정보</option>
-				    <option value="">로그인</option>
-				    <option value="">탈퇴</option>
+				
+				 <!-- cateName에 따라서 선택지가 달라짐 -->
+                <select name="type" id="type">
+						
+					<option selected disabled value="0">2차 선택</option>
+				    
 				</select>
             </div>
             <table>
