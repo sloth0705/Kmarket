@@ -15,19 +15,20 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 
+import kr.co.kmarket.dto.BoardCateDTO;
 import kr.co.kmarket.dto.BoardTypeDTO;
-import kr.co.kmarket.service.Admin_QnaListService;
+import kr.co.kmarket.service.CS_BoardService;
 
 @WebServlet("/admin/cs/qna/list.do")
 public class ListController extends HttpServlet {
 	private static final long serialVersionUID = -6756270650563163841L;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	private Admin_QnaListService service = Admin_QnaListService.INSTANCE;
+	private CS_BoardService service = CS_BoardService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String pg = req.getParameter("pg");
+		//String pg = req.getParameter("pg");
 	
 		// cate 명을 가져옴
 		String optionValue = req.getParameter("optionValue");
@@ -43,8 +44,9 @@ public class ListController extends HttpServlet {
 		resp.getWriter().print(strJsons);
 		logger.info("ajax type Json" + strJsons);
 	
+		
+		
 		/* 
-		 
 	    페이지 관련 변수 선언
 		int currentPage = 1;
 		int total = 0;
@@ -84,6 +86,9 @@ public class ListController extends HttpServlet {
 		pageStartNum = total - start;
 
 		*/
+		List<BoardCateDTO> cateDTO 
+		= service.selectBoardCate();
+		req.setAttribute("cate", cateDTO);
 		
 		// 페이지 이동
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/qna/list.jsp");
