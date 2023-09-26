@@ -41,8 +41,8 @@
 			            </tbody>
 			        </table>
 			        <div>
-			            <a href="./list.do?group=${group }&cate=${cate}" class="btnList">취소하기</a>
 			            <input type="submit" class="btnSubmit" value="등록하기">
+			            <a href="./list.do?group=${group }&cate=${cate}" class="btnList">취소하기</a>
 			        </div>
 			    </form>
 			</article>

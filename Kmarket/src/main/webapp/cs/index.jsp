@@ -12,7 +12,7 @@
 	                <c:forEach var="notice" items="${boards }">
 	                <ul>
 	                    <li>
-	                        <a href="${path }/cs/noticeBoard/list.do?group=notice&cate=All" class="title">
+	                        <a href="${path }/cs/noticeBoard/view.do?group=notice&cate=All&bno=${notice.bno}" class="title">
 	                        	[${notice.typeName }] ${notice.title }
 	                        </a>
 	                        <span class="date">${notice.rdate }</span>
@@ -81,7 +81,7 @@
 				        <c:forEach var="qna" items="${qnas}">
 				            <ul>
 				                <li>
-				                    <a href="${path}/cs/qnaBoard/list.do?group=qna&cate=member" class="title">
+				                    <a href="${path}/cs/qnaBoard/view.do?group=qna&cate=${qna.cate }&bno=${qna.bno}" class="title">
 				                        [${qna.typeName}] ${qna.title}
 				                    </a>
 				                    <p>
