@@ -15,6 +15,9 @@ $(function(){
 		if(window.location.href.indexOf("/write.do") > -1){
 			pageCss.removeClass("list").addClass("write");
 		}
+		if(window.location.href.indexOf("/modify.do") > -1){
+			pageCss.removeClass("list").addClass("write");
+		}
 		pageCss.removeClass("view").addClass("list");
 	}
 	

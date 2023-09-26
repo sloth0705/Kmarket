@@ -34,16 +34,42 @@ public class QnABoardListController extends HttpServlet {
 		
 		String group = request.getParameter("group");
 		String cate = request.getParameter("cate");
+		String pg = request.getParameter("pg");
 		request.setAttribute("group", group);
 		request.setAttribute("cate", cate);
 		
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 		
+		// 현재 페이지 번호
+		int currentPage = service.getCurrentPage(pg);
+		
+		// 시작 인덱스
+		int pageCount = 5;
+		int start = service.getStartNum(currentPage, pageCount);
+		
+		// 전체 게시물 갯수 
+		int total = service.selectCountTotal(group, cate);
+		
+		// 마지막 페이지 번호
+		int lastPageNum = service.getLastPageNum(total, pageCount);
+		
+		// 페이지 그룹 start, end 번호
+		int[] result 
+			= service.getPageGroupNum(currentPage, lastPageNum, pageCount);
+		
+		// 페이지 시작번호
+		int pageStartNum = service.getPageStartNum(total, currentPage, pageCount);
+		
 		List<CS_BoardDTO> list 
-			= service.selectCS_Boards(group, cate);
+			= service.selectCS_Boards(group, cate, start, pageCount);
 		
 		request.setAttribute("cs", list);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("lastPageNum", lastPageNum);
+		request.setAttribute("pageGroupStart", result[0]);
+		request.setAttribute("pageGroupEnd", result[1]);
+		request.setAttribute("pageStartNum", pageStartNum+1);
 		logger.info("BoardList_get list : " + list);
 		
 		request.getRequestDispatcher("/cs/qnaBoard/list.jsp").forward(request, respones);

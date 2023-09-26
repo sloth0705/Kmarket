@@ -24,8 +24,8 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String no = req.getParameter("no");
-		CS_BoardDTO dto = service.selectCS_Board(Integer.parseInt(no));
+		String bno = req.getParameter("bno");
+		CS_BoardDTO dto = service.selectCS_Board(Integer.parseInt(bno));
 		
 		String cateName = ""; // DB에 Join 안돼있어서 cateName 불러올 수 없음. 임의로 여기서..
 		if (dto.getCate().equals("All"))
@@ -49,7 +49,7 @@ public class ViewController extends HttpServlet {
 			cateName = "이벤트 당첨";
 		}
 		
-		req.setAttribute("no", no);
+		req.setAttribute("bno", bno);
 		req.setAttribute("cate", dto.getCate());
 		req.setAttribute("cateName", cateName);
 		req.setAttribute("type", dto.getType());

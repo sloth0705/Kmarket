@@ -3,7 +3,6 @@
 <main>
 <%@ include file="../../inc/aside.jsp" %>
 <section id="admin-cs-faq-list">
-
 <script>
 $(function(){
 	const url = "/Kmarket/cs/Board/ajaxWrite.do"

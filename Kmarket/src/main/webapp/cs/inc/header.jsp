@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <DOCTYPE html>
     <html lang="ko">
@@ -24,7 +25,7 @@
 	                    	<c:when test="${sessMember != null }">
 		                		<span class="memberUid">${sessMember.uid }</span>
 		                    	<a href="${path }/index.do">HOME</a>
-			                	<c:if test="${sessMember.type eq 99 }">
+			                	<c:if test="${sessMember.type ge 2 }">
 			                		<a href="${path }/admin/index.do">관리자 </a>
 			                	</c:if>
 			               		<a href="${path }/member/logout.do">로그아웃 </a>

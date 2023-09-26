@@ -29,7 +29,7 @@
                     </c:if>
                     <c:if test="${not empty sessMember}">
                     	<c:if test="${sessMember.type eq 2}">
-                			<a href="${Path}/admin">관리자</a>
+                			<a href="${path}/admin/index.do">관리자</a>
 	                	</c:if>
 	                    <a href="#">마이페이지</a>
 	                    <a href="${path }/product/cart.do"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;장바구니</a>

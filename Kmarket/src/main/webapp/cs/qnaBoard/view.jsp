@@ -5,7 +5,16 @@
 				    <nav>
 				        <h2 class="title">[${cs.typeName}] ${cs.title }</h2>
 				        <p>
-				            <span>${cs.uid }</span>
+				            <span>
+					            <c:choose>
+	                                <c:when test="${sessMember.type ge 2}">
+	                                    ${cs.uid}
+	                                </c:when>
+	                                <c:otherwise>
+	                                   	${cs.maskingUid(cs.uid)}
+	                                </c:otherwise>
+	                            </c:choose>
+                            </span>
 				            <span>${cs.rdate }</span>
 				        </p>
 				    </nav>
@@ -17,21 +26,14 @@
 				    
 				    <!-- 댓글(답변) -->
 					<div>
-						<h3>답변</h3>
 						<c:choose>
 							<c:when test="${!empty comments }">
 								<c:forEach var="comment" items="${comments }">
+									<h3>✔ 답변</h3>&nbsp;&nbsp;<span style="font-weight: lighter;" >${comment.rdate }</span>
 									<article class="comment">
 										<form action="#" method="post">
-											<span style="font-weight: bold;" >${comment.uid }</span> 
-											<span style="font-weight: lighter;" >${comment.rdate }</span>
-											<textarea class="textarea" name="comment" disabled>${comment.content }</textarea>
-											<c:if test="${sessMember.uid eq comment.uid }">
-												<div>
-													<a href="#" class="del">삭제</a> 
-													<a href="#" class="modify">수정</a>
-												</div>
-											</c:if>
+											<%-- <span style="font-weight: bold;" >${comment.uid }</span> --%> 
+											<textarea class="textarea" name="comment" readonly>${comment.content }</textarea>
 										</form>
 									</article>
 								</c:forEach>
@@ -55,15 +57,15 @@
 								<!-- 800px 170px -->
 								<textarea class="textarea" name="content"></textarea>
 								<div>
+									<input type="submit" class="btnWrite2" value="작성완료" />
 									<input type="reset" class="btnReset" value="취소" /> 
-									<input type="submit" class="btnWrite" value="작성완료" />
 								</div>
 							</form>
 						</section>
 					</c:if>
 				    
 				    <a href="./list.do?group=${group }&cate=${cate}" 
-				        class="btnList">목록보기</a>
+				        class="btnList2">목록보기</a>
 				</article>
 			</section>
 		</div>
