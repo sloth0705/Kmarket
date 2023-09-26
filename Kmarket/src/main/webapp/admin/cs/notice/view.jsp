@@ -21,14 +21,14 @@
                 </tr>
                 <tr>
 				    <th>내용</th>
-				    <td>${content}</td>
+				    <td><textarea readonly="readonly">${content}</textarea></td>
                 </tr>
             </table>
             
             <div>
 	            <input type="button" value="삭제" onclick="location.href='${path}/admin/cs/notice/delete.do?cate=${cate}&bno=${bno}'"/>
 	            <input type="button" value="수정" onclick="location.href='${path}/admin/cs/notice/modify.do?cate=${cate}&type=${type}&bno=${bno}'"/>
-				<input type="button" value="목록" onclick="location.href='${path}/admin/cs/notice/list.do'"/>
+				<input type="button" value="목록" onclick="location.href='${path}/admin/cs/notice/list.do?cate=All&pg=1'"/>
 			</div>
         </section>     
 </section>
