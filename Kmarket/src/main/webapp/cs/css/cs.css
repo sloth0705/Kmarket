@@ -416,7 +416,21 @@ footer p > strong {
   text-align: center;
   box-sizing: border-box;
 }
-.btnList:hover {
+.btnList2 {
+  float: left;
+  width: 200px;
+  height: 60px;
+  margin: 40px auto 0;
+  border: 1px solid #ccc;
+  border-radius: 34px;
+  font-size: 16px;
+  color: #000;
+  line-height: 58px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.btnList:hover, .btnList2:hover {
   background-color: #f7f7f7;
 }
 
@@ -871,6 +885,7 @@ footer p > strong {
   font-size: 16px;
   line-height: 32px;
   height: 100%;
+  border: none;
 }
 
 /* qna 공통 */

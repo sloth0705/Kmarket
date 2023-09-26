@@ -5,7 +5,16 @@
 				    <nav>
 				        <h2 class="title">[${cs.typeName}] ${cs.title }</h2>
 				        <p>
-				            <span>${cs.uid }</span>
+				            <span>
+					            <c:choose>
+	                                <c:when test="${sessMember.type ge 2}">
+	                                    ${cs.uid}
+	                                </c:when>
+	                                <c:otherwise>
+	                                   	${cs.maskingUid(cs.uid)}
+	                                </c:otherwise>
+	                            </c:choose>
+                            </span>
 				            <span>${cs.rdate }</span>
 				        </p>
 				    </nav>
@@ -56,7 +65,7 @@
 					</c:if>
 				    
 				    <a href="./list.do?group=${group }&cate=${cate}" 
-				        class="btnList">목록보기</a>
+				        class="btnList2">목록보기</a>
 				</article>
 			</section>
 		</div>
