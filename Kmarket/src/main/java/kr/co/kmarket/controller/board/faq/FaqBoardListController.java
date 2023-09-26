@@ -37,13 +37,18 @@ public class FaqBoardListController extends HttpServlet {
 		String cateName = BoardMap.map.get(cate);
 		request.setAttribute("cateName", cateName);
 	
-		int start = 1;
-		// 이거 왜 15개 해야 10개가 나옴??
-		// 10개 해야 10개 나와야되는거 아님?
-		// 10개하면 왜 5개만 나옴???
-		int pageCount = 15;
+		int start = 0;
+		/*
+		 * pageCount가 cate 별로 처리가 아니라
+		 * 모든 faq에 대한 list를 보여주다보니
+		 * 0, 10이 아닌 pageCount를 임시적으로 높게 잡아줘야
+		 * 해당 더보기를 눌렀을 때 limit 10개 제한을 걸어놔서
+		 * 10개만 보여줄 수 있게 된다.
+		 */ 
+		int pageCount = 100000;
 		List<CS_BoardDTO> cates 
 			= service.selectCS_Boards(group, cate, start, pageCount);
+		logger.info("cates size : " + cates.size());
 		List<BoardTypeDTO> types
 			=service.selectBoardType(cate);
 		
