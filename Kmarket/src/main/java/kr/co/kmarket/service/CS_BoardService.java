@@ -34,7 +34,7 @@ public enum CS_BoardService {
 	
 	// 게시판 전체 개수 조회
 	public int selectCountTotal(String group, String cate) {
-		if(group.equals("notice")) {
+		if(cate.equals("All")) {
 			return dao.selectCountTotal_NoticeAll();
 		}else {
 			return dao.selectCountTotal(group, cate);

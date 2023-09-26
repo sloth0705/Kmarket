@@ -12,7 +12,7 @@
 					        <textarea><c:out value="${cs.content }" /></textarea>
 					    </div>
 					    
-					    <!-- 댓글(답변) -->
+					  <%--   <!-- 댓글(답변) -->
 						<div>
 							<h3>답변</h3>
 							<c:choose>
@@ -32,7 +32,7 @@
 									<p class="empty">등록된 답변이 없습니다.</p>
 								</c:otherwise>
 							</c:choose>
-						</div>
+						</div> --%>
 						
 					    <a href="./list.do?group=${group }&cate=${cate}" 
 					        class="btnList">목록보기</a>

@@ -18,7 +18,7 @@
 		                </div>
 	               	</c:if>
                     <a href="./list.do?group=${group }&cate=${cate}" 
-                    	class="btnList">목록보기</a>
+                    	class="btnList2">목록보기</a>
                 </article>
             </section>
         </div>
