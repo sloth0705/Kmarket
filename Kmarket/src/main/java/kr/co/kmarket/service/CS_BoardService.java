@@ -40,6 +40,11 @@ public enum CS_BoardService {
 			return dao.selectCountTotal(group, cate);
 		}
 	}
+	
+	// ----추가) admin용 게시판 전체갯수 조회
+	public int selectCountAdmin(String group, String cate) {
+		return dao.selectCountTotal(group, cate);
+	}
 
 	// qna 글 쓸 때 cate 가져오기
 	public List<BoardCateDTO> selectBoardCate(){

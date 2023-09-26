@@ -1342,6 +1342,13 @@ button[type=submit] {
 	position: relative;
 	left: 810px;
 }
+#admin-cs-notice-view > section > table tr:nth-child(3) textarea {
+	width: 100%;
+	height: 245px;
+	background-color: #fff;
+	border: none;
+	outline: 0;
+}
 #admin-cs-qna-view div > input[type=button] {
 	width: 90px;
 	height: 35px;
