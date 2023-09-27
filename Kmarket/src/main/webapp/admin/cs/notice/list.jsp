@@ -56,7 +56,8 @@
 					}
 					for(var i=data.map.pageGroupStart; i<=data.map.pageGroupEnd; i++){
 						item += '<span class="num">';
-					    item += '<a href="${path}/admin/cs/notice/list.do?cate='+cate+'&pg='+i+'" class='+ (data.map.currentPage==i?'on':'') +'">'+i+'</a>';
+					    //item += '<a href="${path}/admin/cs/notice/list.do?cate='+cate+'&pg='+i+'" class='+ (data.map.currentPage==i?'on':'') +'">'+i+'</a>';
+					    item += '<a href="${path}/admin/cs/notice/list.do?cate='+cate+'&pg='+i+'" class="'+ (data.map.currentPage==i?'on':'off') +'">'+i+'</a>';
 					    item += '</span>';
 					}
 					if(data.map.pageGroupEnd < data.map.lastPageNum){
