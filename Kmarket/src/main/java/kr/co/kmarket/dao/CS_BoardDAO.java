@@ -63,6 +63,8 @@ public class CS_BoardDAO extends DBHelper {
 					+ " JOIN km_cs_boardType AS bt "
 						+ " ON b.cate = bt.cate "
 						+ " AND b.`type` = bt.`type`"
+					+ " JOIN km_cs_boardCate AS bc "
+						+ " ON b.cate = bc.cate"
 					+ " WHERE bno = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, bno);
@@ -72,6 +74,7 @@ public class CS_BoardDAO extends DBHelper {
 				dto = new CS_BoardDTO();
 				dto = getCS(rs);
 				dto.setTypeName(rs.getString("typeName"));
+				dto.setCateName(rs.getString("cateName"));
 			}
 			logger.info("selectCS_Board dto : " + dto);
 			close();
@@ -136,6 +139,46 @@ public class CS_BoardDAO extends DBHelper {
 			psmt.setString(2, cate);
 			psmt.setInt(3, start);
 			psmt.setInt(4, pageCount);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				CS_BoardDTO dto = new CS_BoardDTO();
+				dto = getCS(rs);
+				dto.setTypeName(rs.getString("typeName"));
+				dto.setCateName(rs.getString("cateName"));
+				list.add(dto);
+			}
+			logger.info("selectBoardTypes list : " + list);
+			close();
+		} catch (SQLException e) {
+			logger.error("selectBoardTypes : " + e.getMessage());
+		}
+		return list;
+	}
+	
+	// cate에 따라 게시판 조회
+	public List<CS_BoardDTO> selectBoardTypes(String group, String cate, String type, int start, int pageCount) {
+		List<CS_BoardDTO> list = new ArrayList<>();
+		conn = getConnection();
+		try {
+			sql = "SELECT * "
+					+ " FROM km_cs_board AS b "
+					+ " JOIN km_cs_boardType AS bt "
+					+ " ON b.`type` = bt.`type` "
+					+ " AND b.`cate` = bt.`cate`"
+					+ " JOIN km_cs_boardCate AS bc"
+					+ " ON b.`cate` = bc.`cate` "
+					+ " WHERE `group` = ? "
+					+ " AND b.cate = ? "
+					+ " AND b.type = ? "
+					+ " ORDER BY rdate DESC, bno DESC"
+					+ " LIMIT ?, ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, group);
+			psmt.setString(2, cate);
+			psmt.setString(3, type);
+			psmt.setInt(4, start);
+			psmt.setInt(5, pageCount);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -248,6 +291,29 @@ public class CS_BoardDAO extends DBHelper {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, group);
 			psmt.setString(2, cate);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) total = rs.getInt(1);
+			close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return total;
+	}
+	
+	// 게시글 전체 개수 조회
+	public int selectCountTotal(String group, String cate, String type) {
+		int total = 0;
+		conn = getConnection();
+		sql = "SELECT COUNT(bno) FROM km_cs_board "
+				+ " WHERE `group` = ?"
+				+ " AND cate = ? "
+				+ " AND `type` = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, group);
+			psmt.setString(2, cate);
+			psmt.setString(3, type);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) total = rs.getInt(1);

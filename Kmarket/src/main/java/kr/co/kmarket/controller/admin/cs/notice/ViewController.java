@@ -19,7 +19,7 @@ import kr.co.kmarket.service.CS_BoardService;
 public class ViewController extends HttpServlet {
 	private static final long serialVersionUID = 5490256359092545978L;
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	CS_BoardService service = CS_BoardService.INSTANCE;
+	private CS_BoardService service = CS_BoardService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
