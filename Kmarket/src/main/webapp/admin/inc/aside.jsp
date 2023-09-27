@@ -47,8 +47,8 @@
             <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>고객센터</a>
             <ol>
                 <li><a href="${path}/admin/cs/notice/list.do?cate=All&pg=1">공지사항</a></li>
-                <li><a href="${path}/admin/cs/faq/list.do">자주묻는질문</a></li>
-                <li><a href="${path}/admin/cs/qna/list.do">문의하기</a></li>
+                <li><a href="${path}/admin/cs/faq/list.do?cate=All&pg=1">자주묻는질문</a></li>
+                <li><a href="${path}/admin/cs/qna/list.do?cate=All&pg=1">문의하기</a></li>
             </ol>
         </li>
     </ul>

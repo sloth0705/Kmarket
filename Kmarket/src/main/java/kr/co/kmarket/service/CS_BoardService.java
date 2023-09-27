@@ -32,12 +32,30 @@ public enum CS_BoardService {
 		}
 	}
 	
+	// 게시판 목록 조회
+	public List<CS_BoardDTO> selectCS_Boards(String group, String cate, String type, int start, int pageCount) {
+		if(cate.equals("All")) {
+			return dao.selectCS_Boards(group, start, pageCount);
+		}else {
+			return dao.selectBoardTypes(group, cate, type, start, pageCount);
+		}
+	}
+	
 	// 게시판 전체 개수 조회
 	public int selectCountTotal(String group, String cate) {
 		if(cate.equals("All")) {
 			return dao.selectCountTotal_NoticeAll();
 		}else {
 			return dao.selectCountTotal(group, cate);
+		}
+	}
+	
+	// 게시판 전체 개수 조회
+	public int selectCountTotal(String group, String cate, String type) {
+		if(cate.equals("All")) {
+			return dao.selectCountTotal_NoticeAll();
+		}else {
+			return dao.selectCountTotal(group, cate, type);
 		}
 	}
 	
