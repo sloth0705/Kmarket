@@ -44,6 +44,13 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>CheckLoginFilter</filter-name>
-		<url-pattern>/cs/qnaBoard/write.do</url-pattern>
+		<url-pattern>/admin/*</url-pattern>
+		<url-pattern>/cs/*/write.do</url-pattern>
+		<url-pattern>/cs/*/modify.do</url-pattern>
+		<url-pattern>/product/orderStraight.do</url-pattern>
+		<url-pattern>/product/order.do</url-pattern>
+		<url-pattern>/product/cart.do</url-pattern>
+		<url-pattern>/product/addCart.do</url-pattern>
+		<url-pattern>/cate.do</url-pattern>
 	</filter-mapping>
 </web-app>

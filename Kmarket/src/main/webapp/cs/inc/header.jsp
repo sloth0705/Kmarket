@@ -24,17 +24,18 @@
 	                    <c:choose>
 	                    	<c:when test="${sessMember != null }">
 		                		<span class="memberUid">${sessMember.uid }</span>
-		                    	<a href="${path }/index.do">HOME</a>
 			                	<c:if test="${sessMember.type ge 2 }">
 			                		<a href="${path }/admin/index.do">관리자 </a>
 			                	</c:if>
+		                		<a href="${path }/index.do">HOME</a>
 			               		<a href="${path }/member/logout.do">로그아웃 </a>
 		                	</c:when>
 		                	<c:otherwise>
+	                    	<a href="${path }/index.do">HOME</a>
 	                        <a href="${path}/member/login.do">로그인</a>
-	                        <a href="#">회원가입</a>
+	                        <a href="${path}/member/join.do">회원가입</a>
 	                        <a href="#">마이페이지</a>
-	                        <a href="#">
+	                        <a href="${path }/product/cart.do">
 	                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
 	                            &nbsp;장바구니
 	                        </a>
