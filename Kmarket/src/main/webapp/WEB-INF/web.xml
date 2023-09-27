@@ -51,6 +51,5 @@
 		<url-pattern>/product/order.do</url-pattern>
 		<url-pattern>/product/cart.do</url-pattern>
 		<url-pattern>/product/addCart.do</url-pattern>
-		<url-pattern>/cate.do</url-pattern>
 	</filter-mapping>
 </web-app>
