@@ -48,6 +48,9 @@ public class ListController extends HttpServlet {
 		int pageGroupStart = (pageGroupCurrent - 1) * 5 + 1;
 		int pageGroupEnd = pageGroupCurrent * 5;
 		
+		if (pageGroupEnd > lastPageNum)
+			pageGroupEnd = lastPageNum;
+		
 		// 페이지 시작번호
 		int pageStartNum = total - start;
 		
@@ -60,6 +63,14 @@ public class ListController extends HttpServlet {
 		req.setAttribute("pageStartNum", pageStartNum+1);
 		req.setAttribute("cate", cate);
 		req.setAttribute("pg", pg);
+
+		logger.info("currentPage는 "+currentPage);
+		logger.info("start는 "+start);
+		logger.info("total는 "+total);
+		logger.info("lastPageNum는 "+lastPageNum);
+		logger.info("pageGroupStart는 "+pageGroupStart);
+		logger.info("pageGroupEnd는 "+pageGroupEnd);
+		logger.info("pageStartNum는 "+pageStartNum);
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/cs/notice/list.jsp");
 		dispatcher.forward(req, resp);
@@ -67,16 +78,12 @@ public class ListController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String pg = req.getParameter("pg"); // 추가
 		String cate = req.getParameter("cate");
-		logger.info("pg는 "+pg);
 		logger.info("cate는 "+cate);
 		
 		// 현재 페이지 번호
+		// 카테고리가 변하면 목록을 다시 불러와야 하므로 페이지 값은 1이 되어야함 - 신진성
 		int currentPage = 1;
-		if (pg != null)
-			currentPage = Integer.parseInt(pg);
 		
 		// 시작 인덱스
 		int start = (currentPage - 1) * 10;
@@ -86,17 +93,17 @@ public class ListController extends HttpServlet {
 		
 		// 마지막 페이지 번호
 		int lastPageNum = 0;
-		if (total % 10 == 0)
-			lastPageNum = (total / 10);
+		if (total % 5 == 0)
+			lastPageNum = (total / 5);
 		else
-			lastPageNum = (total / 10) + 1;
+			lastPageNum = (total / 5) + 1;
 		
 		// 페이지그룹 start, end 번호
 		int pageGroupCurrent = 1;
 		int pageGroupStart   = 1;
-		pageGroupCurrent = (int) Math.ceil(currentPage / 10.0);
-		pageGroupStart = (pageGroupCurrent - 1) * 10 + 1;
-		int pageGroupEnd = pageGroupCurrent * 10;
+		pageGroupCurrent = (int) Math.ceil(currentPage / 5.0);
+		pageGroupStart = (pageGroupCurrent - 1) * 5 + 1;
+		int pageGroupEnd = pageGroupCurrent * 5;
 		
 		if (pageGroupEnd > lastPageNum)
 			pageGroupEnd = lastPageNum;
